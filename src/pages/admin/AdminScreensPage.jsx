@@ -7,12 +7,7 @@ import { AdminBanner, AdminLoading, AdminSectionError, AdminEmpty } from "../../
 import { describeApiError } from "../../components/admin/adminUtils"
 import { getScreens, createScreen, updateScreen, deleteScreen } from "../../services/admin.service"
 
-/**
- * AdminScreensPage — /admin/screens
- *
- * Full CRUD for cinema screens. Capacity is always the backend's calculation;
- * the form shows a preview only.
- */
+
 const AdminScreensPage = () => {
   const outletContext = useOutletContext()
 
@@ -56,7 +51,7 @@ const AdminScreensPage = () => {
   }
 
   const openEdit = (screen) => {
-    // Use the full record so the form is populated from backend values.
+    
     setEditing(screen)
     setShowForm(true)
     setBanner(null)
@@ -84,7 +79,7 @@ const AdminScreensPage = () => {
         setBanner({ tone: "error", message: data?.message || "The screen could not be saved." })
       }
     } catch (err) {
-      // 409 duplicate name, 400 validation — the backend message is descriptive.
+      
       setBanner({ tone: "error", message: describeApiError(err, "The screen could not be saved.") })
     } finally {
       setSubmitting(false)
@@ -108,7 +103,7 @@ const AdminScreensPage = () => {
         setBanner({ tone: "error", message: data?.message || "The screen could not be deleted." })
       }
     } catch (err) {
-      // 409 when upcoming showtimes still use this screen — always surfaced.
+      
       setBanner({ tone: "error", message: describeApiError(err, "The screen could not be deleted.") })
     } finally {
       setBusyId(null)

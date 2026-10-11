@@ -8,7 +8,7 @@ import { formatCurrency, formatDate, formatTime } from "../../utils/formatters"
 import AppIcon from "../../components/ui/AppIcon"
 
 const MAX_SEATS_PER_BOOKING = 10
-const POLLING_INTERVAL_MS = 12000 // 12 seconds polling
+const POLLING_INTERVAL_MS = 12000 
 
 const SeatSelectionPage = () => {
   const { showtimeId } = useParams()
@@ -26,7 +26,7 @@ const SeatSelectionPage = () => {
 
   const pollingRef = useRef(null)
 
-  // ── Fetch seat availability from backend ──────────────────────────────────
+  
   const fetchAvailability = useCallback(
     async (isManualRefresh = false) => {
       if (isManualRefresh) setRefreshing(true)
@@ -38,7 +38,7 @@ const SeatSelectionPage = () => {
           setLayout(st.layout || [])
           setAvailability(st.availability || null)
 
-          // Filter out any selected seats that may have just become unavailable
+          
           const unavailableSet = new Set()
           ;(st.layout || []).forEach((row) => {
             row.seats?.forEach((s) => {
@@ -69,12 +69,12 @@ const SeatSelectionPage = () => {
     [showtimeId, showtime]
   )
 
-  // Initial load
+  
   useEffect(() => {
     fetchAvailability()
   }, [fetchAvailability])
 
-  // Periodic polling (12s) while active on page
+  
   useEffect(() => {
     pollingRef.current = setInterval(() => {
       fetchAvailability()
@@ -85,7 +85,7 @@ const SeatSelectionPage = () => {
     }
   }, [fetchAvailability])
 
-  // ── Toggle Seat Selection ─────────────────────────────────────────────────
+  
   const handleToggleSeat = (seatNumber) => {
     setError("")
     setConflictMessage("")
@@ -101,7 +101,7 @@ const SeatSelectionPage = () => {
     }
   }
 
-  // ── Reserve Seats ─────────────────────────────────────────────────────────
+  
   const handleReserve = async () => {
     if (selectedSeats.length === 0 || isSubmitting) return
 
@@ -110,7 +110,7 @@ const SeatSelectionPage = () => {
     setConflictMessage("")
 
     try {
-      // POST body contains ONLY showtimeId and seats array
+      
       const response = await createBooking({
         showtimeId,
         seats: selectedSeats
@@ -118,19 +118,19 @@ const SeatSelectionPage = () => {
 
       if (response?.success && response.booking) {
         const bookingId = response.booking.id || response.booking._id
-        // Navigate toward reservation details page
+        
         navigate(`/booking/${bookingId}/reservation`)
       } else {
         setError(response?.message || "Failed to create reservation.")
       }
     } catch (err) {
       if (err.response?.status === 409) {
-        // Double-booking conflict
+        
         setConflictMessage(
           err.response.data?.message ||
             "One or more selected seats were just taken by another customer. Please choose different seats."
         )
-        // Refetch latest availability and clear conflicting selections
+        
         await fetchAvailability(true)
       } else if (err.response?.status === 400) {
         setError(err.response.data?.message || "Invalid reservation request.")
@@ -183,7 +183,7 @@ const SeatSelectionPage = () => {
   return (
     <div className="page-wrapper seat-selection-page">
       <div className="container py-4">
-        {/* Top Header Card */}
+        
         <div className="seat-page-header mb-4">
           <div className="showtime-headline-box">
             <div className="d-flex align-items-center gap-3">
@@ -223,7 +223,7 @@ const SeatSelectionPage = () => {
           </div>
         </div>
 
-        {/* Conflict / General Error Banner */}
+        
         {conflictMessage && (
           <div className="alert-warning-banner mb-4" role="alert">
             <span className="alert-icon"><AppIcon name="alert" size={16} /></span>
@@ -239,15 +239,15 @@ const SeatSelectionPage = () => {
           </div>
         )}
 
-        {/* Main 2-Column Booking Area */}
+        
         <div className="row g-4 align-items-start">
-          {/* Left Column: Seat Map + Legend */}
+          
           <div className="col-lg-8">
             <div className="seat-selection-main-card">
-              {/* Seat Legend */}
+              
               <SeatLegend />
 
-              {/* Interactive Auditorium Seat Map */}
+              
               <SeatMap
                 layout={layout}
                 selectedSeats={selectedSeats}
@@ -255,7 +255,7 @@ const SeatSelectionPage = () => {
                 screenName={showtime?.screen?.name}
               />
 
-              {/* Stats Footer */}
+              
               {availability && (
                 <div className="seat-availability-stats">
                   <span>Available: <strong>{availability.availableSeats}</strong></span>
@@ -266,7 +266,7 @@ const SeatSelectionPage = () => {
             </div>
           </div>
 
-          {/* Right Column: Order Summary & Reserve Button */}
+          
           <div className="col-lg-4">
             <BookingSummary
               showtime={showtime}

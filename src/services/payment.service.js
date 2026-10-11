@@ -1,8 +1,6 @@
 import api from "../api/axios"
 
-/**
- * Payment Service — communicates only with our backend (never exposes Paystack secret key)
- */
+
 
 export const initializePayment = async (bookingId) => {
   const response = await api.post(`/payments/initialize/${bookingId}`)

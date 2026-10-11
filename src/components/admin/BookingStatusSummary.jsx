@@ -1,12 +1,7 @@
 import StatusBreakdown from "./StatusBreakdown"
 import AppIcon from "../ui/AppIcon"
 
-/**
- * BookingStatusSummary — booking counts by backend bookingStatus.
- *
- * Labels match the customer-facing wording from Phase 13 so admins and
- * customers read the same terms.
- */
+
 const BookingStatusSummary = ({ data, loading, error, onRetry }) => {
   if (loading) {
     return (

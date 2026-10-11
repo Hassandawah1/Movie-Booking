@@ -63,7 +63,7 @@ const RegisterPage = () => {
   return (
     <div className="auth-page">
       <div className="auth-card">
-        {/* Header */}
+        
         <div className="text-center mb-4">
           <div style={{ marginBottom: "0.5rem" }}><AppIcon name="film" size={40} /></div>
           <h1 style={{ fontSize: "1.6rem", marginBottom: "0.25rem" }}>Create Account</h1>
@@ -72,12 +72,12 @@ const RegisterPage = () => {
           </p>
         </div>
 
-        {/* Error */}
+        
         {error && <div className="alert-error mb-3"><AppIcon name="alert" size={16} /> {error}</div>}
 
-        {/* Form */}
+        
         <form onSubmit={handleSubmit} noValidate>
-          {/* Full Name */}
+          
           <div className="mb-3">
             <label htmlFor="reg-name" className="form-label">Full Name</label>
             <input
@@ -93,7 +93,7 @@ const RegisterPage = () => {
             />
           </div>
 
-          {/* Email */}
+          
           <div className="mb-3">
             <label htmlFor="reg-email" className="form-label">Email Address</label>
             <input
@@ -109,7 +109,7 @@ const RegisterPage = () => {
             />
           </div>
 
-          {/* Password */}
+          
           <div className="mb-3">
             <label htmlFor="reg-password" className="form-label">Password</label>
             <div className="password-wrapper">
@@ -136,7 +136,7 @@ const RegisterPage = () => {
             </div>
           </div>
 
-          {/* Confirm Password */}
+          
           <div className="mb-4">
             <label htmlFor="reg-confirm" className="form-label">Confirm Password</label>
             <div className="password-wrapper">
@@ -163,13 +163,13 @@ const RegisterPage = () => {
             </div>
           </div>
 
-          {/* Submit */}
+          
           <button type="submit" className="btn-primary-grad" disabled={loading}>
             {loading ? "Creating Account…" : "Create Account"}
           </button>
         </form>
 
-        {/* Footer Link */}
+        
         <p className="text-center mt-3 mb-0" style={{ color: "#a1a1a1", fontSize: "0.875rem" }}>
           Already have an account?{" "}
           <Link to="/login" style={{ color: "#ffe27a", fontWeight: 600 }}>

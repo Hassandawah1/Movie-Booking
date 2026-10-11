@@ -10,10 +10,7 @@ import {
   displayGrouping
 } from "../../utils/bookingHelpers"
 
-/**
- * BookingCard — summary of a single booking for the My Bookings list.
- * Presentation only: every status comes from the backend values.
- */
+
 const BookingCard = ({ booking }) => {
   if (!booking) return null
 
@@ -125,8 +122,7 @@ const BookingCard = ({ booking }) => {
           </div>
         </div>
 
-        {/* Screen-reader summary so status never relies on colour alone.
-            Uses the same human-readable labels as the visual badges. */}
+        
         <p className="visually-hidden">
           Booking {bookingReference}: {past ? "Completed" : formatBookingStatus(bookingStatus)},{" "}
           {formatPaymentStatus(paymentStatus, paymentFailureReason).toLowerCase()}

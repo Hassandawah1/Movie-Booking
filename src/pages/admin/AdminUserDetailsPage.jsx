@@ -9,12 +9,7 @@ import { useAuth } from "../../context/AuthContext"
 import { formatCurrency, formatDate } from "../../utils/formatters"
 import { getUserById, updateUserRole } from "../../services/admin.service"
 
-/**
- * AdminUserDetailsPage — /admin/users/:id
- *
- * Shows the account plus the backend's own booking/spending metrics. Spending is
- * always the backend figure; it is never recomputed from client-side data.
- */
+
 const AdminUserDetailsPage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -63,14 +58,14 @@ const AdminUserDetailsPage = () => {
         setBanner({ tone: "error", message: data?.message || "The role could not be updated." })
       }
     } catch (err) {
-      // 400 for self-demotion — shown verbatim.
+      
       setBanner({ tone: "error", message: describeApiError(err, "The role could not be updated.") })
     } finally {
       setSubmitting(false)
     }
   }
 
-  // The signed-in admin's own record — used to hide self-demotion.
+  
   const currentAdminId = currentAdmin?.id || currentAdmin?._id
   const targetId = user?.id || user?._id
   const isSelf = Boolean(currentAdminId && targetId && String(currentAdminId) === String(targetId))

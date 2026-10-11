@@ -4,26 +4,20 @@ import { getBookingById } from "../../services/booking.service"
 import PaymentStatus from "../../components/payment/PaymentStatus"
 import AppIcon from "../../components/ui/AppIcon"
 
-/**
- * PaymentFailedPage — /payment/failed
- *
- * Reached when a payment genuinely failed, or when the backend could not
- * confirm it. The booking is re-fetched from OUR backend so the page shows the
- * real current state instead of whatever the redirect claimed.
- */
+
 const PaymentFailedPage = () => {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
 
   const reference = searchParams.get("reference")
-  const reason = searchParams.get("reason") // "failed" | "unverified" | null
+  const reason = searchParams.get("reason") 
   const bookingId = searchParams.get("bookingId")
 
   const [booking, setBooking] = useState(null)
   const [loading, setLoading] = useState(Boolean(bookingId))
   const [notice, setNotice] = useState("")
 
-  // Backend-provided message is the most accurate; fall back to a safe generic.
+  
   const backendMessage = searchParams.get("message")
 
   const loadBooking = useCallback(async () => {
@@ -37,8 +31,8 @@ const PaymentFailedPage = () => {
         const b = data.booking
         setBooking(b)
 
-        // If it turns out the payment actually succeeded, do not show a
-        // failure page at all.
+        
+        
         if (b.paymentStatus === "paid" && b.bookingStatus === "confirmed") {
           navigate(`/booking/${bookingId}/success`, { replace: true })
         }
@@ -46,7 +40,7 @@ const PaymentFailedPage = () => {
         setNotice(data?.message || "")
       }
     } catch (err) {
-      // Ownership / not-found problems are not worth blocking the page for.
+      
       setNotice(err.response?.data?.message || "")
     } finally {
       setLoading(false)
@@ -68,7 +62,7 @@ const PaymentFailedPage = () => {
     : false
   const isExpired = bookingStatus === "expired" || holdElapsed
 
-  // Retry is only offered for a still-valid, unpaid, pending reservation.
+  
   const canRetry =
     Boolean(bookingId) &&
     !isConfirmed &&
@@ -79,8 +73,8 @@ const PaymentFailedPage = () => {
 
   const showtimeId = booking?.showtime?._id || booking?.showtime?.id || booking?.showtime
 
-  // Never say "payment failed" when all we know is that it was not completed,
-  // and never surface a raw gateway string to the customer.
+  
+  
   const { heading, bodyText } = describeFailure({
     reason,
     failureReason,
@@ -123,7 +117,7 @@ const PaymentFailedPage = () => {
               </div>
             )}
 
-            {/* ── Current booking state (authoritative, from backend) ─────── */}
+            
             {loading && (
               <div className="text-muted small mb-4">
                 <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />
@@ -163,7 +157,7 @@ const PaymentFailedPage = () => {
               <p className="small text-muted mb-4">{notice}</p>
             )}
 
-            {/* ── State-specific guidance ─────────────────────────────────── */}
+            
             {isCancelled && (
               <div className="alert alert-warning small text-start mb-4">
                 This reservation has been cancelled. Please start a new booking.
@@ -183,7 +177,7 @@ const PaymentFailedPage = () => {
               </div>
             )}
 
-            {/* ── CTAs ────────────────────────────────────────────────────── */}
+            
             <div className="d-grid gap-2">
               {canRetry && (
                 <button
@@ -222,13 +216,9 @@ const PaymentFailedPage = () => {
   )
 }
 
-/**
- * Turn backend/gateway signals into honest, non-technical customer copy.
- * A raw gateway string like "Gateway reported status 'abandoned'" is never
- * shown directly.
- */
+
 function describeFailure({ reason, failureReason, backendMessage }) {
-  // Amount mismatch is a real problem the customer should not retry blindly.
+  
   if (failureReason === "amount-mismatch") {
     return {
       heading: "Payment could not be confirmed",
@@ -237,7 +227,7 @@ function describeFailure({ reason, failureReason, backendMessage }) {
     }
   }
 
-  // The checkout was opened but never completed — not a decline.
+  
   if (failureReason === "abandoned" || reason === "failed") {
     return {
       heading: "Payment not completed",
@@ -246,7 +236,7 @@ function describeFailure({ reason, failureReason, backendMessage }) {
     }
   }
 
-  // Explicit gateway decline.
+  
   if (failureReason && failureReason !== "abandoned") {
     return {
       heading: "Payment was declined",
@@ -254,7 +244,7 @@ function describeFailure({ reason, failureReason, backendMessage }) {
     }
   }
 
-  // Unverified / unclear outcome: the money may still have moved.
+  
   return {
     heading: "Payment could not be confirmed",
     bodyText:

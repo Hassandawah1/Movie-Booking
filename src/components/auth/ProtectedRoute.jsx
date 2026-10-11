@@ -4,30 +4,13 @@ import AppIcon from "../ui/AppIcon"
 
 const TOKEN_KEY = "movieBookingToken"
 
-/** Is there a usable stored token (never expose or log its value)? */
+
 const hasStoredToken = () => {
   const token = localStorage.getItem(TOKEN_KEY)
   return Boolean(token && token !== "null" && token !== "undefined")
 }
 
-/**
- * ProtectedRoute
- *
- * Props:
- *   children      - component to render if allowed
- *   requireAdmin  - if true, only admins may access this route
- *   allowUnverifiedSession - render anyway when the session could not be checked
- *                            (used by payment routes so a customer returning
- *                            from Paystack can still attempt verification)
- *
- * Behaviour:
- *   - While auth is loading: show a spinner (prevents flash of login)
- *   - Session check failed (server unreachable): offer a retry instead of
- *     silently signing the user out — they may be mid-payment
- *   - Not authenticated: redirect to /login preserving target location in state.from
- *   - Authenticated but not admin when requireAdmin=true: redirect to /
- *   - Otherwise: render children
- */
+
 const ProtectedRoute = ({ children, requireAdmin = false, allowUnverifiedSession = false }) => {
   const { isAuthenticated, isAdmin, loading, authError, refreshUser } = useAuth()
   const location = useLocation()
@@ -59,9 +42,9 @@ const ProtectedRoute = ({ children, requireAdmin = false, allowUnverifiedSession
     )
   }
 
-  // The session could not be checked because the server was unreachable.
-  // Do NOT treat this as "logged out" — that would drop a customer who is in
-  // the middle of the payment flow (e.g. returning from Paystack).
+  
+  
+  
   if (!isAuthenticated && authError && !allowUnverifiedSession) {
     return (
       <div
@@ -93,8 +76,8 @@ const ProtectedRoute = ({ children, requireAdmin = false, allowUnverifiedSession
   }
 
   if (!isAuthenticated) {
-    // Payment routes may render while the session is unverifiable, but only if
-    // a token is actually present. Everything else falls through to /login.
+    
+    
     if (allowUnverifiedSession && hasStoredToken()) {
       return children
     }

@@ -2,16 +2,11 @@ import { useMemo } from "react"
 import { useAuth } from "../../context/AuthContext"
 import AppIcon from "../ui/AppIcon"
 
-/**
- * AdminHeader — title bar for a dashboard screen.
- *
- * Shows the section title, a human date, and the signed-in admin's name only.
- * No email, role internals, ids or tokens are exposed.
- */
+
 const AdminHeader = ({ title, subtitle, onToggleSidebar, sidebarOpen, actions = null }) => {
   const { user } = useAuth()
 
-  // Derived once per mount rather than read from the clock during render.
+  
   const todayLabel = useMemo(
     () =>
       new Intl.DateTimeFormat("en-GB", {

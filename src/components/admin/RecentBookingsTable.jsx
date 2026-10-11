@@ -3,15 +3,7 @@ import { PaymentStatusBadge } from "../payment/PaymentStatus"
 import { formatCurrency, formatDate } from "../../utils/formatters"
 import AppIcon from "../ui/AppIcon"
 
-/**
- * RecentBookingsTable — latest bookings platform-wide.
- *
- * Reuses the same status badges the customer UI uses, so there is one
- * implementation of "Confirmed"/"Paid"/etc. across the app.
- *
- * Horizontally scrolls inside its own container on narrow screens instead of
- * widening the page.
- */
+
 const RecentBookingsTable = ({ bookings = [], loading, error, onRetry }) => {
   if (loading) {
     return (

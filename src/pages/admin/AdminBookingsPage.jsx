@@ -31,12 +31,7 @@ const PAYMENT_STATUS_FILTERS = [
 
 const PAGE_SIZE = 20
 
-/**
- * AdminBookingsPage — /admin/bookings
- *
- * Filtering, search and pagination are all executed by the backend; the browser
- * never downloads the whole bookings collection.
- */
+
 const AdminBookingsPage = () => {
   const outletContext = useOutletContext()
   const requestVersion = useRef(0)
@@ -105,20 +100,20 @@ const AdminBookingsPage = () => {
     loadBookings()
   }, [loadBookings])
 
-  // Movie options for the filter dropdown (from our backend).
+  
   useEffect(() => {
     const loadMovies = async () => {
       try {
         const data = await getAllMovies()
         if (data?.success) setMovies(data.movies || [])
       } catch {
-        /* filter simply stays as "All movies" */
+        
       }
     }
     loadMovies()
   }, [])
 
-  // Any filter change resets to page 1 so results are never empty by accident.
+  
   const applyFilter = (setter) => (value) => {
     setter(value)
     setPage(1)
@@ -167,7 +162,7 @@ const AdminBookingsPage = () => {
             </div>
           </div>
 
-          {/* Server-side filters + search */}
+          
           <form className="admin-filter-bar" data-panel="booking-filters" onSubmit={handleSearchSubmit}>
             <div className="admin-field">
               <label htmlFor="filter-booking-status">Booking Status</label>

@@ -23,21 +23,16 @@ import {
   getRevenueAnalytics
 } from "../../services/admin.service"
 
-/**
- * AdminDashboardPage — /admin
- *
- * Read-only operations overview. Each section owns its request and its error
- * state, so one failing endpoint never blanks the whole dashboard.
- */
+
 const AdminDashboardPage = () => {
   const outletContext = useOutletContext()
 
-  // Controls that feed the parameterised endpoints
+  
   const [trendPeriod, setTrendPeriod] = useState("7d")
   const [topSort, setTopSort] = useState("revenue")
   const [revenueRange, setRevenueRange] = useState(() => {
-    // Local calendar dates (not toISOString) so the default range matches the
-    // admin's actual today/month in any timezone.
+    
+    
     const localDate = (date) =>
       `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
 
@@ -46,11 +41,11 @@ const AdminDashboardPage = () => {
     return { startDate: localDate(start), endDate: localDate(new Date()) }
   })
 
-  // Bumping this re-runs every section's request declaratively.
+  
   const [refreshKey, setRefreshKey] = useState(0)
   const [refreshing, setRefreshing] = useState(false)
 
-  // One hook per endpoint → independent loading/error handling
+  
   const summary = useAdminData(getDashboardSummary, [], refreshKey)
   const trend = useAdminData(getRevenueTrend, [trendPeriod], refreshKey)
   const topMovies = useAdminData(getTopMovies, [topSort, 10], refreshKey)
@@ -65,7 +60,7 @@ const AdminDashboardPage = () => {
     setRefreshKey((key) => key + 1)
   }, [])
 
-  // Clear the refreshing flag once every section has settled.
+  
   useEffect(() => {
     if (!refreshing) return
     const stillLoading =
@@ -115,7 +110,7 @@ const AdminDashboardPage = () => {
       />
 
       <div className="admin-content">
-        {/* ── Summary ──────────────────────────────────────────────────────── */}
+        
         {summary.loading && (
           <section className="admin-panel admin-panel--wide" data-panel="summary" aria-label="Dashboard summary">
             <p className="admin-loading">Loading dashboard…</p>
@@ -175,7 +170,7 @@ const AdminDashboardPage = () => {
           </section>
         )}
 
-        {/* ── Revenue ──────────────────────────────────────────────────────── */}
+        
         <div className="admin-grid-2">
           <RevenueTrend
             data={trend.data?.data}
@@ -196,7 +191,7 @@ const AdminDashboardPage = () => {
           />
         </div>
 
-        {/* ── Status breakdowns ────────────────────────────────────────────── */}
+        
         <div className="admin-grid-2">
           <BookingStatusSummary
             data={bookingStats.data?.data}
@@ -212,7 +207,7 @@ const AdminDashboardPage = () => {
           />
         </div>
 
-        {/* ── Top movies ───────────────────────────────────────────────────── */}
+        
         <TopMoviesTable
           movies={topMovies.data?.movies}
           loading={topMovies.loading}
@@ -222,7 +217,7 @@ const AdminDashboardPage = () => {
           onRetry={topMovies.refetch}
         />
 
-        {/* ── Tables ───────────────────────────────────────────────────────── */}
+        
         <RecentBookingsTable
           bookings={recent.data?.bookings}
           loading={recent.loading}

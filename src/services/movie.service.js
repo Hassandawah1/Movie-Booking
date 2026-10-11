@@ -1,9 +1,6 @@
 import api from "../api/axios"
 
-/**
- * Movie Service — customer-facing movie operations
- * Connects to our backend Cinema API (not external providers)
- */
+
 
 export const getMovies = async (params = {}) => {
   const response = await api.get("/movies", { params })

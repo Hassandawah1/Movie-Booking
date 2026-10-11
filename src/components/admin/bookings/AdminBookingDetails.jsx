@@ -2,7 +2,7 @@ import { BookingStatusBadge, PaymentStatusBadge } from "../../payment/PaymentSta
 import { formatCurrency, formatDate, formatTime } from "../../../utils/formatters"
 import AppIcon from "../../ui/AppIcon"
 
-/** "HH:MM" clock string for a Date/ISO value (consumed by formatTime). */
+
 const clockOf = (value) => {
   if (!value) return ""
   const d = new Date(value)
@@ -17,12 +17,7 @@ const Row = ({ label, children }) => (
   </div>
 )
 
-/**
- * AdminBookingDetails — full operational view of one booking.
- *
- * Deliberately shows no payment credentials (no card data, no tokens) and no
- * customer password material; the backend does not return any of it either.
- */
+
 const AdminBookingDetails = ({ booking, cancelling, onCancel }) => {
   if (!booking) return null
 

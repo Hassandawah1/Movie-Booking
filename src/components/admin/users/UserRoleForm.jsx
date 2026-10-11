@@ -1,10 +1,4 @@
-/**
- * UserRoleForm — promote or demote a user's role.
- *
- * The change always requires explicit confirmation, and self-demotion is blocked
- * in the UI as well as by the backend ("You cannot remove your own admin
- * access"), which remains the authority.
- */
+
 const UserRoleForm = ({ user, isSelf, submitting, onRoleChange }) => {
   if (!user) return null
 
@@ -12,7 +6,7 @@ const UserRoleForm = ({ user, isSelf, submitting, onRoleChange }) => {
 
   const handleClick = () => {
     if (isSelf && isAdmin) {
-      // The backend would reject this; don't offer the action at all.
+      
       return
     }
 

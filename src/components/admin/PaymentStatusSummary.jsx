@@ -2,14 +2,7 @@ import StatusBreakdown from "./StatusBreakdown"
 import { formatPaymentStatus } from "../payment/PaymentStatus"
 import AppIcon from "../ui/AppIcon"
 
-/**
- * PaymentStatusSummary — payment counts by backend paymentStatus.
- *
- * Semantics follow Phase 12: a Paystack checkout the customer abandoned is
- * recorded as paymentStatus "failed" and must not be presented as a refused
- * payment. The aggregate endpoint cannot separate abandoned from declined, so
- * this label stays deliberately neutral and says so in the footnote.
- */
+
 const PaymentStatusSummary = ({ data, loading, error, onRetry }) => {
   if (loading) {
     return (
@@ -38,9 +31,9 @@ const PaymentStatusSummary = ({ data, loading, error, onRetry }) => {
     )
   }
 
-  // "Unpaid" is used verbatim because that is the backend value an admin is
-  // auditing; the other labels reuse the shared formatter so admin wording
-  // cannot drift from the customer-facing wording.
+  
+  
+  
   const rows = [
     { label: "Paid", value: data?.paid ?? 0, tone: "success" },
     { label: "Unpaid", value: data?.unpaid ?? 0, tone: "warning" },

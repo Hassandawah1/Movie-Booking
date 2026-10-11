@@ -8,16 +8,7 @@ import ReservationTimer from "../../components/booking/ReservationTimer"
 import { formatCurrency, formatDate, formatTime } from "../../utils/formatters"
 import AppIcon from "../../components/ui/AppIcon"
 
-/**
- * PaymentPage — /booking/:bookingId/payment
- *
- * Loads the booking from OUR backend (never from navigation state, so a page
- * refresh keeps working), validates that it is actually payable, then asks our
- * backend to initialize a Paystack transaction and redirects the browser to the
- * Paystack hosted checkout.
- *
- * The frontend NEVER decides that a payment succeeded — only the backend can.
- */
+
 const PaymentPage = () => {
   const { bookingId } = useParams()
   const navigate = useNavigate()
@@ -28,11 +19,11 @@ const PaymentPage = () => {
   const [error, setError] = useState("")
   const [isTimerExpired, setIsTimerExpired] = useState(false)
 
-  // Guards against a duplicate initialization when the user double-clicks or
-  // when React StrictMode re-runs effects in development.
+  
+  
   const isSubmittingRef = useRef(false)
 
-  // ── Load the booking from the backend ──────────────────────────────────────
+  
   const loadBooking = useCallback(async () => {
     setLoading(true)
     setError("")
@@ -49,13 +40,13 @@ const PaymentPage = () => {
       const b = data.booking
       setBooking(b)
 
-      // Already paid / confirmed → never initialize a second payment.
+      
       if (b.paymentStatus === "paid" || b.bookingStatus === "confirmed") {
         navigate(`/booking/${bookingId}/success`, { replace: true })
         return
       }
 
-      // Backend already decided the hold is dead.
+      
       if (b.bookingStatus === "expired") {
         setIsTimerExpired(true)
       }
@@ -79,18 +70,18 @@ const PaymentPage = () => {
     loadBooking()
   }, [loadBooking])
 
-  // ── Timer expiry handler (stable so the interval is never rebuilt) ─────────
+  
   const handleTimerExpire = useCallback(() => {
     setIsTimerExpired(true)
-    // Re-sync with backend, which is the source of truth for expiry.
+    
     loadBooking()
   }, [loadBooking])
 
-  // ── Pay Now ────────────────────────────────────────────────────────────────
+  
   const handlePay = async () => {
     if (!booking || isInitializing || isSubmittingRef.current) return
 
-    // ── Client-side pre-flight validation (backend re-validates everything) ──
+    
     if (booking.bookingStatus === "cancelled") {
       setError("This reservation has been cancelled and can no longer be paid for.")
       return
@@ -112,12 +103,12 @@ const PaymentPage = () => {
     setError("")
 
     try {
-      // Only the booking id is sent — the backend owns the amount.
+      
       const res = await initializePayment(bookingId)
 
       if (res?.success && res.payment?.authorizationUrl) {
-        // Safe redirect to the Paystack hosted checkout page.
-        // Card details are only ever entered on Paystack's own page.
+        
+        
         window.location.href = res.payment.authorizationUrl
         return
       }
@@ -145,7 +136,7 @@ const PaymentPage = () => {
     }
   }
 
-  // ── Loading state ──────────────────────────────────────────────────────────
+  
   if (loading) {
     return (
       <div className="container py-5 text-center">
@@ -157,7 +148,7 @@ const PaymentPage = () => {
     )
   }
 
-  // ── Hard error (not found / forbidden / server down) ──────────────────────
+  
   if (!booking) {
     const isAccessDenied = /access denied/i.test(error)
 
@@ -189,7 +180,7 @@ const PaymentPage = () => {
   const isExpired = isTimerExpired || bookingStatus === "expired" || hasHoldElapsed(booking)
   const isConfirmed = bookingStatus === "confirmed" || paymentStatus === "paid"
 
-  // The ref is only a re-entrancy guard; `isInitializing` drives the render state.
+  
   const canPay = !isExpired && !isCancelled && !isConfirmed && !isInitializing
 
   const showtimeId = booking.showtime?._id || booking.showtime?.id || booking.showtime
@@ -213,7 +204,7 @@ const PaymentPage = () => {
 
           {error && <div className="alert alert-danger mb-4"><AppIcon name="alert" size={16} /> {error}</div>}
 
-          {/* ── Cancelled ─────────────────────────────────────────────────── */}
+          
           {isCancelled && (
             <div className="alert alert-warning text-center mb-4">
               <h5 className="mb-2">This reservation has been cancelled.</h5>
@@ -226,7 +217,7 @@ const PaymentPage = () => {
             </div>
           )}
 
-          {/* ── Expired ───────────────────────────────────────────────────── */}
+          
           {isExpired && !isCancelled && (
             <div className="alert alert-danger text-center mb-4">
               <h5 className="mb-2">Your seat reservation has expired.</h5>
@@ -241,17 +232,17 @@ const PaymentPage = () => {
             </div>
           )}
 
-          {/* ── Live hold countdown ───────────────────────────────────────── */}
+          
           {!isExpired && !isCancelled && !isConfirmed && booking.expiresAt && (
             <div className="mb-4">
               <ReservationTimer expiresAt={booking.expiresAt} onExpire={handleTimerExpire} />
             </div>
           )}
 
-          {/* ── Order summary ─────────────────────────────────────────────── */}
+          
           <PaymentSummary booking={booking} />
 
-          {/* ── Reservation details ───────────────────────────────────────── */}
+          
           <div
             className="p-3 rounded-3 mb-4"
             style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
@@ -274,7 +265,7 @@ const PaymentPage = () => {
             </div>
           </div>
 
-          {/* ── Payment CTA ───────────────────────────────────────────────── */}
+          
           {canPay && (
             <div className="d-grid gap-2">
               <button
@@ -317,10 +308,7 @@ const PaymentPage = () => {
   )
 }
 
-/**
- * Has the temporary seat hold elapsed according to the backend timestamp?
- * Used only to disable the button early — the backend still re-validates.
- */
+
 function hasHoldElapsed(booking) {
   if (!booking?.expiresAt) return false
   const expiry = new Date(booking.expiresAt).getTime()
@@ -328,7 +316,7 @@ function hasHoldElapsed(booking) {
   return expiry <= Date.now()
 }
 
-/** "HH:MM" clock string for an ISO timestamp (feeds the existing time formatter). */
+
 function expiryClock(isoString) {
   const d = new Date(isoString)
   if (Number.isNaN(d.getTime())) return ""

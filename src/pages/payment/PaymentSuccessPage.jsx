@@ -6,14 +6,7 @@ import PaymentStatus from "../../components/payment/PaymentStatus"
 import { formatCurrency, formatDate, formatTime } from "../../utils/formatters"
 import AppIcon from "../../components/ui/AppIcon"
 
-/**
- * PaymentSuccessPage — /booking/:bookingId/success
- *
- * The page never trusts navigation state. On every load (including a hard
- * refresh) it re-fetches the booking from OUR backend and only presents the
- * confirmation once the backend reports paymentStatus=paid and
- * bookingStatus=confirmed.
- */
+
 const PaymentSuccessPage = () => {
   const { bookingId } = useParams()
 
@@ -36,15 +29,15 @@ const PaymentSuccessPage = () => {
 
       setBooking(data.booking)
 
-      // Cross-check with the payment status endpoint so the displayed state
-      // does not depend on a single response shape.
+      
+      
       try {
         const paymentData = await getBookingPaymentStatus(bookingId)
         if (paymentData?.success && paymentData.payment) {
           setPayment(paymentData.payment)
         }
       } catch {
-        // The booking payload alone is enough to render the page.
+        
       }
     } catch (err) {
       const status = err.response?.status
@@ -107,7 +100,7 @@ const PaymentSuccessPage = () => {
     expiresAt
   } = booking
 
-  // Prefer the dedicated payment endpoint values when available.
+  
   const effectivePaymentStatus = payment?.paymentStatus || paymentStatus
   const effectiveBookingStatus = payment?.bookingStatus || bookingStatus
   const effectiveReference = payment?.paymentReference || booking.paymentReference
@@ -123,7 +116,7 @@ const PaymentSuccessPage = () => {
   const holdReleased = effectiveBookingStatus === "expired" || holdElapsed
   const isCancelled = effectiveBookingStatus === "cancelled"
 
-  // ── Not actually confirmed: show the truthful current state ───────────────
+  
   if (!isConfirmed) {
     return (
       <div className="container py-5">
@@ -201,7 +194,7 @@ const PaymentSuccessPage = () => {
     )
   }
 
-  // ── Confirmed ─────────────────────────────────────────────────────────────
+  
   return (
     <div className="container py-5">
       <div className="row justify-content-center">
@@ -344,7 +337,7 @@ const PaymentSuccessPage = () => {
   )
 }
 
-/** "HH:MM" clock string for an ISO timestamp (consumed by formatTime). */
+
 function clockOf(isoString) {
   if (!isoString) return ""
   const d = new Date(isoString)

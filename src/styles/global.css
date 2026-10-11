@@ -81,7 +81,7 @@ body {
   min-height: 100vh;
 }
 
-/* ── Typography ──────────────────────────────────────────────────────────── */
+
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
   font-weight: 700;
@@ -96,7 +96,7 @@ a:hover {
   color: var(--color-primary);
 }
 
-/* ── Auth Card ───────────────────────────────────────────────────────────── */
+
 .auth-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -114,7 +114,7 @@ a:hover {
   padding: 2rem 1rem;
 }
 
-/* ── Form Controls ───────────────────────────────────────────────────────── */
+
 .form-control, .form-select {
   background: var(--color-card) !important;
   border: 1px solid var(--color-border) !important;
@@ -140,7 +140,7 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-/* ── Primary Button ──────────────────────────────────────────────────────── */
+
 .btn-primary-grad {
   background: #ffd43b;
   color: #111213;
@@ -164,7 +164,7 @@ a:hover {
   transform: none;
 }
 
-/* ── Alert / Error Message ───────────────────────────────────────────────── */
+
 .alert-error {
   background: rgba(248, 113, 113, 0.1);
   border: 1px solid rgba(248, 113, 113, 0.3);
@@ -183,7 +183,7 @@ a:hover {
   font-size: 0.875rem;
 }
 
-/* ── Password Toggle ─────────────────────────────────────────────────────── */
+
 .password-wrapper {
   position: relative;
 }
@@ -206,13 +206,13 @@ a:hover {
   color: var(--color-primary-light);
 }
 
-/* ── Page Wrapper ────────────────────────────────────────────────────────── */
+
 .page-wrapper {
   flex: 1;
   padding: 2rem 0;
 }
 
-/* ── Profile Card ────────────────────────────────────────────────────────── */
+
 .profile-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -276,7 +276,7 @@ a:hover {
   opacity: 0.65;
 }
 
-/* ── Admin Card ──────────────────────────────────────────────────────────── */
+
 .admin-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -284,7 +284,7 @@ a:hover {
   padding: 2rem;
 }
 
-/* ── Stat Badge ──────────────────────────────────────────────────────────── */
+
 .stat-badge {
   background: rgba(255, 212, 59, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -293,7 +293,7 @@ a:hover {
   display: inline-block;
 }
 
-/* ── Spinner Full ────────────────────────────────────────────────────────── */
+
 .spinner-full {
   min-height: 60vh;
   display: flex;
@@ -304,7 +304,7 @@ a:hover {
   color: var(--color-muted);
 }
 
-/* ── Generic Spinner ─────────────────────────────────────────────────────── */
+
 .spinner {
   width: 32px;
   height: 32px;
@@ -319,7 +319,7 @@ a:hover {
   to { transform: rotate(360deg); }
 }
 
-/* ── Hero Section ────────────────────────────────────────────────────────── */
+
 .hero-section {
   position: relative;
   overflow: hidden;
@@ -382,7 +382,7 @@ a:hover {
   border-radius: 30px;
 }
 
-/* ── Section Header ──────────────────────────────────────────────────────── */
+
 .section-header {
   border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   padding-bottom: 1rem;
@@ -415,7 +415,7 @@ a:hover {
   color: #fff;
 }
 
-/* ── Movie Grid ──────────────────────────────────────────────────────────── */
+
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -442,7 +442,7 @@ a:hover {
   margin: 0;
 }
 
-/* ── Movie Card ──────────────────────────────────────────────────────────── */
+
 .movie-card {
   background: var(--color-surface);
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -482,7 +482,7 @@ a:hover {
   pointer-events: none;
 }
 
-/* Status Badges */
+
 .status-badge {
   display: inline-block;
   padding: 0.3rem 0.65rem;
@@ -519,7 +519,7 @@ a:hover {
   font-weight: 700;
 }
 
-/* Movie Card Info */
+
 .movie-info {
   padding: 1.15rem;
   display: flex;
@@ -602,7 +602,7 @@ a:hover {
   color: #fff;
 }
 
-/* ── Perks Section ───────────────────────────────────────────────────────── */
+
 .perks-section {
   border-top: 1px solid rgba(255, 255, 255, 0.16);
 }
@@ -639,7 +639,7 @@ a:hover {
   margin: 0;
 }
 
-/* ── Catalogue Toolbar (MoviesPage) ──────────────────────────────────────── */
+
 .catalogue-toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -725,7 +725,7 @@ a:hover {
   color: #f5f5f5;
 }
 
-/* ── Movie Details Page ──────────────────────────────────────────────────── */
+
 .movie-hero {
   position: relative;
   background-size: cover;
@@ -870,7 +870,7 @@ a:hover {
   margin: 0;
 }
 
-/* ── Showtimes Section ───────────────────────────────────────────────────── */
+
 .showtimes-section {
   max-width: 1040px;
 }
@@ -890,7 +890,7 @@ a:hover {
   border-left: 3px solid rgba(255, 255, 255, 0.16);
 }
 
-/* Showtime Card */
+
 .showtime-card {
   background: var(--color-surface);
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -1004,7 +1004,7 @@ a:hover {
   opacity: 0.9;
 }
 
-/* Notice states */
+
 .ended-notice-box, .no-showtimes-box {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -1052,7 +1052,7 @@ a:hover {
   color: var(--color-muted);
 }
 
-/* ── Shimmer Skeleton ────────────────────────────────────────────────────── */
+
 .movie-details-skeleton {
   padding: 4rem 0;
 }
@@ -1111,7 +1111,7 @@ a:hover {
   background: rgba(255, 255, 255, 0.07);
 }
 
-/* ── Phase 11: Seat Selection & Booking ──────────────────────────────────── */
+
 .seat-selection-page {
   padding-bottom: 4rem;
 }
@@ -1202,7 +1202,7 @@ a:hover {
   gap: 2rem;
 }
 
-/* ── Seat Legend ─────────────────────────────────────────────────────────── */
+
 .seat-legend {
   display: flex;
   justify-content: center;
@@ -1248,7 +1248,7 @@ a:hover {
   justify-content: center;
 }
 
-/* ── Screen Curve Indicator ──────────────────────────────────────────────── */
+
 .screen-indicator-container {
   display: flex;
   flex-direction: column;
@@ -1280,7 +1280,7 @@ a:hover {
   margin-left: 0.35rem;
 }
 
-/* ── Seat Map Grid Area ──────────────────────────────────────────────────── */
+
 .seat-map-scroll-area {
   overflow-x: auto;
   padding-bottom: 1rem;
@@ -1314,7 +1314,7 @@ a:hover {
   gap: 0.45rem;
 }
 
-/* Seat Button */
+
 .seat-btn {
   width: 34px;
   height: 34px;
@@ -1371,7 +1371,7 @@ a:hover {
   color: #f5f5f5;
 }
 
-/* ── Booking Summary Card ────────────────────────────────────────────────── */
+
 .booking-summary-card {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -1491,7 +1491,7 @@ a:hover {
   transform: none;
 }
 
-/* ── Reservation Page ────────────────────────────────────────────────────── */
+
 .reservation-page {
   padding-bottom: 4rem;
 }
@@ -1554,7 +1554,7 @@ a:hover {
   letter-spacing: 0.05em;
 }
 
-/* Reservation Timer */
+
 .reservation-timer-container {
   display: flex;
   align-items: center;
@@ -1607,7 +1607,7 @@ a:hover {
   color: #f87171;
 }
 
-/* Details Box */
+
 .reservation-details-box {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1731,7 +1731,7 @@ a:hover {
   color: var(--color-primary-light);
 }
 
-/* ── Phase 13: My Bookings ───────────────────────────────────────────────── */
+
 .my-bookings-page,
 .booking-details-page {
   padding-bottom: 3rem;
@@ -1802,7 +1802,7 @@ a:hover {
   text-decoration: none;
 }
 
-/* ── Booking card ────────────────────────────────────────────────────────── */
+
 .booking-card {
   display: grid;
   grid-template-columns: 132px 1fr;
@@ -1954,7 +1954,7 @@ a:hover {
   white-space: nowrap;
 }
 
-/* ── Booking details ─────────────────────────────────────────────────────── */
+
 .booking-details-card {
   max-width: 760px;
   background: var(--color-surface);
@@ -2038,7 +2038,7 @@ a:hover {
   text-align: center;
 }
 
-/* ── Phase 13: Digital ticket ────────────────────────────────────────────── */
+
 .ticket-page {
   padding-bottom: 3rem;
 }
@@ -2296,7 +2296,7 @@ a:hover {
   color: var(--color-text);
 }
 
-/* Perforated divider with notches, like a torn ticket stub */
+
 .ticket-perforation {
   position: relative;
   display: flex;
@@ -2387,7 +2387,7 @@ a:hover {
   color: var(--color-muted);
 }
 
-/* Ticket refused (pending / expired / cancelled / inconsistent) */
+
 .ticket-blocked {
   max-width: 560px;
   background: var(--color-surface);
@@ -2433,7 +2433,7 @@ a:hover {
   margin-bottom: 1.25rem;
 }
 
-/* ── Responsive ──────────────────────────────────────────────────────────── */
+
 @media (max-width: 640px) {
   .booking-card {
     grid-template-columns: 92px 1fr;
@@ -2492,13 +2492,13 @@ a:hover {
   }
 }
 
-/* ── Print: tickets only ─────────────────────────────────────────────────── */
+
 @media print {
   @page {
     margin: 12mm;
   }
 
-  /* Remove app chrome and any interactive controls */
+  
   nav,
   footer,
   .no-print,
@@ -2529,7 +2529,7 @@ a:hover {
     margin: 0 !important;
   }
 
-  /* Light ticket so printing does not drain ink */
+  
   .ticket {
     background: #ffffff !important;
     border: 1.5px solid #111111 !important;
@@ -2613,7 +2613,7 @@ a:hover {
     display: none !important;
   }
 
-  /* Reclaim vertical space */
+  
   .ticket-header,
   .ticket-body,
   .ticket-stub {
@@ -2625,10 +2625,7 @@ a:hover {
   }
 }
 
-/* ══════════════════════════════════════════════════════════════════════════
-   PHASE 14 — ADMIN DASHBOARD
-   Data-focused, distinctly administrative, but consistent with the app theme.
-   ══════════════════════════════════════════════════════════════════════════ */
+
 
 .admin-shell {
   --admin-sidebar-w: 248px;
@@ -2640,7 +2637,7 @@ a:hover {
   overflow-x: clip;
 }
 
-/* ── Sidebar ─────────────────────────────────────────────────────────────── */
+
 .admin-sidebar {
   width: var(--admin-sidebar-w);
   flex: 0 0 var(--admin-sidebar-w);
@@ -2807,7 +2804,7 @@ a:hover {
   display: none;
 }
 
-/* ── Main area + header ──────────────────────────────────────────────────── */
+
 .admin-main {
   flex: 1;
   min-width: 0;
@@ -2897,7 +2894,7 @@ a:hover {
   white-space: nowrap;
 }
 
-/* ── Content, panels, grids ──────────────────────────────────────────────── */
+
 .admin-content {
   padding: 1.5rem;
   display: flex;
@@ -2975,7 +2972,7 @@ a:hover {
   align-items: start;
 }
 
-/* ── Stat cards ──────────────────────────────────────────────────────────── */
+
 .admin-stat-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -3026,7 +3023,7 @@ a:hover {
   color: var(--color-muted);
 }
 
-/* ── Buttons / controls ──────────────────────────────────────────────────── */
+
 .admin-btn {
   font-family: inherit;
   font-size: 0.82rem;
@@ -3112,7 +3109,7 @@ a:hover {
   color: #ffffff;
 }
 
-/* ── Breakdown bars ──────────────────────────────────────────────────────── */
+
 .admin-breakdown {
   list-style: none;
   margin: 0;
@@ -3209,7 +3206,7 @@ a:hover {
   background: #ffd43b;
 }
 
-/* ── Revenue trend ───────────────────────────────────────────────────────── */
+
 .admin-trend {
   display: flex;
   flex-direction: column;
@@ -3285,7 +3282,7 @@ a:hover {
   margin-bottom: 0.6rem;
 }
 
-/* ── Date range ──────────────────────────────────────────────────────────── */
+
 .admin-daterange {
   display: flex;
   gap: 0.7rem;
@@ -3376,7 +3373,7 @@ a:hover {
   color: #d0d0d0;
 }
 
-/* ── Tables ──────────────────────────────────────────────────────────────── */
+
 .admin-table-scroll {
   width: 100%;
   max-width: 100%;
@@ -3511,7 +3508,7 @@ a:hover {
   font-variant-numeric: tabular-nums;
 }
 
-/* ── States ──────────────────────────────────────────────────────────────── */
+
 .admin-loading {
   margin: 0;
   font-size: 0.84rem;
@@ -3544,7 +3541,7 @@ a:hover {
   background: rgba(255, 255, 255, 0.07);
 }
 
-/* ── Phase 15 placeholder ────────────────────────────────────────────────── */
+
 .admin-placeholder {
   text-align: center;
   padding: 3rem 1.5rem;
@@ -3607,7 +3604,7 @@ a:hover {
   justify-content: center;
 }
 
-/* ── Admin responsive ────────────────────────────────────────────────────── */
+
 @media (max-width: 1024px) {
   .admin-menu-toggle {
     display: inline-flex;
@@ -3626,8 +3623,7 @@ a:hover {
     transition: transform 0.22s ease;
   }
 
-  /* The sidebar is a sibling of .admin-main, so the open state must be tracked
-     on the shell (a descendant selector on .admin-main could never match). */
+  
   .admin-shell--drawer-open .admin-sidebar {
     transform: translateX(0);
   }
@@ -3714,11 +3710,9 @@ a:hover {
   }
 }
 
-/* ══════════════════════════════════════════════════════════════════════════
-   PHASE 15 — ADMIN MANAGEMENT (forms, banners, pagination, CRUD tables)
-   ══════════════════════════════════════════════════════════════════════════ */
 
-/* ── Feedback banner ─────────────────────────────────────────────────────── */
+
+
 .admin-banner {
   display: flex;
   align-items: flex-start;
@@ -3777,7 +3771,7 @@ a:hover {
   opacity: 1;
 }
 
-/* ── Badges ──────────────────────────────────────────────────────────────── */
+
 .admin-badge {
   display: inline-block;
   font-size: 0.68rem;
@@ -3809,7 +3803,7 @@ a:hover {
   border-color: rgba(160, 160, 160, 0.3);
 }
 
-/* ── Forms ───────────────────────────────────────────────────────────────── */
+
 .admin-form {
   display: flex;
   flex-direction: column;
@@ -3895,7 +3889,7 @@ a:hover {
   color: #fca5a5;
 }
 
-/* ── Search + filter bars ────────────────────────────────────────────────── */
+
 .admin-search-form,
 .admin-filter-bar {
   display: flex;
@@ -3940,7 +3934,7 @@ a:hover {
   background: var(--color-card);
 }
 
-/* ── Pagination ──────────────────────────────────────────────────────────── */
+
 .admin-pagination {
   display: flex;
   align-items: center;
@@ -3972,7 +3966,7 @@ a:hover {
   color: var(--color-muted);
 }
 
-/* ── Movie management ────────────────────────────────────────────────────── */
+
 .admin-movie-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -4080,7 +4074,7 @@ a:hover {
   flex-wrap: wrap;
 }
 
-/* ── External search results ─────────────────────────────────────────────── */
+
 .admin-search-results {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -4159,7 +4153,7 @@ a:hover {
   padding-top: 0.4rem;
 }
 
-/* ── Detail grids (booking + user details) ───────────────────────────────── */
+
 .admin-detail-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -4196,7 +4190,7 @@ a:hover {
   line-height: 1.5;
 }
 
-/* ── Phase 15 responsive ─────────────────────────────────────────────────── */
+
 @media (max-width: 900px) {
   .admin-movie-grid,
   .admin-search-results {

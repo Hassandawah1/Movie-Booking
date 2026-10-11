@@ -1,13 +1,8 @@
 import AppIcon from "../ui/AppIcon"
 
-/**
- * Small shared admin UI primitives.
- *
- * These exist so the management pages do not each re-implement feedback banners,
- * pagination and field validation. No toast/modal library is used.
- */
 
-/** Success / error feedback banner. */
+
+
 export const AdminBanner = ({ tone = "info", title, message, onDismiss }) => {
   if (!title && !message) return null
 
@@ -29,10 +24,7 @@ export const AdminBanner = ({ tone = "info", title, message, onDismiss }) => {
   )
 }
 
-/**
- * Server-driven pagination controls.
- * Page state lives in the URL/query so the backend stays the source of truth.
- */
+
 export const AdminPagination = ({ page, pages, total, limit, onPageChange, disabled }) => {
   if (!pages || pages <= 1) {
     return total != null ? (
@@ -75,7 +67,7 @@ export const AdminPagination = ({ page, pages, total, limit, onPageChange, disab
   )
 }
 
-/** Labelled form field with inline validation text. */
+
 export const AdminField = ({ label, htmlFor, error, hint, children, className = "" }) => (
   <div className={`admin-field ${className}`}>
     <label htmlFor={htmlFor}>{label}</label>
@@ -89,7 +81,7 @@ export const AdminField = ({ label, htmlFor, error, hint, children, className = 
   </div>
 )
 
-/** Section-level loading / error / empty placeholders. */
+
 export const AdminLoading = ({ children = "Loading…" }) => <p className="admin-loading">{children}</p>
 
 export const AdminSectionError = ({ message, onRetry }) => (

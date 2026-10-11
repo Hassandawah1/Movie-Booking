@@ -8,7 +8,7 @@ const LoginPage = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  // After login, redirect to where the user came from (or home/admin)
+  
   const fromState = location.state?.from
   const from = typeof fromState === "string" ? fromState : fromState?.pathname || null
 
@@ -45,7 +45,7 @@ const LoginPage = () => {
         password: form.password
       })
 
-      // Redirect: use saved location, or admin dashboard for admin, or home
+      
       if (from) {
         navigate(from, { replace: true })
       } else if (data?.user?.role === "admin") {
@@ -66,7 +66,7 @@ const LoginPage = () => {
   return (
     <div className="auth-page">
       <div className="auth-card">
-        {/* Header */}
+        
         <div className="text-center mb-4">
           <div style={{ marginBottom: "0.5rem" }}><AppIcon name="film" size={40} /></div>
           <h1 style={{ fontSize: "1.6rem", marginBottom: "0.25rem" }}>Welcome Back</h1>
@@ -75,12 +75,12 @@ const LoginPage = () => {
           </p>
         </div>
 
-        {/* Error */}
+        
         {error && <div className="alert-error mb-3"><AppIcon name="alert" size={16} /> {error}</div>}
 
-        {/* Form */}
+        
         <form onSubmit={handleSubmit} noValidate>
-          {/* Email */}
+          
           <div className="mb-3">
             <label htmlFor="login-email" className="form-label">Email Address</label>
             <input
@@ -97,7 +97,7 @@ const LoginPage = () => {
             />
           </div>
 
-          {/* Password */}
+          
           <div className="mb-4">
             <label htmlFor="login-password" className="form-label">Password</label>
             <div className="password-wrapper">
@@ -124,13 +124,13 @@ const LoginPage = () => {
             </div>
           </div>
 
-          {/* Submit */}
+          
           <button type="submit" className="btn-primary-grad" disabled={loading}>
             {loading ? "Signing In…" : "Sign In"}
           </button>
         </form>
 
-        {/* Footer Link */}
+        
         <p className="text-center mt-3 mb-0" style={{ color: "#a1a1a1", fontSize: "0.875rem" }}>
           New to CineBook?{" "}
           <Link to="/register" style={{ color: "#ffe27a", fontWeight: 600 }}>

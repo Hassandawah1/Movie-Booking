@@ -1,12 +1,7 @@
 import { formatDate } from "../../../utils/formatters"
 import AppIcon from "../../ui/AppIcon"
 
-/**
- * MovieSearchResult — one normalised result from the external provider search.
- *
- * Only the fields the backend already normalises are shown; the raw provider
- * payload is never rendered.
- */
+
 const MovieSearchResult = ({ result, onAdd, adding, disabled, isAlreadyAdded }) => {
   return (
     <article className="admin-search-result" data-external-id={result.externalMovieId}>

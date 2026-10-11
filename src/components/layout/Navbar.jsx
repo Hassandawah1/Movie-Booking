@@ -30,7 +30,7 @@ const Navbar = () => {
       }}
     >
       <div className="container">
-        {/* Brand */}
+        
         <Link
           to="/"
           className="navbar-brand d-flex align-items-center gap-2"
@@ -48,7 +48,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Hamburger Toggle */}
+        
         <button
           className="navbar-toggler border-0"
           type="button"
@@ -61,7 +61,7 @@ const Navbar = () => {
           <AppIcon name="menu" size={22} color="#ffe27a" />
         </button>
 
-        {/* Nav Links */}
+        
         <div className="collapse navbar-collapse" id="mainNavbar">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3 gap-lg-2">
             <li className="nav-item">
@@ -76,8 +76,7 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            {/* Available to any signed-in user (the backend returns the
-                authenticated user's own bookings, admins included). */}
+            
             {isAuthenticated && (
               <li className="nav-item">
                 <NavLink to="/bookings" className="nav-link" style={navLinkStyle}>
@@ -95,7 +94,7 @@ const Navbar = () => {
             )}
           </ul>
 
-          {/* Right-side Auth Controls */}
+          
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2">
             {!isAuthenticated ? (
               <>

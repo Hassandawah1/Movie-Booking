@@ -4,11 +4,7 @@ const STATUS_OPTIONS = [
   { value: "ended", label: "Ended" }
 ]
 
-/**
- * MovieForm — explicit status update for a catalogue movie.
- *
- * Draft changes stay local until Save Status succeeds on the backend.
- */
+
 const MovieForm = ({ movie, draftStatus, saving, disabled, onDraftChange, onSave }) => {
   const isDirty = draftStatus !== movie.status
 

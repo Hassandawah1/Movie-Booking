@@ -1,8 +1,4 @@
-/**
- * PaymentStatus — readable Nigerian cinema payment/booking status labels.
- *
- * Raw backend enums are never shown to the customer.
- */
+
 
 export const formatPaymentStatus = (status, failureReason) => {
   switch (status) {
@@ -11,8 +7,8 @@ export const formatPaymentStatus = (status, failureReason) => {
     case "unpaid":
       return "Payment Pending"
     case "failed":
-      // Paystack reports an unfinished checkout as "abandoned", which is not a
-      // declined payment — do not tell the customer their payment failed.
+      
+      
       if (failureReason === "abandoned") return "Payment Not Completed"
       if (failureReason === "amount-mismatch") return "Amount Mismatch"
       return "Payment Failed"
@@ -38,7 +34,7 @@ export const formatBookingStatus = (status) => {
   }
 }
 
-/** Badge colour class for a payment status. */
+
 export const paymentStatusClass = (status) => {
   switch (status) {
     case "paid":
@@ -52,7 +48,7 @@ export const paymentStatusClass = (status) => {
   }
 }
 
-/** Badge colour class for a booking status. */
+
 export const bookingStatusClass = (status) => {
   switch (status) {
     case "confirmed":

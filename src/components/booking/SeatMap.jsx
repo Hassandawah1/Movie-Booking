@@ -18,7 +18,7 @@ const SeatMap = ({
 
   return (
     <div className="seat-map-wrapper">
-      {/* Cinema Screen Indicator */}
+      
       <div className="screen-indicator-container">
         <div className="screen-curve" />
         <div className="screen-label">
@@ -27,17 +27,17 @@ const SeatMap = ({
         </div>
       </div>
 
-      {/* Seat Rows Scrollable Container */}
+      
       <div className="seat-map-scroll-area">
         <div className="seat-grid-container">
           {layout.map((rowObj) => (
             <div key={rowObj.row} className="seat-row">
-              {/* Row Label (Left) */}
+              
               <div className="row-label" aria-hidden="true">
                 {rowObj.row}
               </div>
 
-              {/* Seats in Row */}
+              
               <div className="row-seats">
                 {rowObj.seats.map((seat) => (
                   <SeatButton
@@ -52,7 +52,7 @@ const SeatMap = ({
                 ))}
               </div>
 
-              {/* Row Label (Right) */}
+              
               <div className="row-label" aria-hidden="true">
                 {rowObj.row}
               </div>

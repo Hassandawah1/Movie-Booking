@@ -68,7 +68,7 @@ const ProfilePage = () => {
     <div className="page-wrapper">
       <div className="container">
         <div className="profile-card">
-          {/* Header */}
+          
           <div className="text-center mb-4">
             <div
               style={{
@@ -90,7 +90,7 @@ const ProfilePage = () => {
             <h1 style={{ fontSize: "1.5rem", marginBottom: "0.25rem" }}>{user.name}</h1>
           </div>
 
-          {/* Profile Details */}
+          
           <div
             style={{
               background: "#202123",

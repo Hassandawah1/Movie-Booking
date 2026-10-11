@@ -1,9 +1,6 @@
 import api from "../api/axios"
 
-/**
- * Showtime Service — customer-facing showtime operations
- * Connects to our backend Showtime API
- */
+
 
 export const getShowtimesByMovie = async (movieId) => {
   const response = await api.get(`/showtimes/movie/${movieId}`)

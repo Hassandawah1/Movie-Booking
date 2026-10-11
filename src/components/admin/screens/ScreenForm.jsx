@@ -13,12 +13,7 @@ const SCREEN_STATUSES = [
 
 const emptyForm = { name: "", screenType: "standard", totalRows: "10", seatsPerRow: "8", status: "active" }
 
-/**
- * ScreenForm — create/edit a cinema screen.
- *
- * totalSeats is never an input: the backend calculates totalRows x seatsPerRow.
- * The capacity shown here is a preview only.
- */
+
 const ScreenForm = ({ initial, submitting, onCancel, onSubmit }) => {
   const [form, setForm] = useState(emptyForm)
   const [errors, setErrors] = useState({})
@@ -45,7 +40,7 @@ const ScreenForm = ({ initial, submitting, onCancel, onSubmit }) => {
     setErrors((prev) => ({ ...prev, [key]: "" }))
   }
 
-  // Frontend validation mirrors the backend rules; the backend still enforces them.
+  
   const validate = () => {
     const next = {}
     const rows = Number(form.totalRows)
@@ -70,7 +65,7 @@ const ScreenForm = ({ initial, submitting, onCancel, onSubmit }) => {
       totalRows: Number(form.totalRows),
       seatsPerRow: Number(form.seatsPerRow)
     }
-    // Status is only sent when editing an existing screen.
+    
     if (isEdit) payload.status = form.status
 
     onSubmit(payload)

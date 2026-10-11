@@ -1,21 +1,13 @@
-/**
- * Non-component admin helpers.
- *
- * Kept separate from AdminUi.jsx so that file only exports components, which
- * keeps React Fast Refresh working for the admin UI primitives.
- */
 
-/**
- * Turn any thrown request error into a readable sentence.
- * Raw Axios objects and stack traces are never surfaced to the admin.
- */
+
+
 export const describeApiError = (err, fallback = "Something went wrong. Please try again.") => {
   if (!err) return fallback
 
   const status = err.response?.status
   const backendMessage = err.response?.data?.message
 
-  // Prefer the backend's human message. Map a few 409s to the admin-facing wording.
+  
   if (status === 409) {
     const text = (backendMessage || "").toLowerCase()
     if (text.includes("already been added")) return "This movie has already been added."
@@ -38,7 +30,7 @@ export const describeApiError = (err, fallback = "Something went wrong. Please t
   return fallback
 }
 
-/** Today as YYYY-MM-DD from local calendar parts (not UTC). */
+
 export const todayInputValue = () => {
   const d = new Date()
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`

@@ -33,7 +33,7 @@ const BookingSummary = ({
 
       <div className="summary-divider" />
 
-      {/* Selected Seats List */}
+      
       <div className="summary-row mb-2">
         <span className="summary-label">Selected Seats:</span>
         <span className="summary-value seats-list">
@@ -49,7 +49,7 @@ const BookingSummary = ({
         </span>
       </div>
 
-      {/* Ticket Pricing Breakdown */}
+      
       <div className="summary-row mb-2">
         <span className="summary-label">Price per Ticket:</span>
         <span className="summary-value">{formatCurrency(unitPrice)}</span>
@@ -64,7 +64,7 @@ const BookingSummary = ({
 
       <div className="summary-divider" />
 
-      {/* Total Calculation (Informational) */}
+      
       <div className="summary-total-row mb-3">
         <span className="total-label">Estimated Total:</span>
         <span className="total-amount">{formatCurrency(estimatedTotal)}</span>
@@ -74,7 +74,7 @@ const BookingSummary = ({
         <AppIcon name="lock" size={15} /> Seats are temporarily held for 10 minutes upon reservation. Backend verifies final amount and availability.
       </p>
 
-      {/* Reserve Action Button */}
+      
       <button
         type="button"
         className="btn-reserve-seats"

@@ -1,12 +1,7 @@
 import { formatCurrency } from "../../utils/formatters"
 import AppIcon from "../ui/AppIcon"
 
-/**
- * TopMoviesTable — best performing movies by revenue or bookings.
- *
- * Ordering comes straight from the backend aggregate; the frontend only renders
- * the requested sort so what the admin sees matches what the API returned.
- */
+
 const SORTS = [
   { id: "revenue", label: "By Revenue" },
   { id: "bookings", label: "By Bookings" }

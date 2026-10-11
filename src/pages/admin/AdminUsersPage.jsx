@@ -20,12 +20,7 @@ const ROLE_FILTERS = [
 
 const PAGE_SIZE = 20
 
-/**
- * AdminUsersPage — /admin/users
- *
- * Paginated and filtered by the backend. Passwords are never requested or
- * rendered — the endpoint excludes them server-side.
- */
+
 const AdminUsersPage = () => {
   const outletContext = useOutletContext()
   const requestVersion = useRef(0)

@@ -20,7 +20,7 @@ const MoviesPage = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
 
-  // Sync state if URL query param changes
+  
   useEffect(() => {
     const statusParam = searchParams.get("status")
     if (statusParam && ["now-showing", "coming-soon"].includes(statusParam)) {
@@ -28,7 +28,7 @@ const MoviesPage = () => {
     }
   }, [searchParams])
 
-  // Fetch movies from our backend
+  
   useEffect(() => {
     let isMounted = true
 
@@ -37,17 +37,17 @@ const MoviesPage = () => {
       setError("")
 
       try {
-        // Fetch all active movies; if specific status filter selected (not "all"), pass as param
+        
         const params = activeStatus !== "all" ? { status: activeStatus } : {}
         const data = await getMovies(params)
 
         if (!isMounted) return
 
         if (data?.success) {
-          // Normal customer view: hide "ended" movies unless all are fetched, or show them at the end
+          
           const fetchedMovies = data.movies || []
           if (activeStatus === "all") {
-            // Filter out ended movies from general customer browsing, or prioritize active ones
+            
             const activeList = fetchedMovies.filter((m) => m.status !== "ended")
             setMovies(activeList.length > 0 ? activeList : fetchedMovies)
           } else {
@@ -77,7 +77,7 @@ const MoviesPage = () => {
     }
   }, [activeStatus])
 
-  // Handle filter pill clicks
+  
   const handleFilterChange = (status) => {
     setActiveStatus(status)
     if (status === "all") {
@@ -87,7 +87,7 @@ const MoviesPage = () => {
     }
   }
 
-  // Client-side search filtering by title and genre
+  
   const filteredMovies = useMemo(() => {
     if (!searchTerm.trim()) return movies
 
@@ -104,7 +104,7 @@ const MoviesPage = () => {
   return (
     <div className="page-wrapper">
       <div className="container py-4">
-        {/* Page Header */}
+        
         <div className="page-header mb-4">
           <h1 className="page-title">Cinema Movies</h1>
           <p className="page-subtitle">
@@ -112,9 +112,9 @@ const MoviesPage = () => {
           </p>
         </div>
 
-        {/* Filter & Search Bar */}
+        
         <div className="catalogue-toolbar mb-4">
-          {/* Status Tabs */}
+          
           <div className="filter-tabs" role="tablist">
             {STATUS_FILTERS.map((filter) => (
               <button
@@ -130,7 +130,7 @@ const MoviesPage = () => {
             ))}
           </div>
 
-          {/* Search Input */}
+          
           <div className="search-box-wrapper">
             <input
               type="text"
@@ -153,14 +153,14 @@ const MoviesPage = () => {
           </div>
         </div>
 
-        {/* Error message */}
+        
         {error && (
           <div className="alert-error mb-4">
             <AppIcon name="alert" size={16} /> {error}
           </div>
         )}
 
-        {/* Results Info */}
+        
         {!loading && !error && (
           <div className="results-count-bar mb-3">
             <span>
@@ -170,7 +170,7 @@ const MoviesPage = () => {
           </div>
         )}
 
-        {/* Movies Grid */}
+        
         <MovieGrid
           movies={filteredMovies}
           emptyMessage={

@@ -1,19 +1,13 @@
 import { formatCurrency } from "../../utils/formatters"
 import AppIcon from "../ui/AppIcon"
 
-/**
- * RevenueTrend — daily revenue/booking counts as lightweight CSS bars.
- *
- * Deliberately no chart library: each day is a row with its date, revenue,
- * booking count and a bar scaled to the largest value in the returned dataset.
- * An all-zero dataset renders flat bars instead of dividing by zero.
- */
+
 const PERIODS = [
   { id: "7d", label: "Last 7 Days" },
   { id: "30d", label: "Last 30 Days" }
 ]
 
-/** "2026-10-06" → "6 Oct" without adding a date library. */
+
 const shortDate = (isoDate) => {
   if (!isoDate) return "—"
   const d = new Date(isoDate)
@@ -29,8 +23,8 @@ const RevenueTrend = ({ data = [], loading, error, period, onPeriodChange, onRet
   const totalBookings = rows.reduce((sum, r) => sum + (Number(r.bookings) || 0), 0)
   const activeDays = rows.filter((r) => (Number(r.revenue) || 0) > 0).length
 
-  // Report the period length from the dataset itself so the figure always
-  // matches the selected range, even when every day is zero.
+  
+  
   const periodDays = rows.length
 
   return (
@@ -80,7 +74,7 @@ const RevenueTrend = ({ data = [], loading, error, period, onPeriodChange, onRet
 
       {!loading && !error && rows.length > 0 && (
         <>
-          {/* Visual bars — most recent day last, matching the backend order */}
+          
           <div className="admin-trend" role="img" aria-label={`Daily revenue for the ${period === "30d" ? "last 30 days" : "last 7 days"}`}>
             {rows.map((row) => {
               const revenue = Number(row.revenue) || 0
@@ -105,7 +99,7 @@ const RevenueTrend = ({ data = [], loading, error, period, onPeriodChange, onRet
             })}
           </div>
 
-          {/* Accessible tabular equivalent of the same data */}
+          
           <details className="admin-trend-table">
             <summary>View as table</summary>
             <div className="admin-table-scroll">

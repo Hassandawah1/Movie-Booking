@@ -1,16 +1,7 @@
 import { formatCurrency, formatDate, formatTime } from "../../utils/formatters"
 import AppIcon from "../ui/AppIcon"
 
-/**
- * TicketCard — cinema-style digital ticket.
- *
- * Pure presentation: it receives an already-validated booking (confirmed AND
- * paid) and renders it. All fetching/authorisation decisions live in TicketPage.
- *
- * The booking reference is the ticket identifier. No QR code is rendered,
- * because the backend has no ticket-validation endpoint yet and a decorative
- * code would imply a guarantee that does not exist.
- */
+
 const TicketCard = ({ booking, customerName }) => {
   if (!booking) return null
 
@@ -20,7 +11,7 @@ const TicketCard = ({ booking, customerName }) => {
 
   return (
     <section className="ticket" aria-label={`Ticket for ${movie?.title || "your movie"}`}>
-      {/* ── Header ─────────────────────────────────────────────────────────── */}
+      
       <header className="ticket-header">
         <div className="ticket-brand">
           <span className="ticket-brand-mark" aria-hidden="true">
@@ -38,7 +29,7 @@ const TicketCard = ({ booking, customerName }) => {
         </div>
       </header>
 
-      {/* ── Main body ──────────────────────────────────────────────────────── */}
+      
       <div className="ticket-body">
         <div className="ticket-artwork">
           {movie?.posterUrl ? (
@@ -110,14 +101,14 @@ const TicketCard = ({ booking, customerName }) => {
         </div>
       </div>
 
-      {/* ── Perforated stub ────────────────────────────────────────────────── */}
+      
       <div className="ticket-perforation" aria-hidden="true">
         <span className="ticket-notch ticket-notch--left" />
         <span className="ticket-dashes" />
         <span className="ticket-notch ticket-notch--right" />
       </div>
 
-      {/* ── Stub ───────────────────────────────────────────────────────────── */}
+      
       <footer className="ticket-stub">
         <div className="ticket-stub-item">
           <span className="ticket-stub-label">Amount Paid</span>

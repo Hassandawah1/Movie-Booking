@@ -2,18 +2,8 @@ import { useState } from "react"
 import { formatCurrency } from "../../utils/formatters"
 import AppIcon from "../ui/AppIcon"
 
-/**
- * RevenueDateRange — revenue for an explicit start/end date.
- *
- * Uses native <input type="date"> (no date-picker dependency). Validation is
- * frontend-only for immediate feedback; the backend re-validates and remains the
- * final authority.
- */
-/**
- * Format a Date as YYYY-MM-DD from its LOCAL calendar parts.
- * toISOString() would shift the date back a day in positive UTC offsets
- * (e.g. Africa/Lagos), so the default range would not match the admin's today.
- */
+
+
 const toLocalInputDate = (date) => {
   const month = String(date.getMonth() + 1).padStart(2, "0")
   const day = String(date.getDate()).padStart(2, "0")
@@ -41,7 +31,7 @@ const RevenueDateRange = ({ range, data, loading, error, onApply, onRetry }) => 
       return
     }
 
-    // Do not silently swap the dates — the admin should see the mistake.
+    
     if (startDate > endDate) {
       setValidationError("The start date must be on or before the end date.")
       return

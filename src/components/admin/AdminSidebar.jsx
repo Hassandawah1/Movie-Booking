@@ -2,11 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
 import AppIcon from "../ui/AppIcon"
 
-/**
- * AdminSidebar — primary navigation for the admin area.
- *
- * Management sections are live operational pages (Phase 15), not placeholders.
- */
+
 const NAV_ITEMS = [
   { to: "/admin", label: "Dashboard", icon: "dashboard", end: true },
   { to: "/admin/movies", label: "Movies", icon: "film" },

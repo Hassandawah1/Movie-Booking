@@ -1,13 +1,7 @@
 import { formatCurrency, formatDate, formatTime } from "../../utils/formatters"
 import AppIcon from "../ui/AppIcon"
 
-/**
- * UpcomingShowtimesTable — next scheduled screenings with seat fill.
- *
- * Occupancy is derived from the counts the endpoint already returns
- * (bookedSeatsCount / totalSeats); no per-row occupancy request is made, which
- * would be an N+1 pattern.
- */
+
 const UpcomingShowtimesTable = ({ showtimes = [], loading, error, onRetry }) => {
   if (loading) {
     return (
@@ -67,7 +61,7 @@ const UpcomingShowtimesTable = ({ showtimes = [], loading, error, onRetry }) => 
               {showtimes.map((st) => {
                 const booked = Number(st.bookedSeatsCount) || 0
                 const total = Number(st.totalSeats) || 0
-                // Guard against a screen with no configured seats.
+                
                 const pct = total > 0 ? Math.round((booked / total) * 100) : 0
 
                 return (

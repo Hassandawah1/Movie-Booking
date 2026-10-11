@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import ProtectedRoute from "../components/auth/ProtectedRoute"
 
-// Public Pages
+
 import HomePage from "../pages/HomePage"
 import MoviesPage from "../pages/MoviesPage"
 import MovieDetailsPage from "../pages/MovieDetailsPage"
@@ -9,10 +9,10 @@ import LoginPage from "../pages/auth/LoginPage"
 import RegisterPage from "../pages/auth/RegisterPage"
 import NotFoundPage from "../pages/NotFoundPage"
 
-// User Pages
+
 import ProfilePage from "../pages/user/ProfilePage"
 
-// Booking & Payment Pages
+
 import SeatSelectionPage from "../pages/booking/SeatSelectionPage"
 import ReservationPage from "../pages/booking/ReservationPage"
 import PaymentPage from "../pages/payment/PaymentPage"
@@ -20,12 +20,12 @@ import PaymentCallbackPage from "../pages/payment/PaymentCallbackPage"
 import PaymentSuccessPage from "../pages/payment/PaymentSuccessPage"
 import PaymentFailedPage from "../pages/payment/PaymentFailedPage"
 
-// Customer Booking Management (Phase 13)
+
 import MyBookingsPage from "../pages/bookings/MyBookingsPage"
 import BookingDetailsPage from "../pages/bookings/BookingDetailsPage"
 import TicketPage from "../pages/bookings/TicketPage"
 
-// Admin Pages
+
 import AdminLayout from "../components/admin/AdminLayout"
 import AdminDashboardPage from "../pages/admin/AdminDashboardPage"
 import AdminMoviesPage from "../pages/admin/AdminMoviesPage"
@@ -39,14 +39,14 @@ import AdminUserDetailsPage from "../pages/admin/AdminUserDetailsPage"
 const AppRoutes = () => {
   return (
     <Routes>
-      {/* Public Pages */}
+      
       <Route path="/" element={<HomePage />} />
       <Route path="/movies" element={<MoviesPage />} />
       <Route path="/movies/:id" element={<MovieDetailsPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
 
-      {/* Authenticated Customer Routes */}
+      
       <Route
         path="/profile"
         element={
@@ -104,7 +104,7 @@ const AppRoutes = () => {
         }
       />
 
-      {/* Customer Booking Management (Phase 13) */}
+      
       <Route
         path="/bookings"
         element={
@@ -130,7 +130,7 @@ const AppRoutes = () => {
         }
       />
 
-      {/* Admin Only Routes — all nested under the admin layout */}
+      
       <Route
         path="/admin"
         element={
@@ -149,7 +149,7 @@ const AppRoutes = () => {
         <Route path="users/:id" element={<AdminUserDetailsPage />} />
       </Route>
 
-      {/* 404 Catch-All */}
+      
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )

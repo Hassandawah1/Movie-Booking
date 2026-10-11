@@ -20,7 +20,7 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState("")
   const [posterError, setPosterError] = useState(false)
 
-  // 1. Fetch movie details
+  
   useEffect(() => {
     let isMounted = true
 
@@ -62,7 +62,7 @@ const MovieDetailsPage = () => {
     }
   }, [id])
 
-  // 2. Fetch showtimes if movie is not ended
+  
   useEffect(() => {
     let isMounted = true
 
@@ -78,7 +78,7 @@ const MovieDetailsPage = () => {
           setShowtimes(data.showtimes || [])
         }
       } catch (err) {
-        // Non-blocking: showtimes error shouldn't crash movie details
+        
         console.warn("Could not fetch showtimes for movie:", err.message)
       } finally {
         if (isMounted) {
@@ -96,7 +96,7 @@ const MovieDetailsPage = () => {
     }
   }, [movie])
 
-  // Group showtimes by date
+  
   const groupedShowtimes = useMemo(() => {
     if (!showtimes || showtimes.length === 0) return {}
 
@@ -111,7 +111,7 @@ const MovieDetailsPage = () => {
     return groups
   }, [showtimes])
 
-  // Format date header (e.g. Today, Tomorrow, or "Tuesday, Oct 20")
+  
   const getDateLabel = (dateStr) => {
     if (!dateStr || dateStr === "Upcoming") return "Upcoming"
     try {
@@ -177,7 +177,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div className="page-wrapper movie-details-page">
-      {/* Hero Backdrop Banner */}
+      
       <section
         className={`movie-hero${backdropUrl ? " movie-hero--has-backdrop" : ""}`}
         style={{
@@ -189,7 +189,7 @@ const MovieDetailsPage = () => {
       >
         <div className="container">
           <div className="movie-hero-layout">
-            {/* Poster */}
+            
             <div className="movie-hero-poster">
               <img
                 src={posterSrc}
@@ -199,7 +199,7 @@ const MovieDetailsPage = () => {
               />
             </div>
 
-            {/* Info */}
+            
             <div className="movie-hero-details">
               <div className="hero-status-row mb-2">
                 <span className={`status-badge badge-${status}`}>
@@ -214,7 +214,7 @@ const MovieDetailsPage = () => {
 
               <h1 className="hero-movie-title">{title}</h1>
 
-              {/* Meta pills */}
+              
               <div className="hero-movie-meta mb-3">
                 {runtime ? (
                   <span className="meta-item"><AppIcon name="clock" size={15} /> {runtime} min</span>
@@ -229,7 +229,7 @@ const MovieDetailsPage = () => {
                 ) : null}
               </div>
 
-              {/* Genres */}
+              
               {genres?.length > 0 && (
                 <div className="hero-genres mb-3">
                   {genres.map((g) => (
@@ -240,7 +240,7 @@ const MovieDetailsPage = () => {
                 </div>
               )}
 
-              {/* Overview */}
+              
               {overview && (
                 <div className="hero-overview">
                   <h3>Synopsis</h3>
@@ -252,7 +252,7 @@ const MovieDetailsPage = () => {
         </div>
       </section>
 
-      {/* Showtimes & Booking Section */}
+      
       <section className="container py-5 showtimes-section">
         <div className="section-header mb-4">
           <h2 className="section-title">Available Showtimes</h2>

@@ -17,13 +17,13 @@ const ReservationPage = () => {
   const [successMessage, setSuccessMessage] = useState("")
   const [isExpired, setIsExpired] = useState(false)
 
-  // ── Fetch booking details from backend ────────────────────────────────────
+  
   const loadBooking = useCallback(async () => {
     try {
       const data = await getBookingById(bookingId)
       if (data?.success && data.booking) {
         setBooking(data.booking)
-        // Check if backend already marked it expired
+        
         if (data.booking.bookingStatus === "expired") {
           setIsExpired(true)
         }
@@ -50,14 +50,14 @@ const ReservationPage = () => {
     loadBooking()
   }, [loadBooking])
 
-  // ── Handle Expiry Callback from Timer ─────────────────────────────────────
+  
   const handleTimerExpire = useCallback(() => {
     setIsExpired(true)
-    // Refetch booking to ensure backend synchronized
+    
     loadBooking()
   }, [loadBooking])
 
-  // ── Cancel Unpaid Reservation ─────────────────────────────────────────────
+  
   const handleCancelReservation = async () => {
     if (
       !window.confirm(
@@ -128,8 +128,8 @@ const ReservationPage = () => {
   } = booking || {}
 
   const showtimeId = showtime?._id || showtime?.id || showtime
-  // Backend is the source of truth, but also derive expiry locally so the UI
-  // does not offer payment on a hold the server will reject.
+  
+  
   const holdElapsed = expiresAt ? new Date(expiresAt).getTime() <= Date.now() : false
   const reservationExpired = isExpired || bookingStatus === "expired" || holdElapsed
   const isPending = bookingStatus === "pending-payment" && !reservationExpired
@@ -140,7 +140,7 @@ const ReservationPage = () => {
     <div className="page-wrapper reservation-page">
       <div className="container py-4">
         <div className="reservation-card mx-auto">
-          {/* Header */}
+          
           <div className="reservation-header text-center mb-4">
             <div className="reservation-status-icon mb-2">
               <AppIcon name={isConfirmed ? "circleCheck" : isCancelled ? "ban" : reservationExpired ? "timer" : "ticket"} size={36} />
@@ -165,7 +165,7 @@ const ReservationPage = () => {
             </p>
           </div>
 
-          {/* Messages */}
+          
           {successMessage && (
             <div className="alert-success mb-4 text-center">
               <AppIcon name="check" size={16} /> {successMessage}
@@ -178,7 +178,7 @@ const ReservationPage = () => {
             </div>
           )}
 
-          {/* Active Countdown Timer (only when pending-payment) */}
+          
           {isPending && expiresAt && (
             <div className="mb-4">
               <ReservationTimer
@@ -188,7 +188,7 @@ const ReservationPage = () => {
             </div>
           )}
 
-          {/* Expired Notice */}
+          
           {(isExpired || bookingStatus === "expired" || (reservationExpired && !isConfirmed)) && (
             <div className="alert-expired-box mb-4 text-center">
               <h4>Seat Reservation Expired</h4>
@@ -207,7 +207,7 @@ const ReservationPage = () => {
             </div>
           )}
 
-          {/* Booking Summary Box */}
+          
           <div className="reservation-details-box mb-4">
             <div className="detail-item-row">
               <span className="detail-label">Movie:</span>
@@ -254,7 +254,7 @@ const ReservationPage = () => {
             </div>
           </div>
 
-          {/* Action CTAs */}
+          
           <div className="reservation-actions-stack">
             {isPending && (
               <>

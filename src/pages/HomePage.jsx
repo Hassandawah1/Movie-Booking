@@ -58,7 +58,7 @@ const HomePage = () => {
 
   return (
     <div className="page-wrapper">
-      {/* Hero Section */}
+      
       <section className="hero-section">
         <div className="container hero-container text-center">
           <h1 className="hero-title">
@@ -77,7 +77,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Main Content */}
+      
       <div className="container py-5">
         {error && (
           <div className="alert-error mb-4">
@@ -85,7 +85,7 @@ const HomePage = () => {
           </div>
         )}
 
-        {/* Now Showing Section */}
+        
         <MovieSection
           title="Now Showing"
           subtitle="Catch these blockbusters in theatres today"
@@ -96,7 +96,7 @@ const HomePage = () => {
           loading={loading}
         />
 
-        {/* Coming Soon Section */}
+        
         <MovieSection
           title="Coming Soon"
           subtitle="Upcoming titles hitting the big screen soon"
@@ -107,7 +107,7 @@ const HomePage = () => {
           loading={loading}
         />
 
-        {/* Cinema Experience Perks */}
+        
         <section className="perks-section mt-5 pt-4">
           <div className="row g-4">
             <div className="col-md-4">

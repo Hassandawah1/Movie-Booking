@@ -15,13 +15,7 @@ import {
   isPaymentInconsistent
 } from "../../utils/bookingHelpers"
 
-/**
- * BookingDetailsPage — /bookings/:bookingId
- *
- * Always fetches from the backend, so the page survives a refresh and never
- * depends on state handed over by the list page. The backend enforces
- * ownership; a 403 is surfaced honestly rather than hidden.
- */
+
 const BookingDetailsPage = () => {
   const { bookingId } = useParams()
 
@@ -69,13 +63,13 @@ const BookingDetailsPage = () => {
     loadBooking()
   }, [loadBooking])
 
-  // Keep time-derived UI (hold countdown, showtime passed) fresh.
+  
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 30000)
     return () => clearInterval(timer)
   }, [])
 
-  // When the hold runs out, re-sync so the UI reflects the backend's verdict.
+  
   const handleHoldExpired = useCallback(() => {
     setNotice("Your reservation hold has ended. Refreshing the latest status…")
     loadBooking()
@@ -110,7 +104,7 @@ const BookingDetailsPage = () => {
     }
   }
 
-  // ── Loading ────────────────────────────────────────────────────────────────
+  
   if (loading) {
     return (
       <div className="page-wrapper">
@@ -122,7 +116,7 @@ const BookingDetailsPage = () => {
     )
   }
 
-  // ── Error / denied ─────────────────────────────────────────────────────────
+  
   if (!booking) {
     return (
       <div className="page-wrapper">
@@ -180,7 +174,7 @@ const BookingDetailsPage = () => {
     <div className="page-wrapper booking-details-page">
       <div className="container py-4">
         <div className="booking-details-card mx-auto">
-          {/* ── Header ─────────────────────────────────────────────────────── */}
+          
           <header className="booking-details-header">
             <div className="booking-details-header-main">
               <h1 className="booking-details-title">{movie?.title || "Booking Details"}</h1>
@@ -204,11 +198,11 @@ const BookingDetailsPage = () => {
             )}
           </header>
 
-          {/* ── Notices ────────────────────────────────────────────────────── */}
+          
           {notice && <div className="alert-success mb-4 text-center"><AppIcon name="check" size={16} /> {notice}</div>}
           {error && !accessDenied && <div className="alert-error mb-4 text-center"><AppIcon name="alert" size={16} /> {error}</div>}
 
-          {/* Expired hold */}
+          
           {effectivelyExpired && !isCancelled && (
             <div className="alert-expired-box mb-4 text-center">
               <h4>{bookingStatus === "expired" ? "Reservation Expired" : "Reservation Hold Ended"}</h4>
@@ -219,7 +213,7 @@ const BookingDetailsPage = () => {
             </div>
           )}
 
-          {/* Cancelled */}
+          
           {isCancelled && (
             <div className="alert-warning-banner mb-4 text-center">
               <strong>This reservation was cancelled.</strong>
@@ -230,7 +224,7 @@ const BookingDetailsPage = () => {
             </div>
           )}
 
-          {/* Inconsistent backend state — never show a ticket for this */}
+          
           {inconsistent && (
             <div className="alert-error mb-4 text-center">
               <strong>Your booking status needs verification.</strong>
@@ -241,7 +235,7 @@ const BookingDetailsPage = () => {
             </div>
           )}
 
-          {/* Payment not completed */}
+          
           {paymentStatus === "failed" && !inconsistent && (
             <div className="alert-warning-banner mb-4 text-center">
               <strong>
@@ -253,14 +247,14 @@ const BookingDetailsPage = () => {
             </div>
           )}
 
-          {/* Live hold countdown */}
+          
           {bookingStatus === "pending-payment" && !holdExpired && expiresAt && (
             <div className="mb-4">
               <ReservationTimer expiresAt={expiresAt} onExpire={handleHoldExpired} />
             </div>
           )}
 
-          {/* ── Details ────────────────────────────────────────────────────── */}
+          
           <div className="reservation-details-box mb-4">
             <div className="detail-item-row">
               <span className="detail-label">Movie:</span>
@@ -306,7 +300,7 @@ const BookingDetailsPage = () => {
               </span>
             </div>
 
-            {/* Per-seat pricing, shown only when the backend returned prices */}
+            
             {seatsTotal > 0 && (
               <div className="detail-item-row">
                 <span className="detail-label">Seat Prices:</span>
@@ -374,9 +368,9 @@ const BookingDetailsPage = () => {
             </div>
           </div>
 
-          {/* ── Status-driven actions ──────────────────────────────────────── */}
+          
           <div className="booking-details-actions">
-            {/* Confirmed + paid → ticket */}
+            
             {ticketReady && (
               <Link
                 to={`/bookings/${bookingIdValue}/ticket`}
@@ -386,7 +380,7 @@ const BookingDetailsPage = () => {
               </Link>
             )}
 
-            {/* Pending + unpaid + hold alive → pay or cancel */}
+            
             {payable && (
               <>
                 <Link
@@ -407,7 +401,7 @@ const BookingDetailsPage = () => {
               </>
             )}
 
-            {/* Expired (backend or elapsed hold) → choose seats again */}
+            
             {effectivelyExpired && !isCancelled && showtimeId && (
               <Link
                 to={`/booking/${showtimeId}/seats`}
@@ -417,14 +411,14 @@ const BookingDetailsPage = () => {
               </Link>
             )}
 
-            {/* Cancelled → browse */}
+            
             {isCancelled && (
               <Link to="/movies" className="btn-primary-grad booking-action-primary">
                 Browse Movies
               </Link>
             )}
 
-            {/* Always useful */}
+            
             <div className="booking-details-secondary-actions">
               {movieId && (
                 <Link to={`/movies/${movieId}`} className="btn-secondary-custom booking-action-secondary">
@@ -436,7 +430,7 @@ const BookingDetailsPage = () => {
                 All My Bookings
               </Link>
 
-              {/* A past confirmed booking can be booked again through its movie */}
+              
               {past && movieId && (
                 <Link to={`/movies/${movieId}`} className="btn-secondary-custom booking-action-secondary">
                   Book Again
@@ -456,7 +450,7 @@ const BookingDetailsPage = () => {
   )
 }
 
-/** "HH:MM" clock string for a Date/ISO value (consumed by formatTime). */
+
 function clockOf(value) {
   if (!value) return ""
   const d = new Date(value)

@@ -4,10 +4,7 @@ import Navbar from "./components/layout/Navbar"
 import Footer from "./components/layout/Footer"
 import AppRoutes from "./routes/AppRoutes"
 
-/**
- * The admin console has its own sidebar and header, so the public site chrome
- * is omitted there to avoid duplicated navigation.
- */
+
 const Shell = () => {
   const { pathname } = useLocation()
   const isAdminArea = pathname === "/admin" || pathname.startsWith("/admin/")

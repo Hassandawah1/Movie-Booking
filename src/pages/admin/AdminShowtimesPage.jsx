@@ -23,12 +23,7 @@ const STATUS_FILTERS = [
   { id: "completed", label: "Completed" }
 ]
 
-/**
- * AdminShowtimesPage — /admin/showtimes
- *
- * Scheduling plus ticket pricing. Filters are applied by the backend
- * (movieId / date / status), never by downloading everything and filtering here.
- */
+
 const AdminShowtimesPage = () => {
   const outletContext = useOutletContext()
   const requestVersion = useRef(0)
@@ -42,7 +37,7 @@ const AdminShowtimesPage = () => {
   const [screens, setScreens] = useState([])
   const [optionsError, setOptionsError] = useState("")
 
-  // Server-side filters
+  
   const [filterMovie, setFilterMovie] = useState("")
   const [filterDate, setFilterDate] = useState("")
   const [filterStatus, setFilterStatus] = useState("")
@@ -84,7 +79,7 @@ const AdminShowtimesPage = () => {
     loadShowtimes()
   }, [loadShowtimes])
 
-  // Dropdown options come from our own backend — never typed ObjectIds.
+  
   useEffect(() => {
     const loadOptions = async () => {
       try {
@@ -106,7 +101,7 @@ const AdminShowtimesPage = () => {
 
   const openEdit = async (showtime) => {
     setBanner(null)
-    // Fetch the full record so the form is populated from backend values.
+    
     try {
       const data = await getShowtimeById(showtime._id)
       setEditing(data?.showtime || showtime)
@@ -138,7 +133,7 @@ const AdminShowtimesPage = () => {
         setBanner({ tone: "error", message: data?.message || "The showtime could not be saved." })
       }
     } catch (err) {
-      // 409 = screen double-booked; 400 = ended movie / inactive screen / past date.
+      
       setBanner({ tone: "error", message: describeApiError(err, "The showtime could not be saved.") })
     } finally {
       setSubmitting(false)
@@ -188,7 +183,7 @@ const AdminShowtimesPage = () => {
         setBanner({ tone: "error", message: data?.message || "The showtime could not be deleted." })
       }
     } catch (err) {
-      // 409 when active bookings exist — surfaced verbatim from the backend.
+      
       setBanner({ tone: "error", message: describeApiError(err, "The showtime could not be deleted.") })
     } finally {
       setBusyId(null)
@@ -263,7 +258,7 @@ const AdminShowtimesPage = () => {
             </div>
           </div>
 
-          {/* Backend-supported filters */}
+          
           <div className="admin-filter-bar" data-panel="showtime-filters">
             <div className="admin-field">
               <label htmlFor="filter-showtime-movie">Movie</label>

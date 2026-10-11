@@ -9,17 +9,7 @@ import { useAuth } from "../../context/AuthContext"
 import { formatCurrency } from "../../utils/formatters"
 import { isTicketValid, isPaymentInconsistent, hasShowtimeStarted } from "../../utils/bookingHelpers"
 
-/**
- * TicketPage — /bookings/:bookingId/ticket
- *
- * Fetches the booking itself; navigation state is never trusted, so the URL
- * can be refreshed, shared or opened directly.
- *
- * A ticket is only rendered when the backend reports BOTH
- * bookingStatus === "confirmed" AND paymentStatus === "paid". Any other
- * combination shows an explanatory screen instead — including the
- * confirmed-but-unpaid inconsistency, which must never produce a ticket.
- */
+
 const TicketPage = () => {
   const { bookingId } = useParams()
   const { user } = useAuth()
@@ -67,7 +57,7 @@ const TicketPage = () => {
     window.print()
   }
 
-  // ── Loading ────────────────────────────────────────────────────────────────
+  
   if (loading) {
     return (
       <div className="page-wrapper">
@@ -79,7 +69,7 @@ const TicketPage = () => {
     )
   }
 
-  // ── Cannot load / no access ────────────────────────────────────────────────
+  
   if (!booking) {
     return (
       <div className="page-wrapper">
@@ -119,7 +109,7 @@ const TicketPage = () => {
   const showtimeId = showtime?._id || showtime?.id || showtime
   const movieId = movie?._id || movie?.id || movie
 
-  // ── Not a valid ticket: explain the real state instead ─────────────────────
+  
   if (!ticketReady) {
     return (
       <div className="page-wrapper">
@@ -190,11 +180,11 @@ const TicketPage = () => {
     )
   }
 
-  // ── Valid ticket ───────────────────────────────────────────────────────────
+  
   return (
     <div className="page-wrapper ticket-page">
       <div className="container py-4">
-        {/* Screen-only controls: hidden when printing */}
+        
         <div className="ticket-toolbar no-print">
           <div>
             <h1 className="ticket-toolbar-title">Your Ticket</h1>
@@ -219,7 +209,7 @@ const TicketPage = () => {
           <TicketCard booking={booking} customerName={user?.name} />
         </div>
 
-        {/* Screen-only helper links */}
+        
         <div className="ticket-footer-links no-print">
           {movieId && (
             <Link to={`/movies/${movieId}`} className="btn-secondary-custom booking-action-secondary">

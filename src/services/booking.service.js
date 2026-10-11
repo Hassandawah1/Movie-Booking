@@ -1,9 +1,6 @@
 import api from "../api/axios"
 
-/**
- * Booking Service — seat availability, reservations, and booking management
- * Connects directly to backend booking & showtime endpoints
- */
+
 
 export const getSeatAvailability = async (showtimeId) => {
   const response = await api.get(`/showtimes/${showtimeId}/seats`)
@@ -11,7 +8,7 @@ export const getSeatAvailability = async (showtimeId) => {
 }
 
 export const createBooking = async ({ showtimeId, seats }) => {
-  // Body must contain ONLY showtimeId and seats array
+  
   const response = await api.post("/bookings", { showtimeId, seats })
   return response.data
 }

@@ -1,11 +1,6 @@
 import AppIcon from "../ui/AppIcon"
 
-/**
- * StatCard — one headline metric.
- *
- * Values are rendered exactly as given (already formatted by the caller) so a
- * genuine 0 shows as "0"/"₦0" and never as undefined, NaN or Infinity.
- */
+
 const StatCard = ({ label, value, hint, icon, tone = "default" }) => {
   const display =
     value === null || value === undefined || value === "" || Number.isNaN(value) ? "—" : value

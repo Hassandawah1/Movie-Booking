@@ -1,12 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import AppIcon from "../ui/AppIcon"
 
-/**
- * ReservationTimer — live countdown for the temporary seat hold.
- *
- * The timer is purely visual. The backend remains the single source of truth
- * for whether a reservation has actually expired.
- */
+
 const ReservationTimer = ({ expiresAt, onExpire }) => {
   const [timeLeftSeconds, setTimeLeftSeconds] = useState(() => {
     if (!expiresAt) return 0
@@ -14,14 +9,14 @@ const ReservationTimer = ({ expiresAt, onExpire }) => {
     return Math.max(0, diff)
   })
 
-  // Keep the latest callback in a ref so an inline `onExpire` prop does not
-  // tear down / rebuild the interval on every parent render.
+  
+  
   const onExpireRef = useRef(onExpire)
   useEffect(() => {
     onExpireRef.current = onExpire
   }, [onExpire])
 
-  // Ensure the expiry callback fires at most once per expiry timestamp.
+  
   const hasFiredRef = useRef(false)
 
   useEffect(() => {
@@ -53,10 +48,10 @@ const ReservationTimer = ({ expiresAt, onExpire }) => {
       }
     }
 
-    // Update once immediately so a already-near-expiry hold renders correctly.
+    
     updateTimer()
 
-    // Only start ticking if there is still time left on the hold.
+    
     if (!hasFiredRef.current) {
       intervalId = setInterval(updateTimer, 1000)
     }
@@ -69,7 +64,7 @@ const ReservationTimer = ({ expiresAt, onExpire }) => {
   const formattedTime = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
 
   const isExpired = timeLeftSeconds <= 0
-  const isUrgent = timeLeftSeconds > 0 && timeLeftSeconds <= 120 // under 2 mins
+  const isUrgent = timeLeftSeconds > 0 && timeLeftSeconds <= 120 
 
   return (
     <div className={`reservation-timer-container ${isExpired ? "expired" : isUrgent ? "urgent" : ""}`}>

@@ -21,13 +21,7 @@ const STATUS_FILTERS = [
   { id: "ended", label: "Ended" }
 ]
 
-/**
- * AdminMoviesPage — /admin/movies
- *
- * Catalogue management (list, filter, status, remove) plus importing titles from
- * the external provider. The browser only ever talks to our backend; the movie
- * provider API key stays server-side.
- */
+
 const AdminMoviesPage = () => {
   const outletContext = useOutletContext()
   const requestVersion = useRef(0)
@@ -43,7 +37,7 @@ const AdminMoviesPage = () => {
   const [busyAction, setBusyAction] = useState("")
   const [banner, setBanner] = useState(null)
 
-  // External search
+  
   const [searchTerm, setSearchTerm] = useState("")
   const [searchResults, setSearchResults] = useState(null)
   const [searching, setSearching] = useState(false)
@@ -75,8 +69,8 @@ const AdminMoviesPage = () => {
     loadMovies(statusFilter)
   }, [statusFilter, loadMovies])
 
-  // Keep a full-catalogue set of external ids so "Already in catalogue" is
-  // accurate even when the list is filtered by status.
+  
+  
   useEffect(() => {
     const loadIds = async () => {
       try {
@@ -87,7 +81,7 @@ const AdminMoviesPage = () => {
           )
         }
       } catch {
-        /* the add-to-cinema 409 path still handles duplicates */
+        
       }
     }
     loadIds()
@@ -106,7 +100,7 @@ const AdminMoviesPage = () => {
     try {
       const data = await updateMovie(movieId, { status })
       if (data?.success) {
-        // Update from the backend response only.
+        
         await loadMovies(statusFilter)
         setBanner({ tone: "success", message: `Movie status updated to "${status}".` })
       } else {
@@ -138,7 +132,7 @@ const AdminMoviesPage = () => {
         setBanner({ tone: "error", message: data?.message || "The movie could not be removed." })
       }
     } catch (err) {
-      // e.g. backend refuses because the movie is still in use
+      
       setBanner({ tone: "error", message: describeApiError(err, "The movie could not be removed.") })
     } finally {
       setBusyMovieId(null)
@@ -167,7 +161,7 @@ const AdminMoviesPage = () => {
         setSearchError(data?.message || "The search could not be completed.")
       }
     } catch (err) {
-      // 502 here means the provider is unavailable — not a client mistake.
+      
       setSearchError(describeApiError(err, "The movie provider is unavailable right now."))
     } finally {
       setSearching(false)
@@ -224,7 +218,7 @@ const AdminMoviesPage = () => {
           <AdminBanner tone={banner.tone} message={banner.message} onDismiss={() => setBanner(null)} />
         )}
 
-        {/* ── Import from the external provider ───────────────────────────── */}
+        
         <section className="admin-panel" data-panel="external-search" aria-label="Search external movie provider">
           <div className="admin-panel-head">
             <div>
@@ -278,7 +272,7 @@ const AdminMoviesPage = () => {
           )}
         </section>
 
-        {/* ── Cinema catalogue ────────────────────────────────────────────── */}
+        
         <section className="admin-panel admin-panel--wide" data-panel="movie-catalogue" aria-label="Cinema catalogue">
           <div className="admin-panel-head">
             <div>

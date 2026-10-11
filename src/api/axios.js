@@ -7,7 +7,7 @@ const api = axios.create({
   }
 })
 
-// Request Interceptor: Attach Bearer token from localStorage
+
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("movieBookingToken")
@@ -19,12 +19,12 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 )
 
-// Response Interceptor: Handle 401 unauthorized gracefully
+
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      // Clear token only if we had an invalid/expired token on a protected endpoint
+      
       const isAuthEndpoint =
         error.config?.url?.includes("/users/login") ||
         error.config?.url?.includes("/users/register")

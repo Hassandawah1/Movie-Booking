@@ -1,16 +1,9 @@
-/**
- * StatusBreakdown — labelled counts with proportional bars.
- *
- * Shared by BookingStatusSummary and PaymentStatusSummary so there is one
- * implementation of the "counts + relative bar" pattern rather than two.
- *
- * All-zero datasets are safe: bars fall back to 0% width.
- */
+
 const StatusBreakdown = ({ title, rows = [], totalLabel, total, panelId }) => {
   const resolvedTotal =
     typeof total === "number" ? total : rows.reduce((sum, r) => sum + (Number(r.value) || 0), 0)
 
-  // Scale bars against the largest single value so small datasets stay readable.
+  
   const maxValue = rows.reduce((max, r) => Math.max(max, Number(r.value) || 0), 0)
 
   return (

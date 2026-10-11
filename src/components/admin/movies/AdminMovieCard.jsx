@@ -3,17 +3,11 @@ import { formatDate } from "../../../utils/formatters"
 import MovieForm from "./MovieForm"
 import AppIcon from "../../ui/AppIcon"
 
-/**
- * AdminMovieCard — one catalogue movie with its status control.
- *
- * The status is held as local draft state until "Save Status" is pressed, and
- * the card only reflects the backend value. The UI therefore never shows a
- * change the server has not accepted.
- */
+
 const AdminMovieCard = ({ movie, saving, deleting, disabled, onSaveStatus, onDelete }) => {
   const [draftStatus, setDraftStatus] = useState(movie.status)
 
-  // Re-sync when the backend returns a new value for this movie.
+  
   useEffect(() => {
     setDraftStatus(movie.status)
   }, [movie.status, movie._id])

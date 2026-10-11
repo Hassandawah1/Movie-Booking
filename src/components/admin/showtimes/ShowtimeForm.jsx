@@ -2,12 +2,7 @@ import { useState, useEffect } from "react"
 import { AdminField } from "../AdminUi"
 import { todayInputValue } from "../adminUtils"
 
-/**
- * ShowtimeForm — schedule or edit a screening.
- *
- * Pricing belongs to the showtime, not the movie. `bookedSeats` is never part of
- * this form: seat allocation is owned by the booking flow.
- */
+
 const ShowtimeForm = ({ initial, movies = [], screens = [], submitting, onCancel, onSubmit }) => {
   const isEdit = Boolean(initial?._id || initial?.id)
 
@@ -91,13 +86,13 @@ const ShowtimeForm = ({ initial, movies = [], screens = [], submitting, onCancel
       showDate: form.showDate,
       startTime: form.startTime,
       standardPrice: Number(form.standardPrice),
-      // "" clears the VIP price on the backend.
+      
       vipPrice: form.vipPrice === "" ? null : Number(form.vipPrice)
     }
     if (isEdit) {
       payload.status = form.status
-      // Send only changed fields: an unchanged ended movie, inactive screen or
-      // historical date must not prevent an otherwise valid price/status edit.
+      
+      
       const original = {
         movieId: String(initial.movie?._id || initial.movie || ""),
         screenId: String(initial.screen?._id || initial.screen || ""),
@@ -120,14 +115,14 @@ const ShowtimeForm = ({ initial, movies = [], screens = [], submitting, onCancel
     onSubmit(payload)
   }
 
-  // Ended movies cannot be scheduled. When editing, keep the current movie
-  // visible even if it has since been marked ended.
+  
+  
   const selectableMovies = movies.filter(
     (m) => m.status !== "ended" || String(m._id) === String(form.movieId)
   )
 
-  // Only active screens are offered, except the one already on this showtime
-  // (which may have been deactivated after the fact).
+  
+  
   const selectableScreens = screens.filter(
     (s) => s.status === "active" || String(s._id) === String(form.screenId)
   )

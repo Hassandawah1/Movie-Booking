@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom"
 import AppIcon from "../ui/AppIcon"
 
-/**
- * BookingEmptyState — shown when a customer has no bookings, or when a filter
- * matches nothing. Always offers a way forward instead of a blank page.
- */
+
 const BookingEmptyState = ({
   icon = "ticket",
   title = "No bookings yet",

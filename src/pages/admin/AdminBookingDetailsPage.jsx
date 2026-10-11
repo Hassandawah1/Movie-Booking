@@ -7,13 +7,7 @@ import { AdminBanner, AdminLoading, AdminSectionError } from "../../components/a
 import { describeApiError } from "../../components/admin/adminUtils"
 import { getBookingById, cancelBooking } from "../../services/admin.service"
 
-/**
- * AdminBookingDetailsPage — /admin/bookings/:id
- *
- * Always fetches from the backend so the page survives a refresh and never
- * depends on state handed over by the list page. Cancellation is only offered
- * for unpaid pending bookings; the backend enforces that rule too.
- */
+
 const AdminBookingDetailsPage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -63,7 +57,7 @@ const AdminBookingDetailsPage = () => {
         setBanner({ tone: "error", message: data?.message || "The booking could not be cancelled." })
       }
     } catch (err) {
-      // 409 for paid bookings — the backend message explains the refund workflow.
+      
       setBanner({ tone: "error", message: describeApiError(err, "The booking could not be cancelled.") })
     } finally {
       setCancelling(false)

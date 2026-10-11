@@ -4,27 +4,20 @@ import { verifyPayment, getBookingPaymentStatus } from "../../services/payment.s
 import PaymentProcessing from "../../components/payment/PaymentProcessing"
 import AppIcon from "../../components/ui/AppIcon"
 
-/**
- * PaymentCallbackPage — /payment/callback
- *
- * Paystack redirects the customer here with `?reference=...` (and usually
- * `trxref=...`). A reference in the URL proves NOTHING about the payment:
- * the reference is sent to OUR backend, which verifies it directly against
- * Paystack. Only the backend's answer is trusted.
- */
+
 const PaymentCallbackPage = () => {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
 
   const reference = searchParams.get("reference") || searchParams.get("trxref")
 
-  const [status, setStatus] = useState("verifying") // verifying | notice
+  const [status, setStatus] = useState("verifying") 
   const [error, setError] = useState("")
-  // "network" | "unverified" | "missing"
+  
   const [failureKind, setFailureKind] = useState(null)
   const [bookingId, setBookingId] = useState(null)
 
-  // React StrictMode runs effects twice in development — verify exactly once.
+  
   const hasTriggeredRef = useRef(false)
 
   const goToFailedPage = useCallback(
@@ -52,7 +45,7 @@ const PaymentCallbackPage = () => {
     setFailureKind(null)
 
     try {
-      // Ask OUR backend to verify the transaction with Paystack.
+      
       const data = await verifyPayment(reference)
 
       const verifiedBooking = data?.booking
@@ -64,8 +57,8 @@ const PaymentCallbackPage = () => {
         return
       }
 
-      // Backend replied, but the booking is not confirmed/paid.
-      // Ask the booking-scoped payment status endpoint once for the final word.
+      
+      
       if (verifiedBooking?.id) {
         try {
           const statusData = await getBookingPaymentStatus(verifiedBooking.id)
@@ -85,7 +78,7 @@ const PaymentCallbackPage = () => {
           )
           return
         } catch {
-          // Fall through to the generic unverified handling below.
+          
         }
       }
 
@@ -98,7 +91,7 @@ const PaymentCallbackPage = () => {
       const res = err.response
       const backendMessage = res?.data?.message
 
-      // Not a definitive failure — the payment may well have succeeded.
+      
       if (!res) {
         setFailureKind("network")
         setError("We couldn't verify your payment right now.")
@@ -106,8 +99,8 @@ const PaymentCallbackPage = () => {
         return
       }
 
-      // Invalid / unknown reference (404) or forbidden (403) — still not proof
-      // that money moved, so route to the failed page with context.
+      
+      
       goToFailedPage(
         backendMessage || "We couldn't confirm this payment.",
         res.status === 400 ? "failed" : "unverified",
@@ -122,7 +115,7 @@ const PaymentCallbackPage = () => {
     verify()
   }, [verify])
 
-  // ── Verifying ──────────────────────────────────────────────────────────────
+  
   if (status === "verifying") {
     return (
       <div className="container py-5">
@@ -131,7 +124,7 @@ const PaymentCallbackPage = () => {
     )
   }
 
-  // ── Cannot verify (network) or no reference ────────────────────────────────
+  
   const isNetworkFailure = failureKind === "network"
 
   return (

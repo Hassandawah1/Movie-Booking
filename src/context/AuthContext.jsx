@@ -13,15 +13,15 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(null)
   const [loading, setLoading] = useState(true)
-  // Set only when the session could not be checked because the server was
-  // unreachable. Distinct from "no valid session", which must not be confused
-  // with a temporary outage (e.g. returning from a Paystack payment).
+  
+  
+  
   const [authError, setAuthError] = useState(false)
 
   const isAuthenticated = !!user
   const isAdmin = user?.role === "admin"
 
-  // ── Persist token and attach to axios ──────────────────────────────────────
+  
   const saveToken = (newToken) => {
     localStorage.setItem(TOKEN_KEY, newToken)
     setToken(newToken)
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
     setAuthError(false)
   }, [])
 
-  // ── Fetch current user from backend /users/me ───────────────────────────────
+  
   const refreshUser = useCallback(async () => {
     const storedToken = localStorage.getItem(TOKEN_KEY)
     if (!storedToken || storedToken === "null" || storedToken === "undefined") {
@@ -55,22 +55,22 @@ export const AuthProvider = ({ children }) => {
         return null
       }
     } catch (err) {
-      // 401 means the token really is invalid/expired → sign the user out.
+      
       if (err.response?.status === 401) {
         setAuthError(false)
         clearAuth()
         return null
       }
 
-      // Any other HTTP error is a server-side problem — the token may still be
-      // valid, so keep it and flag that we could not verify the session.
+      
+      
       if (err.response) {
         setAuthError(true)
         return null
       }
 
-      // No response at all = network/connection failure. Do NOT sign the user
-      // out: they may be mid-payment and must still be able to verify it.
+      
+      
       setAuthError(true)
       return null
     } finally {
@@ -78,12 +78,12 @@ export const AuthProvider = ({ children }) => {
     }
   }, [clearAuth])
 
-  // ── Initialize: check token on app load ────────────────────────────────────
+  
   useEffect(() => {
     refreshUser()
   }, [refreshUser])
 
-  // ── Register ───────────────────────────────────────────────────────────────
+  
   const register = async ({ name, email, password }) => {
     const response = await api.post("/users/register", { name, email, password })
     const data = response.data
@@ -96,7 +96,7 @@ export const AuthProvider = ({ children }) => {
     return data
   }
 
-  // ── Login ──────────────────────────────────────────────────────────────────
+  
   const login = async ({ email, password }) => {
     const response = await api.post("/users/login", { email, password })
     const data = response.data
@@ -122,7 +122,7 @@ export const AuthProvider = ({ children }) => {
     return data
   }
 
-  // ── Logout ─────────────────────────────────────────────────────────────────
+  
   const logout = () => {
     clearAuth()
   }
