@@ -20,14 +20,18 @@ const RegisterPage = () => {
 
   const validate = () => {
     if (!form.name.trim()) return "Full name is required"
-    if (form.name.trim().length < 2) return "Name must be at least 2 characters"
+    if (Array.from(form.name.trim()).length < 3) return "Name must be at least 3 characters"
     if (!/^[\p{L}\p{M}]+(?:[ '\u2019.-][\p{L}\p{M}]+)*$/u.test(form.name.trim())) {
       return "Name can only contain letters, spaces, hyphens, apostrophes, and periods"
     }
     if (!form.email.trim()) return "Email address is required"
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) return "Please enter a valid email address"
+    if (!/^[A-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,63}$/i.test(form.email.trim())) {
+      return "Please enter a valid email address"
+    }
     if (!form.password) return "Password is required"
-    if (form.password.length < 6) return "Password must be at least 6 characters"
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9\s])\S{8,}$/.test(form.password)) {
+      return "Password must be at least 8 characters and include uppercase, lowercase, number, and special character"
+    }
     if (form.password !== form.confirmPassword) return "Passwords do not match"
     return null
   }
@@ -88,6 +92,7 @@ const RegisterPage = () => {
               placeholder="e.g. Hassan Abdulfatai"
               value={form.name}
               onChange={handleChange}
+              minLength={3}
               autoComplete="name"
               disabled={loading}
             />
@@ -118,9 +123,11 @@ const RegisterPage = () => {
                 name="password"
                 type={showPassword ? "text" : "password"}
                 className="form-control"
-                placeholder="At least 6 characters"
+                placeholder="8+ characters, upper/lowercase, number, special character"
                 value={form.password}
                 onChange={handleChange}
+                minLength={8}
+                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9\s])\S{8,}"
                 autoComplete="new-password"
                 disabled={loading}
                 style={{ paddingRight: "2.5rem" }}
