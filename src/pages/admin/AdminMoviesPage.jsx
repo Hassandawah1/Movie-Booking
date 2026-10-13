@@ -172,7 +172,14 @@ const AdminMoviesPage = () => {
     setAddingId(result.externalMovieId)
     setBanner(null)
     try {
-      const data = await addMovieToCinema(result.externalMovieId)
+      const data = await addMovieToCinema({
+        externalMovieId: result.externalMovieId,
+        posterUrl: result.posterUrl,
+        backdropUrl: result.backdropUrl,
+        title: result.title,
+        overview: result.overview,
+        runtime: result.runtime
+      })
       if (data?.success) {
         setCatalogueExternalIds((prev) => new Set([...prev, String(result.externalMovieId)]))
         setBanner({

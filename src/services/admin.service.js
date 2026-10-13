@@ -89,8 +89,12 @@ export const getAllMovies = async (params = {}) => {
 }
 
 
-export const addMovieToCinema = async (externalMovieId) => {
-  const response = await api.post("/movies", { externalMovieId })
+export const addMovieToCinema = async (externalMovieId, movieData = {}) => {
+  const payload =
+    typeof externalMovieId === "object"
+      ? externalMovieId
+      : { externalMovieId, ...movieData }
+  const response = await api.post("/movies", payload)
   return response.data
 }
 
