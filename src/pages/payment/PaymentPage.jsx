@@ -103,8 +103,8 @@ const PaymentPage = () => {
     setError("")
 
     try {
-      
-      const res = await initializePayment(bookingId)
+      const callbackUrl = `${window.location.origin}/payment/callback`
+      const res = await initializePayment(bookingId, callbackUrl)
 
       if (res?.success && res.payment?.authorizationUrl) {
         

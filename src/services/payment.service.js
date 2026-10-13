@@ -2,8 +2,9 @@ import api from "../api/axios"
 
 
 
-export const initializePayment = async (bookingId) => {
-  const response = await api.post(`/payments/initialize/${bookingId}`)
+export const initializePayment = async (bookingId, callbackUrl) => {
+  const payload = callbackUrl ? { callbackUrl } : {}
+  const response = await api.post(`/payments/initialize/${bookingId}`, payload)
   return response.data
 }
 

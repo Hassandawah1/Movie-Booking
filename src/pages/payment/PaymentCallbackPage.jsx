@@ -49,23 +49,22 @@ const PaymentCallbackPage = () => {
       const data = await verifyPayment(reference)
 
       const verifiedBooking = data?.booking
+      const bookingIdToNavigate = verifiedBooking?.id || verifiedBooking?._id
 
-      if (verifiedBooking?.id) setBookingId(verifiedBooking.id)
+      if (bookingIdToNavigate) setBookingId(bookingIdToNavigate)
 
       if (verifiedBooking?.paymentStatus === "paid" && verifiedBooking?.bookingStatus === "confirmed") {
-        navigate(`/booking/${verifiedBooking.id}/success`, { replace: true })
+        navigate(`/booking/${bookingIdToNavigate}/success`, { replace: true })
         return
       }
 
-      
-      
-      if (verifiedBooking?.id) {
+      if (bookingIdToNavigate) {
         try {
-          const statusData = await getBookingPaymentStatus(verifiedBooking.id)
+          const statusData = await getBookingPaymentStatus(bookingIdToNavigate)
           const payment = statusData?.payment
 
           if (payment?.paymentStatus === "paid" && payment?.bookingStatus === "confirmed") {
-            navigate(`/booking/${verifiedBooking.id}/success`, { replace: true })
+            navigate(`/booking/${bookingIdToNavigate}/success`, { replace: true })
             return
           }
 
@@ -74,7 +73,7 @@ const PaymentCallbackPage = () => {
               data?.message ||
               "Your payment has not been confirmed yet.",
             "unverified",
-            verifiedBooking.id
+            bookingIdToNavigate
           )
           return
         } catch {
@@ -85,7 +84,7 @@ const PaymentCallbackPage = () => {
       goToFailedPage(
         data?.message || "Payment could not be confirmed.",
         "unverified",
-        verifiedBooking?.id
+        bookingIdToNavigate
       )
     } catch (err) {
       const res = err.response
