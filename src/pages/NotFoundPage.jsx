@@ -19,13 +19,13 @@ const NotFoundPage = () => {
         style={{
           fontSize: "4rem",
           fontWeight: 900,
-          color: "#ffd43b",
+          color: "var(--color-primary)",
           marginBottom: "0.5rem"
         }}
       >
         404
       </h1>
-      <h2 style={{ color: "#f5f5f5", fontSize: "1.3rem", marginBottom: "0.75rem" }}>
+      <h2 style={{ color: "var(--color-text)", fontSize: "1.3rem", marginBottom: "0.75rem" }}>
         Page Not Found
       </h2>
       <p style={{ color: "var(--color-muted)", maxWidth: "400px", marginBottom: "2rem" }}>
@@ -34,8 +34,8 @@ const NotFoundPage = () => {
       <Link
         to="/"
         style={{
-          background: "#ffd43b",
-          color: "#111213",
+          background: "var(--color-primary)",
+          color: "var(--color-bg)",
           padding: "0.65rem 2rem",
           borderRadius: "30px",
           fontWeight: 700,

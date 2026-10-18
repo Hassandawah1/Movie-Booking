@@ -6,8 +6,10 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min.js"
 
 
+import "./styles/tokens.css"
 import "./styles/global.css"
 import "./styles/experience.css"
+import "./styles/theme.css"
 
 import App from "./App.jsx"
 

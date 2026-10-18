@@ -245,7 +245,7 @@ const PaymentPage = () => {
           
           <div
             className="p-3 rounded-3 mb-4"
-            style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
+            style={{ background: "rgba(var(--color-neutral-rgb), 0.04)", border: "1px solid rgba(var(--color-neutral-rgb), 0.08)" }}
           >
             <div className="d-flex justify-content-between mb-2">
               <span className="text-muted">Booking Reference:</span>

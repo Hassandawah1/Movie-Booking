@@ -71,7 +71,7 @@ const RegisterPage = () => {
         <div className="text-center mb-4">
           <div style={{ marginBottom: "0.5rem" }}><AppIcon name="film" size={40} /></div>
           <h1 style={{ fontSize: "1.6rem", marginBottom: "0.25rem" }}>Create Account</h1>
-          <p style={{ color: "#a1a1a1", fontSize: "0.875rem", margin: 0 }}>
+          <p style={{ color: "var(--color-muted)", fontSize: "0.875rem", margin: 0 }}>
             Join CineBook to start booking tickets
           </p>
         </div>
@@ -177,9 +177,9 @@ const RegisterPage = () => {
         </form>
 
         
-        <p className="text-center mt-3 mb-0" style={{ color: "#a1a1a1", fontSize: "0.875rem" }}>
+        <p className="text-center mt-3 mb-0" style={{ color: "var(--color-muted)", fontSize: "0.875rem" }}>
           Already have an account?{" "}
-          <Link to="/login" style={{ color: "#ffe27a", fontWeight: 600 }}>
+          <Link to="/login" style={{ color: "var(--color-primary-light)", fontWeight: 600 }}>
             Sign in
           </Link>
         </p>

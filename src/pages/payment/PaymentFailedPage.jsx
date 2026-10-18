@@ -88,8 +88,8 @@ const PaymentFailedPage = () => {
           <div
             className="card border-0 rounded-4 p-4 p-md-5 text-center"
             style={{
-              background: "#1a1b1d",
-              border: "1px solid rgba(239, 68, 68, 0.35)",
+              background: "var(--color-surface)",
+              border: "1px solid rgba(var(--color-alert-rgb), 0.35)",
             }}
           >
             <div
@@ -97,8 +97,8 @@ const PaymentFailedPage = () => {
               style={{
                 width: "72px",
                 height: "72px",
-                background: "rgba(239, 68, 68, 0.15)",
-                color: "#f87171",
+                background: "rgba(var(--color-alert-rgb), 0.15)",
+                color: "var(--color-error)",
                 fontSize: "2.2rem"
               }}
             >
@@ -111,7 +111,7 @@ const PaymentFailedPage = () => {
             {reference && (
               <div
                 className="p-3 rounded-3 text-muted small mb-4 font-monospace"
-                style={{ background: "rgba(255, 255, 255, 0.04)" }}
+                style={{ background: "rgba(var(--color-neutral-rgb), 0.04)" }}
               >
                 Reference: {reference}
               </div>
@@ -128,7 +128,7 @@ const PaymentFailedPage = () => {
             {!loading && booking && (
               <div
                 className="p-3 rounded-3 text-start mb-4"
-                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
+                style={{ background: "rgba(var(--color-neutral-rgb), 0.04)", border: "1px solid rgba(var(--color-neutral-rgb), 0.08)" }}
               >
                 <div className="d-flex justify-content-between mb-3">
                   <span className="text-muted">Current State:</span>

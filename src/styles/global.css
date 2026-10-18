@@ -2,64 +2,42 @@
   box-sizing: border-box;
 }
 
-:root {
-  --bs-primary: #ffd43b;
-  --bs-primary-rgb: 255, 212, 59;
-  --bs-warning: #ffd43b;
-  --bs-warning-rgb: 255, 212, 59;
-  --bs-link-color: #ffe27a;
-  --bs-link-hover-color: #ffd43b;
-  --color-bg:        #111213;
-  --color-surface:   #1a1b1d;
-  --color-card:      #202123;
-  --color-border:    rgba(255, 255, 255, 0.16);
-  --color-primary:   #ffd43b;
-  --color-primary-light: #ffe27a;
-  --color-text:      #f5f5f5;
-  --bs-secondary-color: #b8c0cc;
-  --color-muted:     #b8c0cc;
-  --color-error:     #f87171;
-  --color-success:   #4ade80;
-  --radius:          12px;
-  --transition:      0.2s ease;
-}
-
 .btn-primary {
-  --bs-btn-color: #111213;
-  --bs-btn-bg: #ffd43b;
-  --bs-btn-border-color: rgba(255, 255, 255, 0.16);
-  --bs-btn-hover-color: #111213;
-  --bs-btn-hover-bg: #e6b800;
-  --bs-btn-hover-border-color: rgba(255, 255, 255, 0.16);
-  --bs-btn-active-color: #111213;
-  --bs-btn-active-bg: #e6b800;
-  --bs-btn-active-border-color: rgba(255, 255, 255, 0.16);
-  --bs-btn-focus-shadow-rgb:  148, 163, 184;
-  --bs-btn-disabled-color: #111213;
-  --bs-btn-disabled-bg: #ffd43b;
-  --bs-btn-disabled-border-color: rgba(255, 255, 255, 0.16);
+  --bs-btn-color: var(--color-bg);
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: rgba(var(--color-neutral-rgb), 0.16);
+  --bs-btn-hover-color: var(--color-bg);
+  --bs-btn-hover-bg: var(--color-primary-hover);
+  --bs-btn-hover-border-color: rgba(var(--color-neutral-rgb), 0.16);
+  --bs-btn-active-color: var(--color-bg);
+  --bs-btn-active-bg: var(--color-primary-hover);
+  --bs-btn-active-border-color: rgba(var(--color-neutral-rgb), 0.16);
+  --bs-btn-focus-shadow-rgb: var(--color-primary-rgb);
+  --bs-btn-disabled-color: var(--color-bg);
+  --bs-btn-disabled-bg: var(--color-primary);
+  --bs-btn-disabled-border-color: rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .btn-outline-primary {
-  --bs-btn-color: #ffd43b;
-  --bs-btn-border-color: rgba(255, 255, 255, 0.16);
-  --bs-btn-hover-color: #111213;
-  --bs-btn-hover-bg: #ffd43b;
-  --bs-btn-hover-border-color: rgba(255, 255, 255, 0.16);
-  --bs-btn-active-color: #111213;
-  --bs-btn-active-bg: #ffd43b;
-  --bs-btn-active-border-color: rgba(255, 255, 255, 0.16);
-  --bs-btn-focus-shadow-rgb:  148, 163, 184;
+  --bs-btn-color: var(--color-primary);
+  --bs-btn-border-color: rgba(var(--color-neutral-rgb), 0.16);
+  --bs-btn-hover-color: var(--color-bg);
+  --bs-btn-hover-bg: var(--color-primary);
+  --bs-btn-hover-border-color: rgba(var(--color-neutral-rgb), 0.16);
+  --bs-btn-active-color: var(--color-bg);
+  --bs-btn-active-bg: var(--color-primary);
+  --bs-btn-active-border-color: rgba(var(--color-neutral-rgb), 0.16);
+  --bs-btn-focus-shadow-rgb: var(--color-primary-rgb);
 }
 
 .btn-warning {
-  --bs-btn-color: #111213;
-  --bs-btn-bg: #ffd43b;
-  --bs-btn-border-color: rgba(255, 255, 255, 0.16);
-  --bs-btn-hover-color: #111213;
-  --bs-btn-hover-bg: #e6b800;
-  --bs-btn-hover-border-color: rgba(255, 255, 255, 0.16);
-  --bs-btn-focus-shadow-rgb:  148, 163, 184;
+  --bs-btn-color: var(--color-bg);
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: rgba(var(--color-neutral-rgb), 0.16);
+  --bs-btn-hover-color: var(--color-bg);
+  --bs-btn-hover-bg: var(--color-primary-hover);
+  --bs-btn-hover-border-color: rgba(var(--color-neutral-rgb), 0.16);
+  --bs-btn-focus-shadow-rgb: var(--color-primary-rgb);
 }
 
 html, body {
@@ -125,8 +103,8 @@ a:hover {
 }
 
 .form-control:focus, .form-select:focus {
-  border-color: rgba(255, 255, 255, 0.5) !important;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(var(--color-neutral-rgb), 0.5) !important;
+  box-shadow: 0 0 0 2px rgba(var(--color-neutral-rgb), 0.12) !important;
 }
 
 .form-control::placeholder {
@@ -142,8 +120,8 @@ a:hover {
 
 
 .btn-primary-grad {
-  background: #ffd43b;
-  color: #111213;
+  background: var(--color-primary);
+  color: var(--color-bg);
   border: none;
   border-radius: 8px;
   padding: 0.7rem 1.5rem;
@@ -166,8 +144,8 @@ a:hover {
 
 
 .alert-error {
-  background: rgba(248, 113, 113, 0.1);
-  border: 1px solid rgba(248, 113, 113, 0.3);
+  background: rgba(var(--color-alert-rgb), 0.1);
+  border: 1px solid rgba(var(--color-alert-rgb), 0.3);
   color: var(--color-error);
   border-radius: 8px;
   padding: 0.75rem 1rem;
@@ -175,8 +153,8 @@ a:hover {
 }
 
 .alert-success {
-  background: rgba(74, 222, 128, 0.1);
-  border: 1px solid rgba(74, 222, 128, 0.3);
+  background: rgba(var(--color-primary-rgb), 0.1);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.3);
   color: var(--color-success);
   border-radius: 8px;
   padding: 0.75rem 1rem;
@@ -226,9 +204,9 @@ a:hover {
 .profile-danger-section {
   margin-top: 1.5rem;
   padding: 1.25rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.12);
   border-radius: 10px;
-  background: #202123;
+  background: var(--color-card);
 }
 
 .profile-security-section h2,
@@ -239,7 +217,7 @@ a:hover {
 }
 
 .profile-danger-section {
-  border-color: rgba(248, 113, 113, 0.35);
+  border-color: rgba(var(--color-alert-rgb), 0.35);
 }
 
 .profile-danger-note {
@@ -249,12 +227,12 @@ a:hover {
 }
 
 .profile-form-error {
-  color: #fca5a5;
+  color: var(--color-error);
   font-size: 0.875rem;
 }
 
 .profile-form-success {
-  color: #86efac;
+  color: var(--color-success);
   font-size: 0.875rem;
 }
 
@@ -262,14 +240,14 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  color: #fff;
-  background: #b42318;
-  border: 1px solid #f87171;
+  color: var(--color-white);
+  background: var(--color-card);
+  border: 1px solid var(--color-error);
 }
 
 .profile-delete-button:hover:not(:disabled) {
-  color: #fff;
-  background: #921b13;
+  color: var(--color-white);
+  background: var(--color-surface);
 }
 
 .profile-delete-button:disabled {
@@ -286,8 +264,8 @@ a:hover {
 
 
 .stat-badge {
-  background: rgba(255, 212, 59, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-primary-rgb), 0.1);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: 8px;
   padding: 0.5rem 1rem;
   display: inline-block;
@@ -308,8 +286,8 @@ a:hover {
 .spinner {
   width: 32px;
   height: 32px;
-  border: 3px solid rgba(255, 255, 255, 0.16);
-  border-top-color: rgba(255, 255, 255, 0.35);
+  border: 3px solid rgba(var(--color-neutral-rgb), 0.16);
+  border-top-color: rgba(var(--color-neutral-rgb), 0.35);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   margin: 0 auto 0.75rem;
@@ -337,9 +315,9 @@ a:hover {
 
 .hero-badge {
   display: inline-block;
-  background: rgba(255, 212, 59, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #ffe27a;
+  background: rgba(var(--color-primary-rgb), 0.15);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-primary-light);
   padding: 0.35rem 0.9rem;
   border-radius: 20px;
   font-size: 0.825rem;
@@ -384,7 +362,7 @@ a:hover {
 
 
 .section-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   padding-bottom: 1rem;
 }
 
@@ -393,7 +371,7 @@ a:hover {
   font-weight: 800;
   letter-spacing: -0.01em;
   margin-bottom: 0.25rem;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .section-subtitle {
@@ -412,7 +390,7 @@ a:hover {
 
 .view-all-link:hover {
   transform: translateX(3px);
-  color: #fff;
+  color: var(--color-white);
 }
 
 
@@ -445,7 +423,7 @@ a:hover {
 
 .movie-card {
   background: var(--color-surface);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: var(--radius);
   overflow: hidden;
   display: flex;
@@ -454,7 +432,7 @@ a:hover {
 }
 
 .movie-card:hover {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .movie-poster-wrapper {
@@ -462,7 +440,7 @@ a:hover {
   aspect-ratio: 2 / 3;
   width: 100%;
   overflow: hidden;
-  background: #0d0e0f;
+  background: var(--color-bg);
 }
 
 .movie-poster-img {
@@ -494,25 +472,25 @@ a:hover {
 }
 
 .badge-now-showing {
-  background: rgba(255, 212, 59, 0.9);
-  color: #111213;
+  background: rgba(var(--color-primary-rgb), 0.9);
+  color: var(--color-bg);
 }
 
 .badge-coming-soon {
-  background: rgba(255, 255, 255, 0.12);
-  color: #f5f5f5;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(var(--color-neutral-rgb), 0.12);
+  color: var(--color-text);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.2);
 }
 
 .badge-ended {
-  background: rgba(120, 120, 120, 0.75);
-  color: #ffffff;
+  background: rgba(var(--color-neutral-rgb), 0.75);
+  color: var(--color-white);
 }
 
 .rating-badge {
-  background: rgba(17, 18, 19, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #ffd43b;
+  background: rgba(var(--color-bg-rgb), 0.85);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-primary);
   padding: 0.3rem 0.55rem;
   border-radius: 6px;
   font-size: 0.75rem;
@@ -532,7 +510,7 @@ a:hover {
   font-weight: 700;
   line-height: 1.35;
   margin: 0 0 0.45rem;
-  color: #f5f5f5;
+  color: var(--color-text);
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -564,30 +542,30 @@ a:hover {
 }
 
 .btn-book-now {
-  background: #ffd43b;
-  color: #111213;
+  background: var(--color-primary);
+  color: var(--color-bg);
 }
 
 .btn-book-now:hover {
   opacity: 0.92;
-  color: #111213;
+  color: var(--color-bg);
 }
 
 .btn-view-details {
-  background: rgba(255, 212, 59, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-primary-rgb), 0.12);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   color: var(--color-primary-light);
 }
 
 .btn-view-details:hover {
-  background: rgba(255, 212, 59, 0.22);
-  color: #111213;
+  background: rgba(var(--color-primary-rgb), 0.22);
+  color: var(--color-bg);
 }
 
 .btn-secondary-custom {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #f5f5f5;
+  background: rgba(var(--color-neutral-rgb), 0.08);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.2);
+  color: var(--color-text);
   padding: 0.6rem 1.4rem;
   border-radius: 8px;
   font-weight: 600;
@@ -598,13 +576,13 @@ a:hover {
 }
 
 .btn-secondary-custom:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
+  background: rgba(var(--color-neutral-rgb), 0.15);
+  color: var(--color-white);
 }
 
 
 .perks-section {
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .perk-card {
@@ -617,7 +595,7 @@ a:hover {
 }
 
 .perk-card:hover {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .perk-icon {
@@ -629,7 +607,7 @@ a:hover {
   font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 0.45rem;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .perk-desc {
@@ -671,13 +649,13 @@ a:hover {
 }
 
 .filter-tab:hover {
-  color: #f5f5f5;
-  background: rgba(255, 212, 59, 0.1);
+  color: var(--color-text);
+  background: rgba(var(--color-primary-rgb), 0.1);
 }
 
 .filter-tab.active {
-  background: #ffd43b;
-  color: #111213;
+  background: var(--color-primary);
+  color: var(--color-bg);
 }
 
 .search-box-wrapper {
@@ -699,8 +677,8 @@ a:hover {
 }
 
 .search-input:focus {
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
+  border-color: rgba(var(--color-neutral-rgb), 0.5);
+  box-shadow: 0 0 0 2px rgba(var(--color-neutral-rgb), 0.12);
 }
 
 .search-clear-btn {
@@ -722,7 +700,7 @@ a:hover {
 }
 
 .results-count-bar strong {
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 
@@ -739,7 +717,7 @@ a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(17, 18, 19, 0.78);
+  background: rgba(var(--color-bg-rgb), 0.78);
 }
 
 .movie-hero > .container {
@@ -766,7 +744,7 @@ a:hover {
   flex-shrink: 0;
   border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .hero-poster-img {
@@ -793,9 +771,9 @@ a:hover {
 }
 
 .rating-pill {
-  background: rgba(255, 212, 59, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #ffd43b;
+  background: rgba(var(--color-primary-rgb), 0.15);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-primary);
   padding: 0.3rem 0.75rem;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -803,7 +781,7 @@ a:hover {
 }
 
 .rating-pill small {
-  color: #ffe27a;
+  color: var(--color-primary-light);
   font-weight: 400;
 }
 
@@ -847,9 +825,9 @@ a:hover {
 }
 
 .genre-pill {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #d0d0d0;
+  background: rgba(var(--color-neutral-rgb), 0.08);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.15);
+  color: var(--color-muted);
   padding: 0.25rem 0.75rem;
   border-radius: 16px;
   font-size: 0.8rem;
@@ -860,11 +838,11 @@ a:hover {
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .hero-overview p {
-  color: #a1a1a1;
+  color: var(--color-muted);
   line-height: 1.7;
   font-size: 0.95rem;
   margin: 0;
@@ -884,16 +862,16 @@ a:hover {
 .date-group-heading {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
   margin-bottom: 1rem;
   padding-left: 0.25rem;
-  border-left: 3px solid rgba(255, 255, 255, 0.16);
+  border-left: 3px solid rgba(var(--color-neutral-rgb), 0.16);
 }
 
 
 .showtime-card {
   background: var(--color-surface);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: var(--radius);
   padding: 1.25rem;
   display: flex;
@@ -903,7 +881,7 @@ a:hover {
 }
 
 .showtime-card:hover {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .showtime-header {
@@ -921,12 +899,12 @@ a:hover {
 
 .screen-name {
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .screen-type-tag {
-  background: rgba(255, 212, 59, 0.2);
-  color: #ffe27a;
+  background: rgba(var(--color-primary-rgb), 0.2);
+  color: var(--color-primary-light);
   border-radius: 4px;
   padding: 0.15rem 0.4rem;
   font-size: 0.7rem;
@@ -948,7 +926,7 @@ a:hover {
 .showtime-start {
   font-size: 1.6rem;
   font-weight: 800;
-  color: #f5f5f5;
+  color: var(--color-text);
   letter-spacing: -0.02em;
 }
 
@@ -961,8 +939,8 @@ a:hover {
   display: flex;
   gap: 1rem;
   padding: 0.5rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(var(--color-neutral-rgb), 0.06);
+  border-bottom: 1px solid rgba(var(--color-neutral-rgb), 0.06);
 }
 
 .price-item {
@@ -980,16 +958,16 @@ a:hover {
 .price-value {
   font-size: 1rem;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .price-item.vip .price-value {
-  color: #ffd43b;
+  color: var(--color-primary);
 }
 
 .btn-select-showtime {
-  background: #ffd43b;
-  color: #111213;
+  background: var(--color-primary);
+  color: var(--color-bg);
   border: none;
   border-radius: 8px;
   padding: 0.65rem 1rem;
@@ -1022,7 +1000,7 @@ a:hover {
 
 .ended-notice-box h4 {
   margin: 0 0 0.25rem;
-  color: #f87171;
+  color: var(--color-error);
 }
 
 .ended-notice-box p {
@@ -1108,7 +1086,7 @@ a:hover {
 }
 
 .skeleton-placeholder {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(var(--color-neutral-rgb), 0.07);
 }
 
 
@@ -1140,9 +1118,9 @@ a:hover {
 
 .badge-cinema-screen {
   display: inline-block;
-  background: rgba(255, 212, 59, 0.2);
-  color: #ffe27a;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-primary-rgb), 0.2);
+  color: var(--color-primary-light);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
   font-size: 0.725rem;
@@ -1155,7 +1133,7 @@ a:hover {
   font-size: 1.5rem;
   font-weight: 800;
   margin: 0;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .showtime-header-meta {
@@ -1164,7 +1142,7 @@ a:hover {
 }
 
 .btn-refresh-seats {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(var(--color-neutral-rgb), 0.06);
   border: 1px solid var(--color-border);
   color: var(--color-text);
   padding: 0.45rem 1rem;
@@ -1176,14 +1154,14 @@ a:hover {
 }
 
 .btn-refresh-seats:hover:not(:disabled) {
-  background: rgba(255, 212, 59, 0.2);
-  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-primary-rgb), 0.2);
+  border-color: rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .alert-warning-banner {
-  background: rgba(255, 212, 59, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #ffe27a;
+  background: rgba(var(--color-primary-rgb), 0.12);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-primary-light);
   border-radius: 10px;
   padding: 0.85rem 1.25rem;
   display: flex;
@@ -1209,7 +1187,7 @@ a:hover {
   gap: 2rem;
   flex-wrap: wrap;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(var(--color-neutral-rgb), 0.05);
 }
 
 .legend-item {
@@ -1229,18 +1207,18 @@ a:hover {
 }
 
 .legend-badge.available {
-  background: #202123;
-  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  background: var(--color-card);
+  border: 1.5px solid rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .legend-badge.selected {
-  background: #ffd43b;
-  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  background: var(--color-primary);
+  border: 1.5px solid rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .legend-badge.unavailable {
-  background: #171819;
-  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  background: var(--color-bg);
+  border: 1.5px solid rgba(var(--color-neutral-rgb), 0.12);
   position: relative;
   color: var(--color-muted);
   display: inline-flex;
@@ -1260,7 +1238,7 @@ a:hover {
   width: 80%;
   max-width: 520px;
   height: 6px;
-  background: #ffe27a;
+  background: var(--color-primary-light);
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
   margin-bottom: 0.5rem;
 }
@@ -1268,7 +1246,7 @@ a:hover {
 .screen-label {
   font-size: 0.725rem;
   font-weight: 800;
-  color: #a1a1a1;
+  color: var(--color-muted);
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -1332,26 +1310,26 @@ a:hover {
 }
 
 .seat-btn.available {
-  background: #202123;
-  border-color: rgba(255, 255, 255, 0.16);
-  color: #d0d0d0;
+  background: var(--color-card);
+  border-color: rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-muted);
 }
 
 .seat-btn.available:hover {
-  background: rgba(255, 212, 59, 0.3);
-  border-color: rgba(255, 255, 255, 0.16);
-  color: #111213;
+  background: rgba(var(--color-primary-rgb), 0.3);
+  border-color: rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-bg);
 }
 
 .seat-btn.selected {
-  background: #ffd43b;
-  border-color: rgba(255, 255, 255, 0.16);
-  color: #111213;
+  background: var(--color-primary);
+  border-color: rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-bg);
 }
 
 .seat-btn.unavailable {
-  background: #171819;
-  border-color: rgba(255, 255, 255, 0.08);
+  background: var(--color-bg);
+  border-color: rgba(var(--color-neutral-rgb), 0.08);
   color: var(--color-muted);
   cursor: not-allowed;
   opacity: 0.75;
@@ -1363,12 +1341,12 @@ a:hover {
   gap: 1.75rem;
   font-size: 0.825rem;
   color: var(--color-muted);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(var(--color-neutral-rgb), 0.05);
   padding-top: 1rem;
 }
 
 .seat-availability-stats strong {
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 
@@ -1385,14 +1363,14 @@ a:hover {
   font-size: 1.25rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .summary-movie-info .movie-heading {
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 0.35rem;
-  color: #ffe27a;
+  color: var(--color-primary-light);
 }
 
 .summary-meta {
@@ -1405,7 +1383,7 @@ a:hover {
 
 .summary-divider {
   height: 1px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(var(--color-neutral-rgb), 0.08);
   margin: 1rem 0;
 }
 
@@ -1421,7 +1399,7 @@ a:hover {
 }
 
 .summary-value {
-  color: #f5f5f5;
+  color: var(--color-text);
   font-weight: 600;
 }
 
@@ -1434,9 +1412,9 @@ a:hover {
 }
 
 .selected-seat-pill {
-  background: rgba(255, 212, 59, 0.25);
-  color: #ffe27a;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-primary-rgb), 0.25);
+  color: var(--color-primary-light);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
   font-size: 0.75rem;
@@ -1453,13 +1431,13 @@ a:hover {
 .total-label {
   font-size: 1rem;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .total-amount {
   font-size: 1.4rem;
   font-weight: 800;
-  color: #ffd43b;
+  color: var(--color-primary);
 }
 
 .summary-footnote {
@@ -1469,8 +1447,8 @@ a:hover {
 }
 
 .btn-reserve-seats {
-  background: #ffd43b;
-  color: #111213;
+  background: var(--color-primary);
+  color: var(--color-bg);
   border: none;
   border-radius: 8px;
   padding: 0.85rem 1rem;
@@ -1518,28 +1496,28 @@ a:hover {
 }
 
 .badge-booking-status.status-pending-payment {
-  background: rgba(255, 212, 59, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #ffd43b;
+  background: rgba(var(--color-primary-rgb), 0.15);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-primary);
 }
 
 .badge-booking-status.status-confirmed {
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  color: #34d399;
+  background: rgba(var(--color-primary-rgb), 0.15);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.4);
+  color: var(--color-success);
 }
 
 .badge-booking-status.status-cancelled,
 .badge-booking-status.status-expired {
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.4);
-  color: #f87171;
+  background: rgba(var(--color-alert-rgb), 0.15);
+  border: 1px solid rgba(var(--color-alert-rgb), 0.4);
+  color: var(--color-error);
 }
 
 .reservation-main-title {
   font-size: 1.85rem;
   font-weight: 800;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .reservation-ref-text {
@@ -1548,7 +1526,7 @@ a:hover {
 }
 
 .booking-ref-code {
-  color: #ffe27a;
+  color: var(--color-primary-light);
   font-family: monospace;
   font-size: 1.1rem;
   letter-spacing: 0.05em;
@@ -1559,21 +1537,21 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: rgba(255, 212, 59, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-primary-rgb), 0.12);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: 12px;
   padding: 1rem 1.25rem;
   transition: all 0.3s ease;
 }
 
 .reservation-timer-container.urgent {
-  background: rgba(255, 212, 59, 0.15);
-  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-primary-rgb), 0.15);
+  border-color: rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .reservation-timer-container.expired {
-  background: rgba(239, 68, 68, 0.12);
-  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(var(--color-alert-rgb), 0.12);
+  border-color: rgba(var(--color-alert-rgb), 0.4);
 }
 
 .timer-icon {
@@ -1595,22 +1573,22 @@ a:hover {
 .timer-countdown {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--color-white);
   font-family: monospace;
 }
 
 .reservation-timer-container.urgent .timer-countdown {
-  color: #ffd43b;
+  color: var(--color-primary);
 }
 
 .reservation-timer-container.expired .timer-countdown {
-  color: #f87171;
+  color: var(--color-error);
 }
 
 
 .reservation-details-box {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(var(--color-neutral-rgb), 0.03);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.08);
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
 }
@@ -1625,7 +1603,7 @@ a:hover {
 
 .detail-item-row.divider {
   height: 1px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(var(--color-neutral-rgb), 0.08);
   margin: 0.5rem 0;
   padding: 0;
 }
@@ -1641,11 +1619,11 @@ a:hover {
 .detail-label.total {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .detail-value {
-  color: #f5f5f5;
+  color: var(--color-text);
   font-weight: 600;
   text-align: right;
 }
@@ -1653,14 +1631,14 @@ a:hover {
 .detail-value.total-price {
   font-size: 1.45rem;
   font-weight: 800;
-  color: #ffd43b;
+  color: var(--color-primary);
 }
 
 .seat-badge-chip {
   display: inline-block;
-  background: rgba(255, 212, 59, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #ffe27a;
+  background: rgba(var(--color-primary-rgb), 0.25);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-primary-light);
   padding: 0.15rem 0.45rem;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -1669,7 +1647,7 @@ a:hover {
 }
 
 .payment-badge {
-  color: #ffd43b;
+  color: var(--color-primary);
   font-weight: 700;
   font-size: 0.85rem;
 }
@@ -1687,8 +1665,8 @@ a:hover {
 
 .btn-cancel-reservation {
   background: transparent;
-  border: 1px solid rgba(239, 68, 68, 0.35);
-  color: #f87171;
+  border: 1px solid rgba(var(--color-alert-rgb), 0.35);
+  color: var(--color-error);
   padding: 0.65rem 1rem;
   border-radius: 8px;
   font-weight: 600;
@@ -1698,19 +1676,19 @@ a:hover {
 }
 
 .btn-cancel-reservation:hover:not(:disabled) {
-  background: rgba(239, 68, 68, 0.15);
-  border-color: #ef4444;
+  background: rgba(var(--color-alert-rgb), 0.15);
+  border-color: var(--color-error);
 }
 
 .alert-expired-box {
-  background: rgba(239, 68, 68, 0.08);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(var(--color-alert-rgb), 0.08);
+  border: 1px solid rgba(var(--color-alert-rgb), 0.3);
   border-radius: 12px;
   padding: 1.5rem;
 }
 
 .alert-expired-box h4 {
-  color: #f87171;
+  color: var(--color-error);
   margin-bottom: 0.5rem;
 }
 
@@ -1750,7 +1728,7 @@ a:hover {
   font-size: clamp(1.6rem, 4vw, 2.1rem);
   font-weight: 800;
   margin: 0 0 0.25rem;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .bookings-subtitle {
@@ -1774,11 +1752,11 @@ a:hover {
   border-radius: 10px;
   font-size: 0.7rem;
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(var(--color-neutral-rgb), 0.12);
 }
 
 .filter-tab.active .filter-tab-count {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(var(--color-ink-rgb), 0.25);
 }
 
 .bookings-list {
@@ -1791,7 +1769,7 @@ a:hover {
 .booking-empty-title {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
   margin-bottom: 0.5rem;
 }
 
@@ -1808,7 +1786,7 @@ a:hover {
   grid-template-columns: 132px 1fr;
   gap: 1.25rem;
   background: var(--color-surface);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: var(--radius);
   padding: 1.1rem;
   transition: border-color var(--transition), transform var(--transition);
@@ -1816,13 +1794,13 @@ a:hover {
 }
 
 .booking-card:hover {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .booking-card--completed,
 .booking-card--cancelled,
 .booking-card--expired {
-  border-color: rgba(160, 160, 160, 0.2);
+  border-color: rgba(var(--color-neutral-rgb), 0.2);
 }
 
 .booking-card-media {
@@ -1846,7 +1824,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  color: rgba(255, 226, 122, 0.6);
+  color: rgba(var(--color-primary-rgb), 0.6);
 }
 
 .booking-card-badges {
@@ -1865,7 +1843,7 @@ a:hover {
 .booking-card-title {
   font-size: 1.12rem;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
   margin: 0 0 0.3rem;
   overflow-wrap: anywhere;
 }
@@ -1914,7 +1892,7 @@ a:hover {
 .booking-card-footer {
   margin-top: auto;
   padding-top: 0.85rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid rgba(var(--color-neutral-rgb), 0.07);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1938,7 +1916,7 @@ a:hover {
 .booking-card-total-value {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #ffd43b;
+  color: var(--color-primary);
 }
 
 .booking-card-actions {
@@ -1958,7 +1936,7 @@ a:hover {
 .booking-details-card {
   max-width: 760px;
   background: var(--color-surface);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: var(--radius);
   padding: 1.6rem;
 }
@@ -1980,7 +1958,7 @@ a:hover {
 .booking-details-title {
   font-size: clamp(1.35rem, 3.5vw, 1.75rem);
   font-weight: 800;
-  color: #f5f5f5;
+  color: var(--color-text);
   margin: 0 0 0.35rem;
   overflow-wrap: anywhere;
 }
@@ -2056,7 +2034,7 @@ a:hover {
 .ticket-toolbar-title {
   font-size: clamp(1.4rem, 3.5vw, 1.8rem);
   font-weight: 800;
-  color: #f5f5f5;
+  color: var(--color-text);
   margin: 0 0 0.2rem;
 }
 
@@ -2079,7 +2057,7 @@ a:hover {
 
 .ticket {
   background: var(--color-surface);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: 16px;
   overflow: hidden;
   color: var(--color-text);
@@ -2092,8 +2070,8 @@ a:hover {
   gap: 1rem;
   flex-wrap: wrap;
   padding: 1.1rem 1.35rem;
-  background: rgba(255, 212, 59, 0.12);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-primary-rgb), 0.12);
+  border-bottom: 1px solid rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .ticket-brand {
@@ -2111,7 +2089,7 @@ a:hover {
   font-weight: 800;
   font-size: 1.05rem;
   letter-spacing: 0.02em;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .ticket-brand-sub {
@@ -2119,7 +2097,7 @@ a:hover {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: rgba(226, 232, 240, 0.75);
+  color: rgba(var(--color-neutral-rgb), 0.75);
 }
 
 .ticket-header-status {
@@ -2138,15 +2116,15 @@ a:hover {
 }
 
 .ticket-paid-pill {
-  background: rgba(74, 222, 128, 0.18);
-  color: #4ade80;
-  border: 1px solid rgba(74, 222, 128, 0.45);
+  background: rgba(var(--color-primary-rgb), 0.18);
+  color: var(--color-success);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.45);
 }
 
 .ticket-confirmed-pill {
-  background: rgba(255, 212, 59, 0.2);
-  color: #ffe27a;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-primary-rgb), 0.2);
+  color: var(--color-primary-light);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .ticket-body {
@@ -2174,7 +2152,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   font-size: 2.25rem;
-  color: rgba(255, 226, 122, 0.6);
+  color: rgba(var(--color-primary-rgb), 0.6);
 }
 
 .ticket-details {
@@ -2184,7 +2162,7 @@ a:hover {
 .ticket-movie-title {
   font-size: clamp(1.2rem, 3.2vw, 1.6rem);
   font-weight: 800;
-  color: #f5f5f5;
+  color: var(--color-text);
   margin: 0 0 0.75rem;
   overflow-wrap: anywhere;
 }
@@ -2202,7 +2180,7 @@ a:hover {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: clamp(0.95rem, 2.6vw, 1.15rem);
   font-weight: 700;
-  color: #ffd43b;
+  color: var(--color-primary);
   letter-spacing: 0.04em;
   overflow-wrap: anywhere;
 }
@@ -2241,8 +2219,8 @@ a:hover {
   letter-spacing: 0.06em;
   padding: 0.1rem 0.35rem;
   border-radius: 6px;
-  background: rgba(255, 212, 59, 0.25);
-  color: #ffe27a;
+  background: rgba(var(--color-primary-rgb), 0.25);
+  color: var(--color-primary-light);
 }
 
 .ticket-seats-block {
@@ -2269,9 +2247,9 @@ a:hover {
   gap: 0.3rem;
   padding: 0.3rem 0.6rem;
   border-radius: 8px;
-  background: rgba(255, 212, 59, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #fff0a6;
+  background: rgba(var(--color-primary-rgb), 0.18);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-primary-light);
   font-weight: 700;
   font-size: 0.85rem;
 }
@@ -2281,8 +2259,8 @@ a:hover {
   letter-spacing: 0.08em;
   padding: 0.08rem 0.28rem;
   border-radius: 4px;
-  background: rgba(255, 212, 59, 0.2);
-  color: #ffd43b;
+  background: rgba(var(--color-primary-rgb), 0.2);
+  color: var(--color-primary);
 }
 
 .ticket-holder {
@@ -2306,7 +2284,7 @@ a:hover {
 
 .ticket-dashes {
   flex: 1;
-  border-top: 2px dashed rgba(160, 160, 160, 0.4);
+  border-top: 2px dashed rgba(var(--color-neutral-rgb), 0.4);
 }
 
 .ticket-notch {
@@ -2356,12 +2334,12 @@ a:hover {
 .ticket-stub-value--amount {
   font-size: 1.25rem;
   font-weight: 800;
-  color: #4ade80;
+  color: var(--color-success);
 }
 
 .ticket-stub-value--ref {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  color: #ffd43b;
+  color: var(--color-primary);
 }
 
 .ticket-footnote {
@@ -2391,7 +2369,7 @@ a:hover {
 .ticket-blocked {
   max-width: 560px;
   background: var(--color-surface);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: var(--radius);
   padding: 1.75rem;
   text-align: center;
@@ -2405,7 +2383,7 @@ a:hover {
 .ticket-blocked-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
   margin-bottom: 0.6rem;
 }
 
@@ -2424,8 +2402,8 @@ a:hover {
 }
 
 .ticket-blocked-summary {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(var(--color-neutral-rgb), 0.04);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.08);
   border-radius: 10px;
   padding: 0.85rem 1rem;
   text-align: left;
@@ -2510,8 +2488,8 @@ a:hover {
   html,
   body,
   #root {
-    background: #ffffff !important;
-    color: #000000 !important;
+    background: var(--color-white) !important;
+    color: var(--color-ink) !important;
     min-height: 0 !important;
   }
 
@@ -2531,17 +2509,17 @@ a:hover {
 
   
   .ticket {
-    background: #ffffff !important;
-    border: 1.5px solid #111111 !important;
+    background: var(--color-white) !important;
+    border: 1.5px solid var(--color-ink) !important;
     border-radius: 8px !important;
-    color: #000000 !important;
+    color: var(--color-ink) !important;
     box-shadow: none !important;
     break-inside: avoid;
   }
 
   .ticket-header {
-    background: #f2f2f2 !important;
-    border-bottom: 1px solid #111111 !important;
+    background: var(--color-paper-muted) !important;
+    border-bottom: 1px solid var(--color-ink) !important;
   }
 
   .ticket-brand-name,
@@ -2549,7 +2527,7 @@ a:hover {
   .ticket-grid-item dd,
   .ticket-stub-value,
   .ticket-holder strong {
-    color: #000000 !important;
+    color: var(--color-ink) !important;
   }
 
   .ticket-brand-sub,
@@ -2559,46 +2537,46 @@ a:hover {
   .ticket-stub-label,
   .ticket-holder,
   .ticket-footnote {
-    color: #333333 !important;
+    color: var(--color-ink) !important;
   }
 
   .ticket-reference,
   .ticket-stub-value--ref {
-    color: #000000 !important;
+    color: var(--color-ink) !important;
     font-weight: 800 !important;
   }
 
   .ticket-stub-value--amount {
-    color: #000000 !important;
+    color: var(--color-ink) !important;
   }
 
   .ticket-paid-pill,
   .ticket-confirmed-pill {
-    background: #ffffff !important;
-    color: #000000 !important;
-    border: 1px solid #111111 !important;
+    background: var(--color-white) !important;
+    color: var(--color-ink) !important;
+    border: 1px solid var(--color-ink) !important;
   }
 
   .ticket-seat {
-    background: #ffffff !important;
-    border: 1px solid #111111 !important;
-    color: #000000 !important;
+    background: var(--color-white) !important;
+    border: 1px solid var(--color-ink) !important;
+    color: var(--color-ink) !important;
   }
 
   .ticket-seat-vip {
-    background: #ffffff !important;
-    color: #000000 !important;
-    border: 1px solid #111111 !important;
+    background: var(--color-white) !important;
+    color: var(--color-ink) !important;
+    border: 1px solid var(--color-ink) !important;
   }
 
   .ticket-screen-type {
-    background: #ffffff !important;
-    color: #000000 !important;
-    border: 1px solid #111111 !important;
+    background: var(--color-white) !important;
+    color: var(--color-ink) !important;
+    border: 1px solid var(--color-ink) !important;
   }
 
   .ticket-poster {
-    border: 1px solid #111111 !important;
+    border: 1px solid var(--color-ink) !important;
   }
 
   .ticket-perforation {
@@ -2606,7 +2584,7 @@ a:hover {
   }
 
   .ticket-dashes {
-    border-top: 2px dashed #555555 !important;
+    border-top: 2px dashed var(--color-print-muted) !important;
   }
 
   .ticket-notch {
@@ -2641,8 +2619,8 @@ a:hover {
 .admin-sidebar {
   width: var(--admin-sidebar-w);
   flex: 0 0 var(--admin-sidebar-w);
-  background: #18191b;
-  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  background: var(--color-bg);
+  border-right: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   padding: 1.15rem 0.85rem;
   display: flex;
   flex-direction: column;
@@ -2658,7 +2636,7 @@ a:hover {
   align-items: center;
   gap: 0.6rem;
   padding: 0.35rem 0.5rem 0.9rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(var(--color-neutral-rgb), 0.06);
 }
 
 .admin-sidebar-mark {
@@ -2669,7 +2647,7 @@ a:hover {
   margin: 0;
   font-weight: 800;
   font-size: 1rem;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .admin-sidebar-role {
@@ -2677,7 +2655,7 @@ a:hover {
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #ffe27a;
+  color: var(--color-primary-light);
   font-weight: 700;
 }
 
@@ -2686,8 +2664,8 @@ a:hover {
   align-items: center;
   gap: 0.6rem;
   padding: 0.6rem 0.55rem;
-  background: rgba(255, 212, 59, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-primary-rgb), 0.08);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: 10px;
 }
 
@@ -2700,8 +2678,8 @@ a:hover {
   height: 30px;
   flex: 0 0 30px;
   border-radius: 50%;
-  background: #ffd43b;
-  color: #111213;
+  background: var(--color-primary);
+  color: var(--color-bg);
   font-weight: 700;
   font-size: 0.78rem;
 }
@@ -2715,7 +2693,7 @@ a:hover {
 .admin-sidebar-user-name {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #f5f5f5;
+  color: var(--color-text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2741,7 +2719,7 @@ a:hover {
   gap: 0.65rem;
   padding: 0.6rem 0.7rem;
   border-radius: 9px;
-  color: #d0d0d0;
+  color: var(--color-muted);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -2754,14 +2732,14 @@ a:hover {
 }
 
 .admin-nav-link:hover {
-  background: rgba(255, 212, 59, 0.12);
-  color: #fff0a6;
+  background: rgba(var(--color-primary-rgb), 0.12);
+  color: var(--color-primary-light);
 }
 
 .admin-nav-link.active {
-  background: rgba(255, 212, 59, 0.2);
-  border-color: rgba(255, 255, 255, 0.16);
-  color: #ffffff;
+  background: rgba(var(--color-primary-rgb), 0.2);
+  border-color: rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-white);
   font-weight: 600;
 }
 
@@ -2782,15 +2760,15 @@ a:hover {
   letter-spacing: 0.05em;
   padding: 0.12rem 0.35rem;
   border-radius: 5px;
-  background: rgba(160, 160, 160, 0.16);
-  color: #a1a1a1;
+  background: rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-muted);
   white-space: nowrap;
 }
 
 .admin-sidebar-footer {
   margin-top: auto;
   padding-top: 0.85rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(var(--color-neutral-rgb), 0.06);
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -2824,8 +2802,8 @@ a:hover {
   flex-wrap: wrap;
   padding: 1rem 1.5rem;
   min-height: var(--admin-header-h);
-  background: #1a1b1d;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  background: var(--color-surface);
+  border-bottom: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   position: sticky;
   top: 0;
   z-index: 20;
@@ -2841,8 +2819,8 @@ a:hover {
 .admin-menu-toggle {
   display: none;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #ffe27a;
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-primary-light);
   border-radius: 9px;
   width: 40px;
   height: 40px;
@@ -2855,7 +2833,7 @@ a:hover {
   margin: 0;
   font-size: clamp(1.15rem, 2.6vw, 1.5rem);
   font-weight: 800;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .admin-header-subtitle {
@@ -2890,7 +2868,7 @@ a:hover {
   gap: 0.45rem;
   font-size: 0.83rem;
   font-weight: 600;
-  color: #f5f5f5;
+  color: var(--color-text);
   white-space: nowrap;
 }
 
@@ -2906,7 +2884,7 @@ a:hover {
 
 .admin-panel {
   background: var(--color-surface);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: var(--radius);
   padding: 1.15rem 1.25rem;
   min-width: 0;
@@ -2939,7 +2917,7 @@ a:hover {
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
-  color: #fff0a6;
+  color: var(--color-primary-light);
 }
 
 .admin-panel-sub {
@@ -2955,14 +2933,14 @@ a:hover {
 }
 
 .admin-panel-total strong {
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .admin-panel-note {
   margin: 0.5rem 0 0;
   font-size: 0.73rem;
   line-height: 1.5;
-  color: #888888;
+  color: var(--color-muted);
 }
 
 .admin-grid-2 {
@@ -2981,7 +2959,7 @@ a:hover {
 
 .admin-stat-card {
   background: var(--color-surface);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: 10px;
   padding: 0.95rem 1.05rem;
   min-width: 0;
@@ -2990,7 +2968,7 @@ a:hover {
 .admin-stat-card--success,
 .admin-stat-card--warning,
 .admin-stat-card--accent {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .admin-stat-icon {
@@ -3012,7 +2990,7 @@ a:hover {
   margin: 0.3rem 0 0;
   font-size: 1.5rem;
   font-weight: 800;
-  color: #f5f5f5;
+  color: var(--color-text);
   line-height: 1.15;
   overflow-wrap: anywhere;
 }
@@ -3030,17 +3008,17 @@ a:hover {
   font-weight: 600;
   padding: 0.5rem 0.95rem;
   border-radius: 9px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   background: transparent;
-  color: #ffe27a;
+  color: var(--color-primary-light);
   cursor: pointer;
   transition: background var(--transition), color var(--transition);
   white-space: nowrap;
 }
 
 .admin-btn:hover:not(:disabled) {
-  background: rgba(255, 212, 59, 0.15);
-  color: #f5f5f5;
+  background: rgba(var(--color-primary-rgb), 0.15);
+  color: var(--color-text);
 }
 
 .admin-btn:disabled {
@@ -3049,20 +3027,20 @@ a:hover {
 }
 
 .admin-btn--primary {
-  background: #ffd43b;
+  background: var(--color-primary);
   border-color: transparent;
-  color: #111213;
+  color: var(--color-bg);
 }
 
 .admin-btn--primary:hover:not(:disabled) {
-  background: #e6b800;
-  color: #111213;
+  background: var(--color-primary-hover);
+  color: var(--color-bg);
 }
 
 .admin-link-btn {
   background: none;
   border: none;
-  color: #ffe27a;
+  color: var(--color-primary-light);
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
@@ -3071,13 +3049,13 @@ a:hover {
 }
 
 .admin-link-btn:hover {
-  color: #ffe27a;
+  color: var(--color-primary-light);
   text-decoration: underline;
 }
 
 .admin-segmented {
   display: inline-flex;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: 9px;
   overflow: hidden;
 }
@@ -3096,17 +3074,17 @@ a:hover {
 }
 
 .admin-segmented-btn + .admin-segmented-btn {
-  border-left: 1px solid rgba(255, 255, 255, 0.16);
+  border-left: 1px solid rgba(var(--color-neutral-rgb), 0.16);
 }
 
 .admin-segmented-btn:hover {
-  background: rgba(255, 212, 59, 0.12);
-  color: #fff0a6;
+  background: rgba(var(--color-primary-rgb), 0.12);
+  color: var(--color-primary-light);
 }
 
 .admin-segmented-btn.active {
-  background: rgba(255, 212, 59, 0.28);
-  color: #ffffff;
+  background: rgba(var(--color-primary-rgb), 0.28);
+  color: var(--color-white);
 }
 
 
@@ -3132,13 +3110,13 @@ a:hover {
   align-items: center;
   gap: 0.4rem;
   font-size: 0.83rem;
-  color: #d0d0d0;
+  color: var(--color-muted);
 }
 
 .admin-breakdown-value {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
   white-space: nowrap;
 }
 
@@ -3152,30 +3130,30 @@ a:hover {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #858585;
+  background: var(--color-muted);
   flex: 0 0 8px;
 }
 
 .admin-dot--success {
-  background: #4ade80;
+  background: var(--color-success);
 }
 
 .admin-dot--warning {
-  background: #ffd43b;
+  background: var(--color-primary);
 }
 
 .admin-dot--danger {
-  background: #f87171;
+  background: var(--color-error);
 }
 
 .admin-dot--neutral {
-  background: #858585;
+  background: var(--color-muted);
 }
 
 .admin-bar-track {
   height: 8px;
   border-radius: 5px;
-  background: rgba(160, 160, 160, 0.14);
+  background: rgba(var(--color-neutral-rgb), 0.14);
   overflow: hidden;
 }
 
@@ -3186,24 +3164,24 @@ a:hover {
 .admin-bar-fill {
   height: 100%;
   border-radius: 5px;
-  background: rgba(160, 160, 160, 0.6);
+  background: rgba(var(--color-neutral-rgb), 0.6);
   transition: width var(--transition);
 }
 
 .admin-bar-fill--success {
-  background: #4ade80;
+  background: var(--color-success);
 }
 
 .admin-bar-fill--warning {
-  background: #ffd43b;
+  background: var(--color-primary);
 }
 
 .admin-bar-fill--danger {
-  background: #f87171;
+  background: var(--color-error);
 }
 
 .admin-bar-fill--default {
-  background: #ffd43b;
+  background: var(--color-primary);
 }
 
 
@@ -3233,7 +3211,7 @@ a:hover {
   display: block;
   height: 12px;
   border-radius: 4px;
-  background: rgba(160, 160, 160, 0.1);
+  background: rgba(var(--color-neutral-rgb), 0.1);
   overflow: hidden;
   min-width: 0;
 }
@@ -3242,17 +3220,17 @@ a:hover {
   display: block;
   height: 100%;
   border-radius: 4px;
-  background: rgba(160, 160, 160, 0.22);
+  background: rgba(var(--color-neutral-rgb), 0.22);
 }
 
 .admin-trend-bar.has-value {
-  background: #ffd43b;
+  background: var(--color-primary);
 }
 
 .admin-trend-revenue {
   font-size: 0.78rem;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
   text-align: right;
   white-space: nowrap;
 }
@@ -3270,7 +3248,7 @@ a:hover {
 
 .admin-trend-table {
   margin-top: 0.9rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid rgba(var(--color-neutral-rgb), 0.07);
   padding-top: 0.7rem;
 }
 
@@ -3278,7 +3256,7 @@ a:hover {
   cursor: pointer;
   font-size: 0.78rem;
   font-weight: 600;
-  color: #ffe27a;
+  color: var(--color-primary-light);
   margin-bottom: 0.6rem;
 }
 
@@ -3306,10 +3284,10 @@ a:hover {
 }
 
 .admin-input {
-  background: rgba(17, 18, 19, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-bg-rgb), 0.8);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: 8px;
-  color: #f5f5f5;
+  color: var(--color-text);
   font-family: inherit;
   font-size: 0.82rem;
   padding: 0.45rem 0.6rem;
@@ -3317,8 +3295,8 @@ a:hover {
 }
 
 .admin-input:focus {
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
+  border-color: rgba(var(--color-neutral-rgb), 0.5);
+  box-shadow: 0 0 0 2px rgba(var(--color-neutral-rgb), 0.12);
 }
 
 .admin-daterange-actions {
@@ -3330,7 +3308,7 @@ a:hover {
 .admin-field-error {
   margin: 0.75rem 0 0;
   font-size: 0.8rem;
-  color: #fca5a5;
+  color: var(--color-error);
 }
 
 .admin-daterange-result {
@@ -3339,7 +3317,7 @@ a:hover {
   gap: 0.9rem;
   margin-top: 1.1rem;
   padding-top: 0.9rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid rgba(var(--color-neutral-rgb), 0.07);
 }
 
 .admin-daterange-stat {
@@ -3359,18 +3337,18 @@ a:hover {
 .admin-daterange-value {
   font-size: 1.15rem;
   font-weight: 800;
-  color: #f5f5f5;
+  color: var(--color-text);
   overflow-wrap: anywhere;
 }
 
 .admin-daterange-value--money {
-  color: #4ade80;
+  color: var(--color-success);
 }
 
 .admin-daterange-value--small {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #d0d0d0;
+  color: var(--color-muted);
 }
 
 
@@ -3392,7 +3370,7 @@ a:hover {
 .admin-table td {
   padding: 0.6rem 0.7rem;
   text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(var(--color-neutral-rgb), 0.06);
   vertical-align: middle;
 }
 
@@ -3403,11 +3381,11 @@ a:hover {
   color: var(--color-muted);
   font-weight: 700;
   white-space: nowrap;
-  background: rgba(255, 212, 59, 0.07);
+  background: rgba(var(--color-primary-rgb), 0.07);
 }
 
 .admin-table tbody tr:hover {
-  background: rgba(255, 212, 59, 0.06);
+  background: rgba(var(--color-primary-rgb), 0.06);
 }
 
 .admin-table tbody tr:last-child td {
@@ -3422,7 +3400,7 @@ a:hover {
 
 .admin-num--money {
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .admin-nowrap {
@@ -3432,7 +3410,7 @@ a:hover {
 .admin-ref {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.76rem;
-  color: #ffe27a;
+  color: var(--color-primary-light);
   white-space: nowrap;
 }
 
@@ -3444,7 +3422,7 @@ a:hover {
 
 .admin-cell-strong {
   display: block;
-  color: #f5f5f5;
+  color: var(--color-text);
   font-weight: 600;
 }
 
@@ -3458,7 +3436,7 @@ a:hover {
 .admin-seat-count {
   display: block;
   font-weight: 600;
-  color: #d0d0d0;
+  color: var(--color-muted);
 }
 
 .admin-movie-cell {
@@ -3482,7 +3460,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   font-size: 0.85rem;
-  color: rgba(255, 226, 122, 0.6);
+  color: rgba(var(--color-primary-rgb), 0.6);
 }
 
 .admin-occupancy-cell {
@@ -3503,7 +3481,7 @@ a:hover {
 .admin-occupancy-pct {
   font-size: 0.76rem;
   font-weight: 700;
-  color: #d0d0d0;
+  color: var(--color-muted);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
@@ -3525,7 +3503,7 @@ a:hover {
 .admin-section-error {
   margin: 0 0 0.4rem;
   font-size: 0.84rem;
-  color: #fca5a5;
+  color: var(--color-error);
 }
 
 .admin-skeleton-grid {
@@ -3538,7 +3516,7 @@ a:hover {
 .admin-skeleton-card {
   height: 88px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(var(--color-neutral-rgb), 0.07);
 }
 
 
@@ -3556,7 +3534,7 @@ a:hover {
 .admin-placeholder-title {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
   margin-bottom: 0.6rem;
 }
 
@@ -3587,7 +3565,7 @@ a:hover {
 
 .admin-placeholder-list li {
   font-size: 0.85rem;
-  color: #d0d0d0;
+  color: var(--color-muted);
   padding-left: 1.1rem;
   position: relative;
 }
@@ -3596,7 +3574,7 @@ a:hover {
   content: "•";
   position: absolute;
   left: 0.25rem;
-  color: #ffe27a;
+  color: var(--color-primary-light);
 }
 
 .admin-placeholder-actions {
@@ -3635,7 +3613,7 @@ a:hover {
     z-index: 50;
     border: none;
     padding: 0;
-    background: rgba(5, 5, 12, 0.6);
+    background: rgba(var(--color-bg-rgb), 0.6);
     cursor: pointer;
   }
 }
@@ -3704,9 +3682,9 @@ a:hover {
   .admin-panel,
   .admin-stat-card {
     break-inside: avoid;
-    background: #ffffff !important;
-    border-color: #cccccc !important;
-    color: #000000 !important;
+    background: var(--color-white) !important;
+    border-color: var(--color-muted) !important;
+    color: var(--color-ink) !important;
   }
 }
 
@@ -3719,19 +3697,19 @@ a:hover {
   gap: 0.7rem;
   padding: 0.85rem 1rem;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 212, 59, 0.12);
-  color: #f5f5f5;
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
+  background: rgba(var(--color-primary-rgb), 0.12);
+  color: var(--color-text);
 }
 
 .admin-banner--success {
-  border-color: rgba(74, 222, 128, 0.45);
-  background: rgba(74, 222, 128, 0.12);
+  border-color: rgba(var(--color-primary-rgb), 0.45);
+  background: rgba(var(--color-primary-rgb), 0.12);
 }
 
 .admin-banner--error {
-  border-color: rgba(248, 113, 113, 0.5);
-  background: rgba(248, 113, 113, 0.12);
+  border-color: rgba(var(--color-alert-rgb), 0.5);
+  background: rgba(var(--color-alert-rgb), 0.12);
 }
 
 .admin-banner-icon {
@@ -3753,7 +3731,7 @@ a:hover {
 .admin-banner-text {
   margin: 0;
   font-size: 0.85rem;
-  color: #d0d0d0;
+  color: var(--color-muted);
   overflow-wrap: anywhere;
 }
 
@@ -3779,28 +3757,28 @@ a:hover {
   letter-spacing: 0.05em;
   padding: 0.22rem 0.5rem;
   border-radius: 6px;
-  background: rgba(255, 212, 59, 0.22);
-  color: #ffe27a;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-primary-rgb), 0.22);
+  color: var(--color-primary-light);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   white-space: nowrap;
 }
 
 .admin-badge--ok {
-  background: rgba(74, 222, 128, 0.16);
-  color: #4ade80;
-  border-color: rgba(74, 222, 128, 0.4);
+  background: rgba(var(--color-primary-rgb), 0.16);
+  color: var(--color-success);
+  border-color: rgba(var(--color-primary-rgb), 0.4);
 }
 
 .admin-badge--danger {
-  background: rgba(248, 113, 113, 0.16);
-  color: #f87171;
-  border-color: rgba(248, 113, 113, 0.4);
+  background: rgba(var(--color-alert-rgb), 0.16);
+  color: var(--color-error);
+  border-color: rgba(var(--color-alert-rgb), 0.4);
 }
 
 .admin-badge--muted {
-  background: rgba(160, 160, 160, 0.16);
-  color: #a1a1a1;
-  border-color: rgba(160, 160, 160, 0.3);
+  background: rgba(var(--color-neutral-rgb), 0.16);
+  color: var(--color-muted);
+  border-color: rgba(var(--color-neutral-rgb), 0.3);
 }
 
 
@@ -3814,7 +3792,7 @@ a:hover {
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
-  color: #fff0a6;
+  color: var(--color-primary-light);
 }
 
 .admin-form-grid {
@@ -3845,7 +3823,7 @@ a:hover {
 .admin-field-hint {
   margin: 0;
   font-size: 0.72rem;
-  color: #888888;
+  color: var(--color-muted);
 }
 
 .admin-input:disabled,
@@ -3857,15 +3835,15 @@ a:hover {
 .admin-form-note {
   margin: 0;
   font-size: 0.82rem;
-  color: #d0d0d0;
-  background: rgba(255, 212, 59, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--color-muted);
+  background: rgba(var(--color-primary-rgb), 0.1);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: 8px;
   padding: 0.6rem 0.85rem;
 }
 
 .admin-form-note strong {
-  color: #ffd43b;
+  color: var(--color-primary);
 }
 
 .admin-form-note-sub {
@@ -3880,13 +3858,13 @@ a:hover {
 }
 
 .admin-btn--danger {
-  border-color: rgba(248, 113, 113, 0.5);
-  color: #f87171;
+  border-color: rgba(var(--color-alert-rgb), 0.5);
+  color: var(--color-error);
 }
 
 .admin-btn--danger:hover:not(:disabled) {
-  background: rgba(248, 113, 113, 0.15);
-  color: #fca5a5;
+  background: rgba(var(--color-alert-rgb), 0.15);
+  color: var(--color-error);
 }
 
 
@@ -3901,15 +3879,15 @@ a:hover {
 
 .admin-filter-bar {
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(var(--color-neutral-rgb), 0.07);
 }
 
 .admin-link-btn--danger {
-  color: #f87171;
+  color: var(--color-error);
 }
 
 .admin-link-btn--danger:hover {
-  color: #fca5a5;
+  color: var(--color-error);
 }
 
 .admin-row-actions {
@@ -3943,7 +3921,7 @@ a:hover {
   flex-wrap: wrap;
   margin-top: 1.1rem;
   padding-top: 0.9rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid rgba(var(--color-neutral-rgb), 0.07);
 }
 
 .admin-pagination-status {
@@ -3952,7 +3930,7 @@ a:hover {
 }
 
 .admin-pagination-status strong {
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .admin-pagination-range {
@@ -3977,8 +3955,8 @@ a:hover {
   display: grid;
   grid-template-columns: 96px 1fr;
   gap: 0.9rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-neutral-rgb), 0.03);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: 10px;
   padding: 0.9rem;
   min-width: 0;
@@ -4002,7 +3980,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   font-size: 1.6rem;
-  color: rgba(255, 226, 122, 0.6);
+  color: rgba(var(--color-primary-rgb), 0.6);
 }
 
 .admin-movie-body {
@@ -4016,14 +3994,14 @@ a:hover {
   margin: 0;
   font-size: 0.98rem;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
   overflow-wrap: anywhere;
 }
 
 .admin-movie-meta {
   margin: 0;
   font-size: 0.75rem;
-  color: #a1a1a1;
+  color: var(--color-muted);
   overflow-wrap: anywhere;
 }
 
@@ -4045,7 +4023,7 @@ a:hover {
 .admin-movie-facts dd {
   margin: 0;
   font-size: 0.8rem;
-  color: #f5f5f5;
+  color: var(--color-text);
 }
 
 .admin-movie-status-row {
@@ -4085,8 +4063,8 @@ a:hover {
   display: grid;
   grid-template-columns: 76px 1fr;
   gap: 0.8rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(var(--color-neutral-rgb), 0.03);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: 10px;
   padding: 0.8rem;
   min-width: 0;
@@ -4110,7 +4088,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   font-size: 1.3rem;
-  color: rgba(255, 226, 122, 0.6);
+  color: rgba(var(--color-primary-rgb), 0.6);
 }
 
 .admin-search-body {
@@ -4124,7 +4102,7 @@ a:hover {
   margin: 0;
   font-size: 0.92rem;
   font-weight: 700;
-  color: #f5f5f5;
+  color: var(--color-text);
   overflow-wrap: anywhere;
 }
 
@@ -4132,14 +4110,14 @@ a:hover {
 .admin-search-genres {
   margin: 0;
   font-size: 0.74rem;
-  color: #a1a1a1;
+  color: var(--color-muted);
   overflow-wrap: anywhere;
 }
 
 .admin-search-overview {
   margin: 0;
   font-size: 0.75rem;
-  color: #888888;
+  color: var(--color-muted);
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -4166,25 +4144,25 @@ a:hover {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: #ffe27a;
+  color: var(--color-primary-light);
 }
 
 .admin-detail-amount {
-  color: #ffd43b;
+  color: var(--color-primary);
 }
 
 .admin-detail-actions {
   margin-top: 1.25rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid rgba(var(--color-neutral-rgb), 0.07);
 }
 
 .admin-detail-note {
   margin: 0;
   font-size: 0.82rem;
-  color: #d0d0d0;
-  background: rgba(255, 212, 59, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--color-muted);
+  background: rgba(var(--color-primary-rgb), 0.1);
+  border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: 8px;
   padding: 0.7rem 0.9rem;
   line-height: 1.5;

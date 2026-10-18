@@ -1,3 +1,4 @@
+import AppIcon from "../ui/AppIcon"
 
 
 export const formatPaymentStatus = (status, failureReason) => {
@@ -38,13 +39,13 @@ export const formatBookingStatus = (status) => {
 export const paymentStatusClass = (status) => {
   switch (status) {
     case "paid":
-      return "bg-success"
+      return "state-badge state-badge--positive"
     case "failed":
-      return "bg-danger"
+      return "state-badge state-badge--negative"
     case "refunded":
-      return "bg-secondary"
+      return "state-badge"
     default:
-      return "bg-warning text-dark"
+      return "state-badge state-badge--pending"
   }
 }
 
@@ -52,12 +53,12 @@ export const paymentStatusClass = (status) => {
 export const bookingStatusClass = (status) => {
   switch (status) {
     case "confirmed":
-      return "bg-success"
+      return "state-badge state-badge--positive"
     case "cancelled":
     case "expired":
-      return "bg-secondary"
+      return "state-badge"
     default:
-      return "bg-info text-dark"
+      return "state-badge state-badge--pending"
   }
 }
 
@@ -67,6 +68,7 @@ export const PaymentStatusBadge = ({ status, failureReason }) => {
   if (!status) return null
   return (
     <span className={`badge ${paymentStatusClass(status)}`} style={BADGE_STYLE}>
+      <AppIcon name={status === "paid" ? "check" : status === "failed" ? "alert" : "clock"} size={14} />
       {formatPaymentStatus(status, failureReason)}
     </span>
   )
@@ -76,6 +78,7 @@ export const BookingStatusBadge = ({ status }) => {
   if (!status) return null
   return (
     <span className={`badge ${bookingStatusClass(status)}`} style={BADGE_STYLE}>
+      <AppIcon name={status === "confirmed" ? "check" : status === "cancelled" || status === "expired" ? "ban" : "clock"} size={14} />
       {formatBookingStatus(status)}
     </span>
   )

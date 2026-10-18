@@ -1,0 +1,116 @@
+/* Shared control and status treatment for customer and admin screens. */
+html { accent-color: var(--color-primary); }
+::selection { background: var(--color-primary); color: var(--color-bg); }
+
+/* Bootstrap utilities must follow the same palette as custom components. */
+.bg-primary, .bg-warning, .bg-success,
+.text-bg-primary, .text-bg-warning, .text-bg-success {
+  background-color: var(--color-primary) !important;
+  color: var(--color-bg) !important;
+}
+.bg-danger, .bg-info, .bg-secondary,
+.text-bg-danger, .text-bg-info, .text-bg-secondary {
+  background-color: var(--color-card) !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border-strong);
+}
+.text-danger, .text-info { color: var(--color-text) !important; }
+.text-success, .text-warning, .text-primary { color: var(--color-primary) !important; }
+
+.btn-success {
+  --bs-btn-color: var(--color-bg);
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-hover-color: var(--color-bg);
+  --bs-btn-hover-bg: var(--color-primary-light);
+  --bs-btn-hover-border-color: var(--color-primary-light);
+  --bs-btn-active-color: var(--color-bg);
+  --bs-btn-active-bg: var(--color-primary-hover);
+  --bs-btn-active-border-color: var(--color-primary-hover);
+  --bs-btn-disabled-color: var(--color-bg);
+  --bs-btn-disabled-bg: var(--color-primary);
+  --bs-btn-disabled-border-color: var(--color-primary);
+}
+.btn-danger, .btn-outline-danger {
+  --bs-btn-color: var(--color-text);
+  --bs-btn-bg: var(--color-card);
+  --bs-btn-border-color: var(--color-border-strong);
+  --bs-btn-hover-color: var(--color-text);
+  --bs-btn-hover-bg: var(--color-surface);
+  --bs-btn-hover-border-color: var(--color-text);
+  --bs-btn-active-color: var(--color-text);
+  --bs-btn-active-bg: var(--color-bg);
+  --bs-btn-active-border-color: var(--color-text);
+  --bs-btn-disabled-color: var(--color-muted);
+  --bs-btn-disabled-bg: var(--color-card);
+  --bs-btn-disabled-border-color: var(--color-border);
+  border-style: dashed;
+}
+.btn-outline-warning {
+  --bs-btn-color: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-hover-color: var(--color-bg);
+  --bs-btn-hover-bg: var(--color-primary);
+  --bs-btn-hover-border-color: var(--color-primary);
+  --bs-btn-active-color: var(--color-bg);
+  --bs-btn-active-bg: var(--color-primary-hover);
+  --bs-btn-active-border-color: var(--color-primary);
+}
+.btn { --bs-btn-focus-shadow-rgb: var(--color-primary-rgb); }
+.btn-primary-grad:hover, .btn-primary-grad:focus-visible { color: var(--color-bg); }
+
+.alert-success, .alert-warning, .alert-info, .alert-danger {
+  --bs-alert-color: var(--color-text);
+  --bs-alert-bg: var(--color-card);
+  --bs-alert-border-color: var(--color-border-strong);
+  --bs-alert-link-color: var(--color-primary-light);
+}
+.alert-success, .alert-warning { border-left: 3px solid var(--color-primary); }
+.alert-error, .alert-danger, .admin-banner--error, .alert-expired-box,
+.verification-status.is-invalid { border-style: dashed; }
+.alert-error, .alert-success { line-height: 1.6; }
+
+.state-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  padding: .5rem .75rem;
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: normal;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 6px;
+  background: var(--color-card);
+  color: var(--color-muted);
+}
+.state-badge--positive { color: var(--color-primary); background: var(--color-accent-soft); border-color: var(--color-primary); }
+.state-badge--pending { color: var(--color-text); border-style: dashed; }
+.state-badge--negative { color: var(--color-text); border-style: dashed; background: var(--color-bg); }
+.state-badge svg { flex-shrink: 0; }
+.ticket-paid-pill { background: var(--color-accent-soft); color: var(--color-primary); border-color: var(--color-primary); }
+.ticket-confirmed-pill { color: var(--color-text); background: var(--color-card); border-color: var(--color-border-strong); }
+
+.form-control:focus, .form-select:focus, .search-input:focus, .admin-input:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), .16) !important;
+}
+.form-check-input:checked { background-color: var(--color-primary); border-color: var(--color-primary); }
+.form-check-input:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), .16); }
+.invalid-feedback, .valid-feedback { color: var(--color-text); }
+.form-control.is-invalid, .form-select.is-invalid { border-color: var(--color-text) !important; background-image: none; }
+.progress { --bs-progress-bar-bg: var(--color-primary); }
+
+/* Seat state remains distinguishable without red/green colour coding. */
+.seat-btn.available:hover { background: var(--color-card); border-color: var(--color-primary); color: var(--color-primary); }
+.seat-btn.selected { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.seat-btn.unavailable { border-style: dashed; }
+.seat-btn.unavailable .seat-number { text-decoration: line-through; }
+.legend-badge.unavailable { border-style: dashed; }
+.admin-bar-fill--danger { background: repeating-linear-gradient(135deg, var(--color-muted) 0 4px, var(--color-card) 4px 6px); }
+.admin-bar-fill--warning { background: var(--color-primary-light); }
+.admin-nav-link.active { color: var(--color-primary); border-left-color: var(--color-primary); }
+
+@media print {
+  .state-badge, .ticket-paid-pill, .ticket-confirmed-pill { color: var(--color-ink) !important; background: var(--color-white) !important; border-color: var(--color-ink) !important; }
+}

@@ -6,15 +6,15 @@ const Footer = () => {
   return (
     <footer
       style={{
-        background: "#1a1b1d",
-        borderTop: "1px solid rgba(255, 255, 255, 0.16)",
+        background: "var(--color-surface)",
+        borderTop: "1px solid rgba(var(--color-neutral-rgb), 0.16)",
         padding: "1.5rem 0",
         marginTop: "auto"
       }}
     >
       <div className="container text-center">
         <p style={{ color: "var(--color-muted)", fontSize: "0.85rem", margin: 0 }}>
-          <span style={{ color: "#ffe27a", fontWeight: 600 }}>
+          <span style={{ color: "var(--color-primary-light)", fontWeight: 600 }}>
             <AppIcon name="film" size={15} style={{ verticalAlign: "text-bottom", marginRight: "0.35rem" }} />
             CineBook
           </span>

@@ -1,5 +1,5 @@
 /* CineBook experience: existing charcoal surfaces and ticket-yellow accent. */
-:root { --radius-small: 6px; --radius-medium: 12px; --color-focus: #ffe27a; }
+:root { --radius-small: 6px; --radius-medium: 12px; --color-focus: var(--color-primary-light); }
 :focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; }
 .skip-link { position: fixed; left: 1rem; top: -6rem; z-index: 2000; background: var(--color-primary); color: var(--color-bg); padding: .75rem 1rem; border-radius: var(--radius-small); }
 .skip-link:focus { top: 1rem; }
@@ -97,7 +97,7 @@
 
 /* A white quiet zone keeps printed and on-screen QR codes easy to scan. */
 .ticket-qr-block { display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem 2rem; border-top: 1px solid var(--color-border); }
-.ticket-qr-block > svg { flex-shrink: 0; display: block; background: white; max-width: 100%; height: auto; }
+.ticket-qr-block > svg { flex-shrink: 0; display: block; background: var(--color-white); max-width: 100%; height: auto; }
 .ticket-qr-caption { min-width: 0; font-size: .875rem; }
 .ticket-qr-caption p { color: var(--color-muted); margin: .5rem 0; }
 .ticket-qr-caption small { display: block; color: var(--color-muted); margin-top: .75rem; }
@@ -122,6 +122,6 @@
   .site-nav, .skip-link { display: none !important; }
   .ticket-qr-block { break-inside: avoid; padding: 1rem; }
   .ticket-qr-block > svg { width: 42mm; height: 42mm; }
-  .ticket-qr-caption, .ticket-qr-caption p, .ticket-qr-caption small { color: #000 !important; }
+  .ticket-qr-caption, .ticket-qr-caption p, .ticket-qr-caption small { color: var(--color-ink) !important; }
   .ticket-qr-caption a { display: none; }
 }

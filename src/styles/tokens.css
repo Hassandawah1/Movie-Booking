@@ -1,0 +1,50 @@
+/* Three colour families: ticket yellow, charcoal, and white/neutral text.
+   All interface colours belong here. Posters retain their original artwork. */
+:root {
+  color-scheme: dark;
+  --color-primary: #ffd43b;
+  --color-primary-light: #ffe27a;
+  --color-primary-hover: #f0c52e;
+  --color-primary-rgb: 255, 212, 59;
+  --color-bg: #111213;
+  --color-bg-rgb: 17, 18, 19;
+  --color-surface: #1a1b1d;
+  --color-card: #202123;
+  --color-text: #f5f5f5;
+  --color-neutral-rgb: 245, 245, 245;
+  --color-muted: #bcbcbc;
+  --color-border: rgba(var(--color-neutral-rgb), 0.16);
+  --color-border-strong: rgba(var(--color-neutral-rgb), 0.4);
+  --color-accent-soft: rgba(var(--color-primary-rgb), 0.12);
+  --color-success: var(--color-primary);
+  --color-error: var(--color-text);
+  --color-alert-rgb: var(--color-neutral-rgb);
+  --color-focus: var(--color-primary-light);
+  --color-white: #fff;
+  --color-ink: #111;
+  --color-ink-rgb: 17, 17, 17;
+  --color-paper-muted: #f2f2f2;
+  --color-print-muted: #555;
+  --radius: 12px;
+  --transition: 0.2s ease;
+
+  --bs-primary: var(--color-primary);
+  --bs-primary-rgb: var(--color-primary-rgb);
+  --bs-warning: var(--color-primary);
+  --bs-warning-rgb: var(--color-primary-rgb);
+  --bs-success-rgb: var(--color-primary-rgb);
+  --bs-danger-rgb: var(--color-neutral-rgb);
+  --bs-info-rgb: var(--color-neutral-rgb);
+  --bs-secondary-rgb: var(--color-neutral-rgb);
+  --bs-link-color: var(--color-primary-light);
+  --bs-link-color-rgb: var(--color-primary-rgb);
+  --bs-link-hover-color: var(--color-primary);
+  --bs-link-hover-color-rgb: var(--color-primary-rgb);
+  --bs-body-color: var(--color-text);
+  --bs-body-bg: var(--color-bg);
+  --bs-secondary-color: var(--color-muted);
+  --bs-border-color: var(--color-border);
+  --bs-tertiary-bg: var(--color-card);
+  --bs-emphasis-color: var(--color-text);
+  --bs-emphasis-color-rgb: var(--color-neutral-rgb);
+}

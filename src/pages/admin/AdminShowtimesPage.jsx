@@ -15,6 +15,11 @@ import {
   getAllMovies,
   getScreens
 } from "../../services/admin.service"
+const hasScreeningStarted = (showtime) => {
+  if (!showtime.showDate || !showtime.startTime) return false
+  return new Date(`${showtime.showDate.slice(0, 10)}T${showtime.startTime}:00+01:00`) <= new Date()
+}
+
 
 const STATUS_FILTERS = [
   { id: "", label: "All" },
@@ -248,6 +253,10 @@ const AdminShowtimesPage = () => {
           </section>
         )}
 
+        {showtimes.some(st => st.status === "scheduled" && hasScreeningStarted(st)) && (
+          <AdminBanner tone="warning" message="Some listed screenings are in the past. Customers only see upcoming sessions. Schedule a new screening to make those movies bookable again." />
+        )}
+
         <section className="admin-panel admin-panel--wide" data-panel="showtime-list" aria-label="Showtime list">
           <div className="admin-panel-head">
             <div>
@@ -385,6 +394,7 @@ const AdminShowtimesPage = () => {
                       </td>
                       <td className="admin-nowrap">{occupancyOf(st)}</td>
                       <td>
+                        {st.status === "scheduled" && hasScreeningStarted(st) && <span className="admin-cell-sub">Past screening · hidden from customers</span>}
                         <span
                           className={`admin-badge ${
                             st.status === "scheduled"

@@ -75,13 +75,13 @@ const ProfilePage = () => {
                 width: "80px",
                 height: "80px",
                 borderRadius: "50%",
-                background: "#ffd43b",
+                background: "var(--color-primary)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 fontSize: "2rem",
                 fontWeight: 800,
-                color: "#111213",
+                color: "var(--color-bg)",
                 margin: "0 auto 1rem"
               }}
             >
@@ -93,8 +93,8 @@ const ProfilePage = () => {
           
           <div
             style={{
-              background: "#202123",
-              border: "1px solid rgba(255, 255, 255, 0.16)",
+              background: "var(--color-card)",
+              border: "1px solid rgba(var(--color-neutral-rgb), 0.16)",
               borderRadius: "10px",
               overflow: "hidden"
             }}
@@ -110,7 +110,7 @@ const ProfilePage = () => {
                   alignItems: "center",
                   gap: "1rem",
                   padding: "1rem 1.5rem",
-                  borderBottom: i < arr.length - 1 ? "1px solid rgba(255, 255, 255, 0.12)" : "none"
+                  borderBottom: i < arr.length - 1 ? "1px solid rgba(var(--color-neutral-rgb), 0.12)" : "none"
                 }}
               >
                 <span style={{ width: "28px", textAlign: "center" }}>
@@ -120,7 +120,7 @@ const ProfilePage = () => {
                   <p style={{ color: "var(--color-muted)", fontSize: "0.75rem", margin: 0, fontWeight: 500 }}>
                     {item.label}
                   </p>
-                  <p style={{ color: "#f5f5f5", fontSize: "0.95rem", margin: 0, fontWeight: 600 }}>
+                  <p style={{ color: "var(--color-text)", fontSize: "0.95rem", margin: 0, fontWeight: 600 }}>
                     {item.value}
                   </p>
                 </div>

@@ -10,3 +10,13 @@ The catalogue supports shareable status and search parameters, browser history, 
 At 320px use two compact poster columns and a collapsible navigation. At 768px use three columns; at 1024px expand navigation; at 1440px use four columns. The home introduction stacks at mobile widths. Avoid gradient-heavy panels, excessive rounding, unsupported feature claims, and hover-only actions.
 
 Visual changes are isolated in src/styles/experience.css, loaded after the existing stylesheet.
+
+## Colour contract
+
+Use three colour families throughout the customer and admin interfaces: ticket yellow for primary actions, selection and confirmed states; charcoal for page/surface depth; white and neutral text for content and secondary controls. Poster artwork is content and keeps its original colours. Printing and QR codes retain black/white contrast.
+
+`src/styles/tokens.css` owns colour literals and Bootstrap aliases. Components and existing styles reference semantic variables; `src/styles/theme.css` aligns Bootstrap controls, forms and utilities with custom components. Do not add local hex/RGB values to page components.
+
+The reference screens for this consistency pass are the existing public catalogue, printed/digital ticket, and admin dashboard. Preserve their layout and information hierarchy. Use flat charcoal surfaces, a yellow primary action, restrained borders, and neutral secondary actions. Avoid adding red, green, blue or purple status palettes.
+
+State must remain understandable without colour: labels and icons identify paid/pending/failed states, dashed borders mark pending/invalid notices, unavailable seats are disabled with struck-through numbers, and labelled chart rows retain their values. Yellow buttons use charcoal text; yellow text appears on dark surfaces. Errors retain explicit messages, alerts and their existing confirmation flows.

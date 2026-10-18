@@ -130,7 +130,7 @@ const PaymentCallbackPage = () => {
     <div className="container py-5 text-center">
       <div
         className="card border-0 rounded-4 p-4 mx-auto"
-        style={{ maxWidth: "560px", background: "#1a1b1d" }}
+        style={{ maxWidth: "560px", background: "var(--color-surface)" }}
       >
         <div style={{ marginBottom: "1rem" }}><AppIcon name={isNetworkFailure ? "radio" : "alert"} size={48} /></div>
 

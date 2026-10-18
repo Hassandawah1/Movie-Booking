@@ -16,7 +16,10 @@ const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null)
   const [showtimes, setShowtimes] = useState([])
   const [loading, setLoading] = useState(true)
-  const [loadingShowtimes, setLoadingShowtimes] = useState(false)
+  const [loadingShowtimes, setLoadingShowtimes] = useState(true)
+  const [showtimesError, setShowtimesError] = useState("")
+  const [scheduleSummary, setScheduleSummary] = useState(null)
+  const [showtimesAttempt, setShowtimesAttempt] = useState(0)
   const [error, setError] = useState("")
   const [posterError, setPosterError] = useState(false)
 
@@ -26,6 +29,9 @@ const MovieDetailsPage = () => {
 
     const loadMovie = async () => {
       setLoading(true)
+      setLoadingShowtimes(true)
+      setMovie(null)
+      setPosterError(false)
       setError("")
 
       try {
@@ -67,7 +73,14 @@ const MovieDetailsPage = () => {
     let isMounted = true
 
     const loadShowtimes = async () => {
-      if (!movie || movie.status === "ended") return
+      if (!movie || movie._id !== id) return
+      setShowtimes([])
+      setScheduleSummary(null)
+      setShowtimesError("")
+      if (movie.status === "ended") {
+        setLoadingShowtimes(false)
+        return
+      }
 
       setLoadingShowtimes(true)
       try {
@@ -76,10 +89,13 @@ const MovieDetailsPage = () => {
 
         if (data?.success) {
           setShowtimes(data.showtimes || [])
+          setScheduleSummary(data.scheduleSummary || null)
+        } else {
+          setShowtimesError(data?.message || "Unable to load showtimes. Please try again.")
         }
       } catch (err) {
         
-        console.warn("Could not fetch showtimes for movie:", err.message)
+        if (isMounted) setShowtimesError(err.response?.data?.message || "We couldn't load the screening schedule. Check your connection and try again.")
       } finally {
         if (isMounted) {
           setLoadingShowtimes(false)
@@ -94,7 +110,7 @@ const MovieDetailsPage = () => {
     return () => {
       isMounted = false
     }
-  }, [movie])
+  }, [movie, id, showtimesAttempt])
 
   
   const groupedShowtimes = useMemo(() => {
@@ -184,7 +200,7 @@ const MovieDetailsPage = () => {
           backgroundImage: backdropUrl
             ? `url(${backdropUrl})`
             : "none",
-          backgroundColor: "#111213"
+          backgroundColor: "var(--color-bg)"
         }}
       >
         <div className="container">
@@ -279,18 +295,28 @@ const MovieDetailsPage = () => {
             <div className="spinner"></div>
             <p>Loading showtimes…</p>
           </div>
+        ) : showtimesError ? (
+          <div className="no-showtimes-box" role="alert">
+            <AppIcon name="alert" size={32} />
+            <h3>Showtimes could not be loaded</h3>
+            <p>{showtimesError}</p>
+            <button className="btn-secondary-custom" type="button" onClick={() => setShowtimesAttempt(value => value + 1)}>Try again</button>
+          </div>
         ) : Object.keys(groupedShowtimes).length === 0 ? (
           <div className="no-showtimes-box">
             <div className="no-showtimes-icon"><AppIcon name="ticket" size={36} /></div>
-            <h3>No showtimes currently scheduled</h3>
+            <h3>No upcoming showtimes</h3>
             <p>
-              {status === "coming-soon"
-                ? "This movie is coming soon! Showtimes will be published closer to the release date."
-                : "No showtimes are currently available for this movie. Please check back later."}
+              {scheduleSummary?.pastCount > 0
+                ? `The last scheduled screening was ${formatDate(scheduleSummary.lastPastDate, { year: "numeric", timeZone: "Africa/Lagos" })}. New screening times haven't been added yet.`
+                : status === "coming-soon"
+                  ? "Screening times haven't been published for this upcoming movie yet."
+                  : "No upcoming screenings have been added for this movie yet. Please check back later."}
             </p>
             <Link to="/movies" className="btn-secondary-custom">
               View Other Movies
             </Link>
+            <button type="button" className="btn-secondary-custom ms-2 mt-2" onClick={() => setShowtimesAttempt(value => value + 1)}>Refresh showtimes</button>
           </div>
         ) : (
           <div className="showtimes-grouped-list">

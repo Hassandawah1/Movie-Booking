@@ -70,7 +70,7 @@ const LoginPage = () => {
         <div className="text-center mb-4">
           <div style={{ marginBottom: "0.5rem" }}><AppIcon name="film" size={40} /></div>
           <h1 style={{ fontSize: "1.6rem", marginBottom: "0.25rem" }}>Welcome Back</h1>
-          <p style={{ color: "#a1a1a1", fontSize: "0.875rem", margin: 0 }}>
+          <p style={{ color: "var(--color-muted)", fontSize: "0.875rem", margin: 0 }}>
             Sign in to your CineBook account
           </p>
         </div>
@@ -131,9 +131,9 @@ const LoginPage = () => {
         </form>
 
         
-        <p className="text-center mt-3 mb-0" style={{ color: "#a1a1a1", fontSize: "0.875rem" }}>
+        <p className="text-center mt-3 mb-0" style={{ color: "var(--color-muted)", fontSize: "0.875rem" }}>
           New to CineBook?{" "}
-          <Link to="/register" style={{ color: "#ffe27a", fontWeight: 600 }}>
+          <Link to="/register" style={{ color: "var(--color-primary-light)", fontWeight: 600 }}>
             Create an account
           </Link>
         </p>

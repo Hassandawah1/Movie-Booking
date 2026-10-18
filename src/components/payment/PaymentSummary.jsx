@@ -11,11 +11,11 @@ const PaymentSummary = ({ booking }) => {
   const totalAmount = booking.totalAmount || 0
 
   return (
-    <div className="card border-0 rounded-4 p-4 mb-4" style={{ background: "#1a1b1d", border: "1px solid rgba(255, 255, 255, 0.16)" }}>
+    <div className="card border-0 rounded-4 p-4 mb-4" style={{ background: "var(--color-surface)", border: "1px solid rgba(var(--color-neutral-rgb), 0.16)" }}>
       <h4 className="fw-bold text-primary mb-3">Order & Payment Summary</h4>
 
       <div className="mb-3">
-        <h5 className="fw-bold mb-1" style={{ color: "#ffe27a" }}>
+        <h5 className="fw-bold mb-1" style={{ color: "var(--color-primary-light)" }}>
           {movie.title || "Cinema Movie"}
         </h5>
         <div className="text-muted small">
@@ -24,7 +24,7 @@ const PaymentSummary = ({ booking }) => {
         </div>
       </div>
 
-      <hr style={{ borderColor: "rgba(255, 255, 255, 0.1)" }} />
+      <hr style={{ borderColor: "rgba(var(--color-neutral-rgb), 0.1)" }} />
 
       <div className="d-flex justify-content-between mb-2">
         <span className="text-muted">Booking Reference:</span>
@@ -51,7 +51,7 @@ const PaymentSummary = ({ booking }) => {
         <span className="text-light">{seats.length} {seats.length === 1 ? "ticket" : "tickets"}</span>
       </div>
 
-      <hr style={{ borderColor: "rgba(255, 255, 255, 0.1)" }} />
+      <hr style={{ borderColor: "rgba(var(--color-neutral-rgb), 0.1)" }} />
 
       <div className="d-flex justify-content-between align-items-center pt-2">
         <span className="fw-bold fs-5">Total Amount:</span>

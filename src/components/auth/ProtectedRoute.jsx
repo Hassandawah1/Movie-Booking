@@ -23,18 +23,18 @@ const ProtectedRoute = ({ children, requireAdmin = false, allowUnverifiedSession
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#111213"
+          background: "var(--color-bg)"
         }}
       >
         <div className="text-center">
           <div
             className="spinner-border"
             role="status"
-            style={{ color: "#ffd43b", width: "3rem", height: "3rem" }}
+            style={{ color: "var(--color-primary)", width: "3rem", height: "3rem" }}
           >
             <span className="visually-hidden">Loading...</span>
           </div>
-          <p className="mt-3" style={{ color: "#ffe27a", fontSize: "0.9rem" }}>
+          <p className="mt-3" style={{ color: "var(--color-primary-light)", fontSize: "0.9rem" }}>
             Verifying session...
           </p>
         </div>
@@ -53,7 +53,7 @@ const ProtectedRoute = ({ children, requireAdmin = false, allowUnverifiedSession
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#111213",
+          background: "var(--color-bg)",
           padding: "1rem"
         }}
       >

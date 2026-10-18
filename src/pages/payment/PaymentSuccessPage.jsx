@@ -124,7 +124,7 @@ const PaymentSuccessPage = () => {
           <div className="col-md-8 col-lg-6">
             <div
               className="card border-0 rounded-4 p-4 p-md-5 text-center"
-              style={{ background: "#1a1b1d", border: "1px solid rgba(255, 255, 255, 0.16)" }}
+              style={{ background: "var(--color-surface)", border: "1px solid rgba(var(--color-neutral-rgb), 0.16)" }}
             >
               <div style={{ marginBottom: "0.5rem" }}><AppIcon name="timer" size={48} /></div>
 
@@ -146,7 +146,7 @@ const PaymentSuccessPage = () => {
 
               <div
                 className="p-3 rounded-3 text-start mb-4"
-                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
+                style={{ background: "rgba(var(--color-neutral-rgb), 0.04)", border: "1px solid rgba(var(--color-neutral-rgb), 0.08)" }}
               >
                 <div className="d-flex justify-content-between mb-2">
                   <span className="text-muted">Booking Reference:</span>
@@ -202,8 +202,8 @@ const PaymentSuccessPage = () => {
           <div
             className="card border-0 rounded-4 p-4 p-md-5 text-center"
             style={{
-              background: "#1a1b1d",
-              border: "1px solid rgba(16, 185, 129, 0.35)",
+              background: "var(--color-surface)",
+              border: "1px solid rgba(var(--color-primary-rgb), 0.35)",
             }}
           >
             <div
@@ -211,8 +211,8 @@ const PaymentSuccessPage = () => {
               style={{
                 width: "72px",
                 height: "72px",
-                background: "rgba(16, 185, 129, 0.15)",
-                color: "#34d399",
+                background: "rgba(var(--color-primary-rgb), 0.15)",
+                color: "var(--color-success)",
                 fontSize: "2.2rem"
               }}
             >
@@ -232,7 +232,7 @@ const PaymentSuccessPage = () => {
 
             <div
               className="p-3 rounded-3 text-start mb-4"
-              style={{ background: "rgba(255, 255, 255, 0.04)", border: "1px solid rgba(255, 255, 255, 0.08)" }}
+              style={{ background: "rgba(var(--color-neutral-rgb), 0.04)", border: "1px solid rgba(var(--color-neutral-rgb), 0.08)" }}
             >
               <div className="d-flex justify-content-between mb-2">
                 <span className="text-muted">Booking Reference:</span>
@@ -246,7 +246,7 @@ const PaymentSuccessPage = () => {
                 </div>
               )}
 
-              <hr style={{ borderColor: "rgba(255, 255, 255, 0.1)" }} />
+              <hr style={{ borderColor: "rgba(var(--color-neutral-rgb), 0.1)" }} />
 
               <div className="mb-2">
                 <span className="text-muted d-block small">Movie:</span>
@@ -304,7 +304,7 @@ const PaymentSuccessPage = () => {
                 </div>
               )}
 
-              <hr style={{ borderColor: "rgba(255, 255, 255, 0.1)" }} />
+              <hr style={{ borderColor: "rgba(var(--color-neutral-rgb), 0.1)" }} />
 
               <div className="d-flex justify-content-between align-items-center pt-1">
                 <span className="text-muted">Amount Paid:</span>
