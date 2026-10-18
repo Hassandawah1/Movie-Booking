@@ -149,8 +149,8 @@ const AppRoutes = () => {
         <Route path="showtimes" element={<AdminShowtimesPage />} />
         <Route path="bookings" element={<AdminBookingsPage />} />
         <Route path="bookings/:id" element={<AdminBookingDetailsPage />} />
-        <Route path="users" element={<AdminUsersPage />} />
-        <Route path="users/:id" element={<AdminUserDetailsPage />} />
+        <Route path="users" element={<ProtectedRoute requireSuperAdmin><AdminUsersPage /></ProtectedRoute>} />
+        <Route path="users/:id" element={<ProtectedRoute requireSuperAdmin><AdminUserDetailsPage /></ProtectedRoute>} />
       </Route>
 
       

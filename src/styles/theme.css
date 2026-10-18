@@ -105,7 +105,6 @@ html { accent-color: var(--color-primary); }
 .seat-btn.available:hover { background: var(--color-card); border-color: var(--color-primary); color: var(--color-primary); }
 .seat-btn.selected { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 .seat-btn.unavailable { border-style: dashed; }
-.seat-btn.unavailable .seat-number { text-decoration: line-through; }
 .legend-badge.unavailable { border-style: dashed; }
 .admin-bar-fill--danger { background: repeating-linear-gradient(135deg, var(--color-muted) 0 4px, var(--color-card) 4px 6px); }
 .admin-bar-fill--warning { background: var(--color-primary-light); }

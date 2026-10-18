@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
 import AppIcon from "../ui/AppIcon"
+import { formatRole } from "../../utils/formatters"
 
 
 const NAV_ITEMS = [
@@ -9,12 +10,12 @@ const NAV_ITEMS = [
   { to: "/admin/screens", label: "Screens", icon: "building" },
   { to: "/admin/showtimes", label: "Showtimes", icon: "clock" },
   { to: "/admin/bookings", label: "Bookings", icon: "ticket" },
-  { to: "/admin/users", label: "Users", icon: "users" },
+  { to: "/admin/users", label: "Users / Admin Management", icon: "users", superAdminOnly: true },
   { to: "/admin/profile", label: "My Profile", icon: "user" }
 ]
 
 const AdminSidebar = ({ onNavigate, id }) => {
-  const { user, logout } = useAuth()
+  const { user, logout, isSuperAdmin } = useAuth()
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -41,13 +42,13 @@ const AdminSidebar = ({ onNavigate, id }) => {
           </span>
           <div className="admin-sidebar-user-info">
             <span className="admin-sidebar-user-name">{user.name}</span>
-            <span className="admin-sidebar-user-role">Administrator</span>
+            <span className="admin-sidebar-user-role">{formatRole(user.role)}</span>
           </div>
         </NavLink>
       )}
 
       <ul className="admin-nav-list">
-        {NAV_ITEMS.map((item) => (
+        {NAV_ITEMS.filter(item => !item.superAdminOnly || isSuperAdmin).map((item) => (
           <li key={item.to}>
             <NavLink
               to={item.to}

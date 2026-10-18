@@ -1,24 +1,18 @@
+import { useAuth } from "../../../context/AuthContext"
+import { formatRole } from "../../../utils/formatters"
 
-const UserRoleForm = ({ user, isSelf, submitting, onRoleChange }) => {
-  if (!user) return null
+const UserRoleForm = ({ user, submitting, onRoleChange }) => {
+  const { isSuperAdmin } = useAuth()
+  if (!user || !isSuperAdmin) return null
 
   const isAdmin = user.role === "admin"
-
+  const protectedRole = user.role === "super-admin"
   const handleClick = () => {
-    if (isSelf && isAdmin) {
-      
-      return
-    }
-
-    const nextRole = isAdmin ? "user" : "admin"
-    const confirmed = window.confirm(
-      isAdmin
-        ? `Remove admin access from ${user.name}? They will become a normal customer.`
-        : `Promote ${user.name} to admin? They will gain full management access.`
-    )
-    if (!confirmed) return
-
-    onRoleChange(user.id || user._id, nextRole)
+    if (protectedRole || submitting) return
+    const confirmed = window.confirm(isAdmin
+      ? `Remove admin access from ${user.name}?`
+      : `Promote ${user.name} to Admin?`)
+    if (confirmed) onRoleChange(user.id || user._id, isAdmin ? "user" : "admin")
   }
 
   return (
@@ -26,29 +20,15 @@ const UserRoleForm = ({ user, isSelf, submitting, onRoleChange }) => {
       <div className="admin-panel-head">
         <div>
           <h2 className="admin-panel-title">Role</h2>
-          <p className="admin-panel-sub">
-            Currently <strong>{isAdmin ? "Administrator" : "Customer"}</strong>
-          </p>
+          <p className="admin-panel-sub">Currently <strong>{formatRole(user.role)}</strong></p>
         </div>
       </div>
-
-      {isSelf && isAdmin ? (
-        <p className="admin-detail-note" data-panel="self-demotion-notice">
-          You cannot remove your own admin access. Ask another administrator to change your role.
-        </p>
+      {protectedRole ? (
+        <p className="admin-detail-note">The Super Admin role is protected and cannot be changed here.</p>
       ) : (
         <div className="admin-form-actions">
-          <button
-            type="button"
-            className={`admin-btn ${isAdmin ? "admin-btn--danger" : "admin-btn--primary"}`}
-            onClick={handleClick}
-            disabled={submitting}
-          >
-            {submitting
-              ? "Updating…"
-              : isAdmin
-              ? "Remove Admin Access"
-              : "Promote to Admin"}
+          <button type="button" className={`admin-btn ${isAdmin ? "admin-btn--danger" : "admin-btn--primary"}`} onClick={handleClick} disabled={submitting}>
+            {submitting ? "Updating…" : isAdmin ? "Demote to User" : "Promote to Admin"}
           </button>
         </div>
       )}

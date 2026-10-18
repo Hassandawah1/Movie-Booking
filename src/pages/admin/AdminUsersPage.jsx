@@ -9,13 +9,14 @@ import {
   AdminPagination
 } from "../../components/admin/AdminUi"
 import { describeApiError } from "../../components/admin/adminUtils"
-import { formatDate } from "../../utils/formatters"
+import { formatDate, formatRole } from "../../utils/formatters"
 import { getUsers } from "../../services/admin.service"
 
 const ROLE_FILTERS = [
   { id: "", label: "All" },
-  { id: "user", label: "Customers" },
-  { id: "admin", label: "Admins" }
+  { id: "user", label: "Users" },
+  { id: "admin", label: "Admins" },
+  { id: "super-admin", label: "Super Admin" }
 ]
 
 const PAGE_SIZE = 20
@@ -175,8 +176,8 @@ const AdminUsersPage = () => {
                         <td className="admin-cell-strong">{u.name}</td>
                         <td>{u.email}</td>
                         <td>
-                          <span className={`admin-badge ${u.role === "admin" ? "admin-badge--ok" : "admin-badge--muted"}`}>
-                            {u.role === "admin" ? "Administrator" : "Customer"}
+                          <span className={`admin-badge ${["admin", "super-admin"].includes(u.role) ? "admin-badge--ok" : "admin-badge--muted"}`}>
+                            {formatRole(u.role)}
                           </span>
                         </td>
                         <td className="admin-nowrap">{formatDate(u.createdAt)}</td>

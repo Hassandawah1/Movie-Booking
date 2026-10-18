@@ -1,3 +1,5 @@
+import AppIcon from "../ui/AppIcon"
+
 const SeatButton = ({
   seatNumber,
   status = "available",
@@ -35,7 +37,11 @@ const SeatButton = ({
       aria-pressed={isSelected}
       title={`Seat ${seatNumber} (${labelStatus})`}
     >
-      <span className="seat-number">{seatNumber}</span>
+      {isUnavailable ? (
+        <AppIcon name="close" size={16} strokeWidth={3} />
+      ) : (
+        <span className="seat-number">{seatNumber}</span>
+      )}
     </button>
   )
 }

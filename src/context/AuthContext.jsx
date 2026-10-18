@@ -19,7 +19,8 @@ export const AuthProvider = ({ children }) => {
   const [authError, setAuthError] = useState(false)
 
   const isAuthenticated = !!user
-  const isAdmin = user?.role === "admin"
+  const isSuperAdmin = user?.role === "super-admin"
+  const isAdmin = user?.role === "admin" || isSuperAdmin
 
   
   const saveToken = (newToken) => {
@@ -134,6 +135,7 @@ export const AuthProvider = ({ children }) => {
         token,
         isAuthenticated,
         isAdmin,
+        isSuperAdmin,
         loading,
         authError,
         login,

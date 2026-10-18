@@ -19,7 +19,7 @@ Use three colour families throughout the customer and admin interfaces: ticket y
 
 The reference screens for this consistency pass are the existing public catalogue, printed/digital ticket, and admin dashboard. Preserve their layout and information hierarchy. Use flat charcoal surfaces, a yellow primary action, restrained borders, and neutral secondary actions. Avoid adding red, green, blue or purple status palettes.
 
-State must remain understandable without colour: labels and icons identify paid/pending/failed states, dashed borders mark pending/invalid notices, unavailable seats are disabled with struck-through numbers, and labelled chart rows retain their values. Yellow buttons use charcoal text; yellow text appears on dark surfaces. Errors retain explicit messages, alerts and their existing confirmation flows.
+State must remain understandable without colour: labels and icons identify paid/pending/failed states, dashed borders mark pending/invalid notices, unavailable seats are disabled with a × icon matching the legend, while accessible labels and tooltips retain seat numbers, and labelled chart rows retain their values. Yellow buttons use charcoal text; yellow text appears on dark surfaces. Errors retain explicit messages, alerts and their existing confirmation flows.
 
 ## Responsive admin controls
 

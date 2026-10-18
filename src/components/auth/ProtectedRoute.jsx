@@ -11,8 +11,8 @@ const hasStoredToken = () => {
 }
 
 
-const ProtectedRoute = ({ children, requireAdmin = false, allowUnverifiedSession = false }) => {
-  const { isAuthenticated, isAdmin, loading, authError, refreshUser } = useAuth()
+const ProtectedRoute = ({ children, requireAdmin = false, requireSuperAdmin = false, allowUnverifiedSession = false }) => {
+  const { isAuthenticated, isAdmin, isSuperAdmin, loading, authError, refreshUser } = useAuth()
   const location = useLocation()
 
   if (loading) {
@@ -83,6 +83,10 @@ const ProtectedRoute = ({ children, requireAdmin = false, allowUnverifiedSession
     }
 
     return <Navigate to="/login" state={{ from: location.pathname }} replace />
+  }
+
+  if (requireSuperAdmin && !isSuperAdmin) {
+    return <Navigate to={isAdmin ? "/admin" : "/"} replace />
   }
 
   if (requireAdmin && !isAdmin) {

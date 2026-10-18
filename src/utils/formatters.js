@@ -53,3 +53,9 @@ export const formatStatus = (status) => {
       return status || "Unknown"
   }
 }
+
+export const formatRole = (role) => ({
+  user: "User",
+  admin: "Admin",
+  "super-admin": "Super Admin"
+}[role] || "Unknown role")

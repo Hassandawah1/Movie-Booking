@@ -6,7 +6,7 @@ import UserRoleForm from "../../components/admin/users/UserRoleForm"
 import { AdminBanner, AdminLoading, AdminSectionError } from "../../components/admin/AdminUi"
 import { describeApiError } from "../../components/admin/adminUtils"
 import { useAuth } from "../../context/AuthContext"
-import { formatCurrency, formatDate } from "../../utils/formatters"
+import { formatCurrency, formatDate, formatRole } from "../../utils/formatters"
 import { getUserById, updateUserRole } from "../../services/admin.service"
 
 
@@ -14,7 +14,7 @@ const AdminUserDetailsPage = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const outletContext = useOutletContext()
-  const { user: currentAdmin } = useAuth()
+  const { isSuperAdmin } = useAuth()
 
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -66,10 +66,6 @@ const AdminUserDetailsPage = () => {
   }
 
   
-  const currentAdminId = currentAdmin?.id || currentAdmin?._id
-  const targetId = user?.id || user?._id
-  const isSelf = Boolean(currentAdminId && targetId && String(currentAdminId) === String(targetId))
-
   return (
     <div className="admin-page">
       <AdminHeader
@@ -117,8 +113,8 @@ const AdminUserDetailsPage = () => {
                   <h2 className="admin-panel-title">{user.name}</h2>
                   <p className="admin-panel-sub">{user.email}</p>
                 </div>
-                <span className={`admin-badge ${user.role === "admin" ? "admin-badge--ok" : "admin-badge--muted"}`}>
-                  {user.role === "admin" ? "Administrator" : "Customer"}
+                <span className={`admin-badge ${["admin", "super-admin"].includes(user.role) ? "admin-badge--ok" : "admin-badge--muted"}`}>
+                  {formatRole(user.role)}
                 </span>
               </div>
 
@@ -127,7 +123,7 @@ const AdminUserDetailsPage = () => {
                   <h3 className="admin-detail-heading">Account</h3>
                   <div className="detail-item-row">
                     <span className="detail-label">Role:</span>
-                    <span className="detail-value">{user.role === "admin" ? "Administrator" : "Customer"}</span>
+                    <span className="detail-value">{formatRole(user.role)}</span>
                   </div>
                   <div className="detail-item-row">
                     <span className="detail-label">Joined:</span>
@@ -155,12 +151,11 @@ const AdminUserDetailsPage = () => {
               </div>
             </section>
 
-            <UserRoleForm
+            {isSuperAdmin && <UserRoleForm
               user={user}
-              isSelf={isSelf}
               submitting={submitting}
               onRoleChange={handleRoleChange}
-            />
+            />}
           </>
         )}
       </div>

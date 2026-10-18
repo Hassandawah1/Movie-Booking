@@ -48,7 +48,7 @@ const LoginPage = () => {
       
       if (from) {
         navigate(from, { replace: true })
-      } else if (data?.user?.role === "admin") {
+      } else if (["admin", "super-admin"].includes(data?.user?.role)) {
         navigate("/admin", { replace: true })
       } else {
         navigate("/", { replace: true })

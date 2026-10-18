@@ -2,10 +2,11 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
 import AppIcon from "../../components/ui/AppIcon"
+import { formatRole } from "../../utils/formatters"
 
 const ProfilePage = ({ embedded = false }) => {
   const NameHeading = embedded ? "h2" : "h1"
-  const { user, updatePassword, deleteAccount } = useAuth()
+  const { user, isSuperAdmin, updatePassword, deleteAccount } = useAuth()
   const navigate = useNavigate()
   const [passwordForm, setPasswordForm] = useState({
     currentPassword: "",
@@ -102,7 +103,8 @@ const ProfilePage = ({ embedded = false }) => {
           >
             {[
               { label: "Full Name", value: user.name, icon: "user" },
-              { label: "Email Address", value: user.email, icon: "mail" }
+              { label: "Email Address", value: user.email, icon: "mail" },
+              { label: "Role", value: formatRole(user.role), icon: "shield" }
             ].map((item, i, arr) => (
               <div
                 key={item.label}
@@ -174,7 +176,7 @@ const ProfilePage = ({ embedded = false }) => {
             </form>
           </section>
 
-          <section className="profile-danger-section" aria-labelledby="delete-account-title">
+          {!isSuperAdmin && <section className="profile-danger-section" aria-labelledby="delete-account-title">
             <h2 id="delete-account-title" className="h5 mb-2">Delete Account</h2>
             <p className="profile-danger-note">
               This removes your personal account details and signs you out. Existing booking and payment
@@ -212,7 +214,7 @@ const ProfilePage = ({ embedded = false }) => {
                 {isDeletingAccount ? "Deleting Account…" : "Delete My Account"}
               </button>
             </form>
-          </section>
+          </section>}
 
         </div>
       </div>
