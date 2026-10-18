@@ -20,3 +20,9 @@ Use three colour families throughout the customer and admin interfaces: ticket y
 The reference screens for this consistency pass are the existing public catalogue, printed/digital ticket, and admin dashboard. Preserve their layout and information hierarchy. Use flat charcoal surfaces, a yellow primary action, restrained borders, and neutral secondary actions. Avoid adding red, green, blue or purple status palettes.
 
 State must remain understandable without colour: labels and icons identify paid/pending/failed states, dashed borders mark pending/invalid notices, unavailable seats are disabled with struck-through numbers, and labelled chart rows retain their values. Yellow buttons use charcoal text; yellow text appears on dark surfaces. Errors retain explicit messages, alerts and their existing confirmation flows.
+
+## Responsive admin controls
+
+Filter rows use a grid with shrinkable tracks. Native selects, including options with long movie/screening names, must be constrained to `width: 100%; max-width: 100%; min-width: 0`. Search fields must not keep a desktop flex basis as their height when stacked. The admin shell must not clip overflow to disguise controls that exceed their panel.
+
+At phone widths, filters stack in one column, controls/buttons have at least a 44px target height, and long header names can wrap. Dense data tables keep readable column widths and scroll inside their own focusable region. The bookings table includes a mobile swipe hint. Verify actual control bounds against the viewport, as well as document width, using long names/options at 320, 360, 375, 390, 414, 640, 768, 1024 and 1440px. Check opened scheduling/screen forms as well as populated lists.

@@ -2612,7 +2612,6 @@ a:hover {
   min-height: 100vh;
   background: var(--color-bg);
   width: 100%;
-  overflow-x: clip;
 }
 
 
@@ -2843,6 +2842,8 @@ a:hover {
 }
 
 .admin-header-right {
+  min-width: 0;
+  max-width: 100%;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -2850,6 +2851,8 @@ a:hover {
 }
 
 .admin-header-meta {
+  min-width: 0;
+  max-width: 100%;
   display: flex;
   align-items: center;
   gap: 0.9rem;
@@ -2863,13 +2866,16 @@ a:hover {
 }
 
 .admin-header-user {
+  min-width: 0;
+  max-width: 100%;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
   font-size: 0.83rem;
   font-weight: 600;
   color: var(--color-text);
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 
@@ -3284,6 +3290,9 @@ a:hover {
 }
 
 .admin-input {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   background: rgba(var(--color-bg-rgb), 0.8);
   border: 1px solid rgba(var(--color-neutral-rgb), 0.16);
   border-radius: 8px;
@@ -3797,7 +3806,7 @@ a:hover {
 
 .admin-form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
   gap: 0.9rem 1rem;
 }
 
@@ -3878,6 +3887,10 @@ a:hover {
 }
 
 .admin-filter-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  min-width: 0;
+  width: 100%;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba(var(--color-neutral-rgb), 0.07);
 }
@@ -4188,6 +4201,10 @@ a:hover {
   .admin-filter-bar {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .admin-field--grow {
+    flex-basis: auto;
   }
 
   .admin-search-form .admin-btn,

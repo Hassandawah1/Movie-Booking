@@ -29,6 +29,7 @@ import VerifyTicketPage from "../pages/bookings/VerifyTicketPage"
 
 import AdminLayout from "../components/admin/AdminLayout"
 import AdminDashboardPage from "../pages/admin/AdminDashboardPage"
+import AdminProfilePage from "../pages/admin/AdminProfilePage"
 import AdminMoviesPage from "../pages/admin/AdminMoviesPage"
 import AdminScreensPage from "../pages/admin/AdminScreensPage"
 import AdminShowtimesPage from "../pages/admin/AdminShowtimesPage"
@@ -142,6 +143,7 @@ const AppRoutes = () => {
         }
       >
         <Route index element={<AdminDashboardPage />} />
+        <Route path="profile" element={<AdminProfilePage />} />
         <Route path="movies" element={<AdminMoviesPage />} />
         <Route path="screens" element={<AdminScreensPage />} />
         <Route path="showtimes" element={<AdminShowtimesPage />} />

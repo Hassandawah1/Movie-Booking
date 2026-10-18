@@ -1,4 +1,5 @@
 import { useMemo } from "react"
+import { Link } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
 import AppIcon from "../ui/AppIcon"
 
@@ -44,12 +45,12 @@ const AdminHeader = ({ title, subtitle, onToggleSidebar, sidebarOpen, actions = 
         <div className="admin-header-meta">
           <span className="admin-header-date">{todayLabel}</span>
           {user?.name && (
-            <span className="admin-header-user">
+            <Link to="/admin/profile" className="admin-header-user" aria-label="View my profile">
               <span className="admin-header-avatar" aria-hidden="true">
                 {user.name.charAt(0).toUpperCase()}
               </span>
               {user.name}
-            </span>
+            </Link>
           )}
         </div>
       </div>

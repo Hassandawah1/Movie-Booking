@@ -10,6 +10,7 @@ import "./styles/tokens.css"
 import "./styles/global.css"
 import "./styles/experience.css"
 import "./styles/theme.css"
+import "./styles/responsive.css"
 
 import App from "./App.jsx"
 

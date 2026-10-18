@@ -1,0 +1,54 @@
+/* Constrain the content itself; never hide overflowing controls at the page edge. */
+.admin-page, .admin-content, .admin-form, .admin-filter-bar > *,
+.admin-search-form > *, .admin-header-left > div { min-width: 0; max-width: 100%; }
+.admin-input { text-overflow: ellipsis; }
+.admin-header-avatar, .admin-menu-toggle { flex-shrink: 0; }
+.admin-panel-title, .admin-panel-sub, .admin-header-title, .admin-header-subtitle,
+.admin-detail-heading, .admin-detail-note, .admin-banner-body { overflow-wrap: anywhere; }
+.admin-table-scroll { min-width: 0; }
+.admin-table-hint { display: none; }
+.admin-btn { min-height: 44px; }
+
+@media (max-width: 640px) {
+  .admin-table-hint { display: flex; align-items: center; gap: .5rem; color: var(--color-muted); font-size: .75rem; }
+  .admin-filter-bar { grid-template-columns: minmax(0, 1fr); }
+  .admin-filter-bar .admin-input, .admin-search-form .admin-input,
+  .admin-form .admin-input { min-height: 44px; }
+  .admin-header-left { width: 100%; }
+  .admin-header-right { width: 100%; gap: .75rem; }
+  .admin-header-meta { flex: 1; }
+  .admin-header-user { font-size: .8125rem; }
+  .admin-menu-toggle { min-height: 44px; }
+  .admin-stat-grid, .admin-skeleton-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .admin-daterange { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; }
+  .admin-daterange-actions { width: 100%; }
+  .admin-daterange-actions .admin-btn { flex: 1; }
+  .admin-table-scroll { border: 1px solid var(--color-border); border-radius: 6px; }
+}
+
+/* Keep booking rows readable; their container owns horizontal scrolling. */
+[data-panel="booking-list"] .admin-table { min-width: 1200px; }
+[data-panel="booking-list"] .admin-table th:nth-child(2),
+[data-panel="booking-list"] .admin-table td:nth-child(2),
+[data-panel="booking-list"] .admin-table th:nth-child(3),
+[data-panel="booking-list"] .admin-table td:nth-child(3) { min-width: 180px; }
+
+.admin-detail-grid > * { min-width: 0; }
+.admin-detail-grid .detail-label, .admin-detail-grid .detail-value {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  .admin-detail-grid .detail-item-row { flex-direction: column; align-items: flex-start; gap: .25rem; }
+  .admin-detail-grid .detail-value { text-align: left; }
+}
+
+.admin-header-user, .admin-sidebar-user { text-decoration: none; }
+.admin-header-user:hover, .admin-sidebar-user:hover { color: var(--color-primary); }
+.admin-header-user { min-height: 44px; }
+.profile-embedded { width: 100%; min-width: 0; }
+.profile-embedded .profile-card { margin: 0 auto; width: 100%; }
+.profile-field-content { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .profile-embedded .profile-card { padding: 1rem; }
+}

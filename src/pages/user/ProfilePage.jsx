@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
 import AppIcon from "../../components/ui/AppIcon"
 
-const ProfilePage = () => {
+const ProfilePage = ({ embedded = false }) => {
+  const NameHeading = embedded ? "h2" : "h1"
   const { user, updatePassword, deleteAccount } = useAuth()
   const navigate = useNavigate()
   const [passwordForm, setPasswordForm] = useState({
@@ -65,8 +66,8 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="page-wrapper">
-      <div className="container">
+    <div className={embedded ? "profile-embedded" : "page-wrapper"}>
+      <div className={embedded ? undefined : "container"}>
         <div className="profile-card">
           
           <div className="text-center mb-4">
@@ -87,7 +88,7 @@ const ProfilePage = () => {
             >
               {user.name?.charAt(0)?.toUpperCase() || "U"}
             </div>
-            <h1 style={{ fontSize: "1.5rem", marginBottom: "0.25rem" }}>{user.name}</h1>
+            <NameHeading style={{ fontSize: "1.5rem", marginBottom: "0.25rem" }}>{user.name}</NameHeading>
           </div>
 
           
@@ -116,7 +117,7 @@ const ProfilePage = () => {
                 <span style={{ width: "28px", textAlign: "center" }}>
                   <AppIcon name={item.icon} size={20} />
                 </span>
-                <div>
+                <div className="profile-field-content">
                   <p style={{ color: "var(--color-muted)", fontSize: "0.75rem", margin: 0, fontWeight: 500 }}>
                     {item.label}
                   </p>

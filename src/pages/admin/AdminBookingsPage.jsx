@@ -259,7 +259,8 @@ const AdminBookingsPage = () => {
 
           {!loading && !listError && bookings.length > 0 && (
             <>
-              <div className="admin-table-scroll">
+              <p className="admin-table-hint" id="bookings-table-hint"><AppIcon name="arrowRight" size={16} /> Swipe the table to see all booking details.</p>
+              <div className="admin-table-scroll" tabIndex={0} role="region" aria-label="Bookings table" aria-describedby="bookings-table-hint">
                 <table className="admin-table">
                   <caption className="visually-hidden">All platform bookings</caption>
                   <thead>

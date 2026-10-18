@@ -9,7 +9,8 @@ const NAV_ITEMS = [
   { to: "/admin/screens", label: "Screens", icon: "building" },
   { to: "/admin/showtimes", label: "Showtimes", icon: "clock" },
   { to: "/admin/bookings", label: "Bookings", icon: "ticket" },
-  { to: "/admin/users", label: "Users", icon: "users" }
+  { to: "/admin/users", label: "Users", icon: "users" },
+  { to: "/admin/profile", label: "My Profile", icon: "user" }
 ]
 
 const AdminSidebar = ({ onNavigate, id }) => {
@@ -34,7 +35,7 @@ const AdminSidebar = ({ onNavigate, id }) => {
       </div>
 
       {user?.name && (
-        <div className="admin-sidebar-user">
+        <NavLink to="/admin/profile" className="admin-sidebar-user" onClick={onNavigate} aria-label="View my profile">
           <span className="admin-sidebar-avatar" aria-hidden="true">
             {user.name.charAt(0).toUpperCase()}
           </span>
@@ -42,7 +43,7 @@ const AdminSidebar = ({ onNavigate, id }) => {
             <span className="admin-sidebar-user-name">{user.name}</span>
             <span className="admin-sidebar-user-role">Administrator</span>
           </div>
-        </div>
+        </NavLink>
       )}
 
       <ul className="admin-nav-list">
