@@ -1,5 +1,6 @@
 import { formatCurrency, formatDate, formatTime } from "../../utils/formatters"
 import AppIcon from "../ui/AppIcon"
+import TicketQRCode from "./TicketQRCode"
 
 
 const TicketCard = ({ booking, customerName }) => {
@@ -54,7 +55,7 @@ const TicketCard = ({ booking, customerName }) => {
           <dl className="ticket-grid">
             <div className="ticket-grid-item">
               <dt>Date</dt>
-              <dd>{formatDate(showtime?.showDate)}</dd>
+              <dd>{formatDate(showtime?.showDate, { year: "numeric", timeZone: "Africa/Lagos" })}</dd>
             </div>
             <div className="ticket-grid-item">
               <dt>Time</dt>
@@ -102,6 +103,8 @@ const TicketCard = ({ booking, customerName }) => {
       </div>
 
       
+      <TicketQRCode token={booking.ticketToken} reference={bookingReference} />
+
       <div className="ticket-perforation" aria-hidden="true">
         <span className="ticket-notch ticket-notch--left" />
         <span className="ticket-dashes" />

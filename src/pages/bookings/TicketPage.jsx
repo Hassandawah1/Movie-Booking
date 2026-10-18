@@ -206,7 +206,7 @@ const TicketPage = () => {
         </div>
 
         <div className="ticket-stage">
-          <TicketCard booking={booking} customerName={user?.name} />
+          <TicketCard booking={booking} customerName={booking.user?.name || user?.name} />
         </div>
 
         

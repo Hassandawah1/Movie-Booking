@@ -24,6 +24,7 @@ import PaymentFailedPage from "../pages/payment/PaymentFailedPage"
 import MyBookingsPage from "../pages/bookings/MyBookingsPage"
 import BookingDetailsPage from "../pages/bookings/BookingDetailsPage"
 import TicketPage from "../pages/bookings/TicketPage"
+import VerifyTicketPage from "../pages/bookings/VerifyTicketPage"
 
 
 import AdminLayout from "../components/admin/AdminLayout"
@@ -45,6 +46,7 @@ const AppRoutes = () => {
       <Route path="/movies/:id" element={<MovieDetailsPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/tickets/verify" element={<VerifyTicketPage />} />
 
       
       <Route

@@ -35,3 +35,8 @@ export default {
   cancelBooking,
   getMyBookings
 }
+
+export const verifyTicket = async (token, signal) => {
+  const response = await api.post("/bookings/tickets/verify", { token }, { signal })
+  return response.data
+}
