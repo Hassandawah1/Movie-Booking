@@ -8,9 +8,9 @@ const MovieGrid = ({
 }) => {
   if (loading) {
     return (
-      <div className="movie-grid-loading">
-        <div className="spinner"></div>
-        <p>Loading movies…</p>
+      <div className="movie-grid" aria-busy="true" role="status" aria-label="Loading movies">
+        {Array.from({ length: 6 }, (_, index) => <div className="movie-skeleton" key={index} aria-hidden="true"><div className="skeleton-poster" /><div className="skeleton-line" /><div className="skeleton-line short" /></div>)}
+        <span className="visually-hidden">Loading movies…</span>
       </div>
     )
   }

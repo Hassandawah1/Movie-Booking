@@ -12,21 +12,22 @@ const STATUS_FILTERS = [
 
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams()
-  const initialStatus = searchParams.get("status") || "all"
-
-  const [activeStatus, setActiveStatus] = useState(initialStatus)
-  const [searchTerm, setSearchTerm] = useState("")
+  const statusParam = searchParams.get("status")
+  const activeStatus = STATUS_FILTERS.some(filter => filter.value === statusParam) ? statusParam : "all"
+  const searchTerm = searchParams.get("q") || ""
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
+  const [attempt, setAttempt] = useState(0)
 
-  
-  useEffect(() => {
-    const statusParam = searchParams.get("status")
-    if (statusParam && ["now-showing", "coming-soon"].includes(statusParam)) {
-      setActiveStatus(statusParam)
-    }
-  }, [searchParams])
+  const updateParams = (key, value, replace = false) => {
+    setSearchParams(previous => {
+      const next = new URLSearchParams(previous)
+      if (value && value !== "all") next.set(key, value)
+      else next.delete(key)
+      return next
+    }, { replace })
+  }
 
   
   useEffect(() => {
@@ -75,16 +76,11 @@ const MoviesPage = () => {
     return () => {
       isMounted = false
     }
-  }, [activeStatus])
+  }, [activeStatus, attempt])
 
   
   const handleFilterChange = (status) => {
-    setActiveStatus(status)
-    if (status === "all") {
-      setSearchParams({})
-    } else {
-      setSearchParams({ status })
-    }
+    updateParams("status", status)
   }
 
   
@@ -106,16 +102,16 @@ const MoviesPage = () => {
       <div className="container py-4">
         
         <div className="page-header mb-4">
-          <h1 className="page-title">Cinema Movies</h1>
+          <h1 className="page-title">Find your next watch</h1>
           <p className="page-subtitle">
-            Browse our full repertoire of currently playing blockbusters and upcoming premieres.
+            From tonight’s plans to your next must-see. Explore what’s on the big screen.
           </p>
         </div>
 
         
         <div className="catalogue-toolbar mb-4">
           
-          <div className="filter-tabs" role="tablist">
+          <div className="filter-tabs" role="group" aria-label="Filter movies by availability">
             {STATUS_FILTERS.map((filter) => (
               <button
                 key={filter.value}
@@ -123,6 +119,7 @@ const MoviesPage = () => {
                 className={`filter-tab ${
                   activeStatus === filter.value ? "active" : ""
                 }`}
+                aria-pressed={activeStatus === filter.value}
                 onClick={() => handleFilterChange(filter.value)}
               >
                 {filter.label}
@@ -133,18 +130,18 @@ const MoviesPage = () => {
           
           <div className="search-box-wrapper">
             <input
-              type="text"
+              type="search"
               className="search-input"
               placeholder="Search by title or genre…"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => updateParams("q", e.target.value, true)}
               aria-label="Search movies"
             />
             {searchTerm && (
               <button
                 type="button"
                 className="search-clear-btn"
-                onClick={() => setSearchTerm("")}
+                onClick={() => updateParams("q", "", true)}
                 aria-label="Clear search"
               >
                 <AppIcon name="close" size={16} />
@@ -155,14 +152,15 @@ const MoviesPage = () => {
 
         
         {error && (
-          <div className="alert-error mb-4">
+          <div className="alert-error mb-4" role="alert">
             <AppIcon name="alert" size={16} /> {error}
+            <button className="retry-button" onClick={() => setAttempt(value => value + 1)}>Try again</button>
           </div>
         )}
 
         
         {!loading && !error && (
-          <div className="results-count-bar mb-3">
+          <div className="results-count-bar mb-3" role="status">
             <span>
               Showing <strong>{filteredMovies.length}</strong> {filteredMovies.length === 1 ? "movie" : "movies"}
               {searchTerm && ` matching "${searchTerm}"`}
@@ -171,7 +169,7 @@ const MoviesPage = () => {
         )}
 
         
-        <MovieGrid
+        {!error && <MovieGrid
           movies={filteredMovies}
           emptyMessage={
             searchTerm
@@ -179,7 +177,7 @@ const MoviesPage = () => {
               : "No movies found in this category."
           }
           loading={loading}
-        />
+        />}
       </div>
     </div>
   )

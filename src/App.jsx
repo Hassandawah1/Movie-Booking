@@ -12,7 +12,7 @@ const Shell = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       {!isAdminArea && <Navbar />}
-      <main style={{ flex: 1 }}>
+      <main id="main-content" tabIndex={-1} style={{ flex: 1 }}>
         <AppRoutes />
       </main>
       {!isAdminArea && <Footer />}

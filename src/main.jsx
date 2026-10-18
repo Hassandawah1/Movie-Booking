@@ -7,6 +7,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js"
 
 
 import "./styles/global.css"
+import "./styles/experience.css"
 
 import App from "./App.jsx"
 
